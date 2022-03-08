@@ -1,0 +1,12 @@
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\WowsTools.exe.config
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\WowsTools.exe
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\WowsTools.pdb
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.csproj.AssemblyReference.cache
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.Properties.Resources.resources
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.WowsMain.resources
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.csproj.GenerateResource.cache
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.csproj.CoreCompileInputs.cache
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.exe
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.pdb
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\Newtonsoft.Json.dll
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\Newtonsoft.Json.xml
