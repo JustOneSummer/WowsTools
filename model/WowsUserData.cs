@@ -17,22 +17,34 @@
         /// <summary>
         /// 总胜率
         /// </summary>
-        public double wins;
+        public string wins = "N/A";
+
+        /// <summary>
+        /// 船只名称
+        /// </summary>
+        public string shipName = "N/A";
+
         /// <summary>
         /// 船只PR评分
         /// </summary>
-        public int shipPr;
+        public int shipPr = -1;
+
+        /// <summary>
+        /// 船只等级
+        /// </summary>
+        public string shipLevel = "N/A";
+
         /// <summary>
         /// 船只场次
         /// </summary>
-        public int shipBattles;
+        public int shipBattles = 0;
         /// <summary>
         /// 船只胜率
         /// </summary>
-        public int shipWins;
+        public string shipWins = "N/A";
         /// <summary>
         /// 船只场均
         /// </summary>
-        public int shipDamage;
+        public int shipDamage = -1;
     }
 }

@@ -102,7 +102,7 @@ namespace WowsTools.utils
                     data.id = jt["id"].Value<long>();
                     data.relation = jt["relation"].Value<int>();
                     data.userName = jt["name"].Value<string>();
-                    data.shipId = jt["4179506640"].Value<long>();
+                    data.shipId = jt["shipId"].Value<long>();
                     dataList.Add(data);
                 }
             }

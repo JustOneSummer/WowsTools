@@ -29,6 +29,7 @@ namespace WowsTools
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SheZhiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,6 +42,7 @@ namespace WowsTools
             this.dataGridViewTwo = new System.Windows.Forms.DataGridView();
             this.labelMyTeam = new System.Windows.Forms.Label();
             this.labelDIJun = new System.Windows.Forms.Label();
+            this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
@@ -54,7 +56,7 @@ namespace WowsTools
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1584, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1484, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,7 +79,7 @@ namespace WowsTools
             this.ServerLable.AutoSize = true;
             this.ServerLable.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ServerLable.ForeColor = System.Drawing.Color.Blue;
-            this.ServerLable.Location = new System.Drawing.Point(768, 37);
+            this.ServerLable.Location = new System.Drawing.Point(718, 37);
             this.ServerLable.Name = "ServerLable";
             this.ServerLable.Size = new System.Drawing.Size(50, 26);
             this.ServerLable.TabIndex = 1;
@@ -91,18 +93,16 @@ namespace WowsTools
             this.dataGridViewOne.Location = new System.Drawing.Point(12, 72);
             this.dataGridViewOne.Name = "dataGridViewOne";
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(750, 485);
+            this.dataGridViewOne.Size = new System.Drawing.Size(700, 331);
             this.dataGridViewOne.TabIndex = 2;
             // 
             // VsLabel
             // 
-            this.VsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.VsLabel.AutoSize = true;
             this.VsLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.VsLabel.ForeColor = System.Drawing.Color.Red;
-            this.VsLabel.Location = new System.Drawing.Point(772, 268);
+            this.VsLabel.Location = new System.Drawing.Point(722, 165);
             this.VsLabel.Name = "VsLabel";
             this.VsLabel.Size = new System.Drawing.Size(37, 26);
             this.VsLabel.TabIndex = 3;
@@ -110,8 +110,6 @@ namespace WowsTools
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.ForeColor = System.Drawing.Color.Black;
@@ -123,11 +121,10 @@ namespace WowsTools
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(990, 37);
+            this.label2.Location = new System.Drawing.Point(859, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(178, 26);
             this.label2.TabIndex = 5;
@@ -138,21 +135,18 @@ namespace WowsTools
             this.dataGridViewTwo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewTwo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTwo.Location = new System.Drawing.Point(822, 72);
+            this.dataGridViewTwo.Location = new System.Drawing.Point(772, 72);
             this.dataGridViewTwo.Name = "dataGridViewTwo";
             this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(750, 485);
+            this.dataGridViewTwo.Size = new System.Drawing.Size(700, 331);
             this.dataGridViewTwo.TabIndex = 6;
             // 
             // labelMyTeam
             // 
-            this.labelMyTeam.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMyTeam.AutoSize = true;
             this.labelMyTeam.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelMyTeam.ForeColor = System.Drawing.Color.Green;
-            this.labelMyTeam.Location = new System.Drawing.Point(664, 37);
+            this.labelMyTeam.Location = new System.Drawing.Point(624, 37);
             this.labelMyTeam.Name = "labelMyTeam";
             this.labelMyTeam.Size = new System.Drawing.Size(88, 26);
             this.labelMyTeam.TabIndex = 7;
@@ -160,23 +154,27 @@ namespace WowsTools
             // 
             // labelDIJun
             // 
-            this.labelDIJun.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDIJun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDIJun.AutoSize = true;
             this.labelDIJun.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelDIJun.ForeColor = System.Drawing.Color.Red;
-            this.labelDIJun.Location = new System.Drawing.Point(824, 37);
+            this.labelDIJun.Location = new System.Drawing.Point(772, 37);
             this.labelDIJun.Name = "labelDIJun";
             this.labelDIJun.Size = new System.Drawing.Size(50, 26);
             this.labelDIJun.TabIndex = 8;
             this.labelDIJun.Text = "敌军";
             // 
+            // timerGameCheck
+            // 
+            this.timerGameCheck.Enabled = true;
+            this.timerGameCheck.Interval = 3000;
+            this.timerGameCheck.Tick += new System.EventHandler(this.timerGameCheck_Tick);
+            // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1584, 569);
+            this.ClientSize = new System.Drawing.Size(1484, 415);
             this.Controls.Add(this.labelDIJun);
             this.Controls.Add(this.labelMyTeam);
             this.Controls.Add(this.dataGridViewTwo);
@@ -214,6 +212,7 @@ namespace WowsTools
         private System.Windows.Forms.DataGridView dataGridViewTwo;
         private System.Windows.Forms.Label labelMyTeam;
         private System.Windows.Forms.Label labelDIJun;
+        private System.Windows.Forms.Timer timerGameCheck;
     }
 }
 
