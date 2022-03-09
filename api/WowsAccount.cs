@@ -37,5 +37,15 @@ namespace WowsTools.api
             }
             return -1;
         }
+
+        /// <summary>
+        /// 根据用户账户ID查询总战绩信息
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="accountIds"></param>
+        public static WowsUserData[] gameInfo(WowsServer server,long[] accountIds)
+        {
+
+        }
     }
 }
