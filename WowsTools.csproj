@@ -72,6 +72,12 @@
   <ItemGroup>
     <Compile Include="api\WowsAccount.cs" />
     <Compile Include="api\WowsServer.cs" />
+    <Compile Include="Author.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Author.Designer.cs">
+      <DependentUpon>Author.cs</DependentUpon>
+    </Compile>
     <Compile Include="model\WowsJsonData.cs" />
     <Compile Include="model\WowsQueryAccountInfo.cs" />
     <Compile Include="model\WowsShipData.cs" />
