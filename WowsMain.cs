@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
+using WowsTools.api;
 using WowsTools.model;
 using WowsTools.utils;
 
@@ -12,6 +15,8 @@ namespace WowsTools
         {
             InitializeComponent();
         }
+
+        private static bool GAME_RUN = true;
 
         /// <summary>
         /// 关于界面
@@ -56,36 +61,18 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
 
-        /// <summary>
-        /// 加载游戏信息
-        /// </summary>
-        private void loadGameInfo()
-        {
-            //加载游戏进程信息
-            string gamePath = InitialUtils.wowsExeHomePath();
-            if (!string.IsNullOrEmpty(gamePath))
-            {
-                //获取所在服务器
-                string gameServer = InitialUtils.ServerInfo();
-                List<WowsUserData> wowsUserDatas = InitialUtils.getReplaysData();
-                if (wowsUserDatas.Count >= 1)
-                {
-                    //查询用户游戏信息
-                    DataViewLoad(wowsUserDatas);
-                }
-            }
-        }
-
         private void DataViewLoad(List<WowsUserData> wowsUserDatas)
         {
-            this.dataGridViewOne.Rows.Clear();
-            this.dataGridViewTwo.Rows.Clear();
-            int i = 0;
-            foreach(var data in wowsUserDatas)
+            Invoke((new Action(() =>
             {
-                if (data.relation >= 2)
+                this.dataGridViewOne.Rows.Clear();
+                this.dataGridViewTwo.Rows.Clear();
+                int i = 0;
+                foreach (var data in wowsUserDatas)
                 {
-                    string[] vs = {
+                    if (data.relation >= 2)
+                    {
+                        string[] vs = {
                     data.shipPr+"",
                     data.shipWins,
                     data.shipDamage+"",
@@ -95,11 +82,11 @@ namespace WowsTools
                     data.wins,
                     data.userName
                     };
-                    this.dataGridViewTwo.Rows.Add(vs);
-                }
-                else
-                {
-                    string[] vs = {
+                        this.dataGridViewTwo.Rows.Add(vs);
+                    }
+                    else
+                    {
+                        string[] vs = {
                     data.userName,
                     data.wins,
                     data.shipLevel,
@@ -109,17 +96,18 @@ namespace WowsTools
                     data.shipWins,
                     data.shipPr+""
                     };
-                    this.dataGridViewOne.Rows.Add(vs);
+                        this.dataGridViewOne.Rows.Add(vs);
+                    }
+                    for (int j = 0; j < 8; j++)
+                    {
+                        //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                        this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                        //this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                        this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    }
+                    i++;
                 }
-                for (int j = 0; j < 8; j++)
-                {
-                    //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                i++;
-            }
+            })));
         }
 
         /// <summary>
@@ -129,7 +117,49 @@ namespace WowsTools
         /// <param name="e"></param>
         private void timerGameCheck_Tick(object sender, EventArgs e)
         {
-            loadGameInfo();
+            Invoke((new Action(() =>
+            {
+                //加载游戏进程信息
+                string gamePath = InitialUtils.wowsExeHomePath();
+                if (!string.IsNullOrEmpty(gamePath))
+                {
+                    string jsonFilePath = InitialUtils.ReplaysPath();
+                    if (File.Exists(jsonFilePath))
+                    {
+                        if (GAME_RUN)
+                        {
+                            GAME_RUN = false;
+                            ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), null);
+                        }
+                    }
+                    else
+                    {
+                        GAME_RUN = true;
+                    }
+                }
+            })));
+        }
+
+        public void LoadGameInfo(object o)
+        {
+            //获取所在服务器
+            string gameServer = InitialUtils.ServerInfo();
+            List<WowsUserData> wowsUserDatas = InitialUtils.getReplaysData();
+            if (wowsUserDatas.Count >= 1)
+            {
+                WowsServer server;
+                WowsServer.SERVER.TryGetValue(gameServer, out server);
+                Dictionary<string, WowsUserInfo> map = WowsAccount.GameInfo(server, WowsAccount.AccountId(server, wowsUserDatas));
+                foreach (var item in wowsUserDatas)
+                {
+                    WowsUserInfo info;
+                    map.TryGetValue(item.userName, out info);
+                    item.accountId = info.AccountInfo.AccountId;
+                    item.wins = info.GameWins().ToString("f2") + "%";
+                }
+                //查询用户游戏信息
+                DataViewLoad(wowsUserDatas);
+            }
         }
     }
 }

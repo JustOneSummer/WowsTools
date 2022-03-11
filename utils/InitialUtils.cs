@@ -44,7 +44,7 @@ namespace WowsTools.utils
         /// <returns></returns>
         public static string ReplaysPath()
         {
-            return HOME + "replays/";
+            return HOME + "replays/tempArenaInfo.json";
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace WowsTools.utils
         {
             List<WowsUserData> dataList = new List<WowsUserData>();
             //检测文件是否存在，游戏开始文件存在，结束则删除
-            string jsonFilePath = ReplaysPath() + "tempArenaInfo.json";
+            string jsonFilePath = ReplaysPath();
             if (File.Exists(jsonFilePath))
             {
                 FileStream fs = new FileStream(jsonFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);

@@ -12,7 +12,8 @@ namespace WowsTools.api
             {"asia",new WowsServer("asia","https://api.worldofwarships.asia","亚服") },
             {"eu",new WowsServer("eu","https://api.worldofwarships.eu","欧服") },
             {"na",new WowsServer("na","https://api.worldofwarships.com","美服") },
-            {"ru",new WowsServer("ru","https://api.worldofwarships.ru","俄服") }
+            {"ru",new WowsServer("ru","https://api.worldofwarships.ru","俄服") },
+            {"cn",new WowsServer("cn","https://wowsgame.cn/zh-cn/community/accounts/","国服") }
         };
 
         public const  string KEY = "907d9c6bfc0d896a2c156e57194a97cf";

@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Text;
+using WowsTools.model;
 using WowsTools.utils;
 
 namespace WowsTools.api
@@ -16,26 +18,9 @@ namespace WowsTools.api
         /// <param name="server"></param>
         /// <param name="userName"></param>
         /// <returns></returns>
-        public static long AccountId(WowsServer server,string userName)
+        public static List<WowsQueryAccountInfo> AccountId(WowsServer server, List<WowsUserData> userName)
         {
-            Dictionary<string, string> map = new Dictionary<string, string>();
-            map.Add("search", userName);
-            string v = HttpUtils.Get(server, "/wows/account/list/",map);
-            JToken token = JsonConvert.DeserializeObject<JToken>(v);
-            //查找
-            string status = token["status"].Value<string>();
-            if (status.Contains("ok"))
-            {
-                JToken users = token["data"].Value<JToken>();
-                foreach(JToken jt in users)
-                {
-                    if (jt["nickname"].Value<string>().Contains(userName))
-                    {
-                        return jt["account_id"].Value<long>();
-                    }
-                }
-            }
-            return -1;
+            return WowsQueryAccountInfo.Info(server,userName);
         }
 
         /// <summary>
@@ -43,9 +28,15 @@ namespace WowsTools.api
         /// </summary>
         /// <param name="server"></param>
         /// <param name="accountIds"></param>
-        public static WowsUserData[] gameInfo(WowsServer server,long[] accountIds)
+        public static Dictionary<string, WowsUserInfo> GameInfo(WowsServer server, List<WowsQueryAccountInfo> datas)
         {
-
+            Dictionary<string, WowsUserInfo> pairs = new Dictionary<string, WowsUserInfo>();
+            List<WowsUserInfo> wowsUserInfos = WowsUserInfo.Info(server, datas);
+            foreach(var item in wowsUserInfos)
+            {
+                pairs.Add(item.AccountInfo.UserName, item);
+            }
+          return pairs;
         }
     }
 }
