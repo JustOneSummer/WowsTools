@@ -21,7 +21,7 @@ namespace WowsTools.utils
             if (SHIP_MAP.Count <= 0 || update)
             {
                 SHIP_MAP.Clear();
-                FileStream fs = new FileStream("C:\\Users\\yuyuko\\source\\repos\\WowsTools\\temp\\ship.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                FileStream fs = new FileStream(System.Environment.CurrentDirectory + "/ship.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 StreamReader sr = new StreamReader(fs, System.Text.Encoding.UTF8);
                 StringBuilder info = new StringBuilder();
                 while (!sr.EndOfStream)
