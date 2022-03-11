@@ -79,6 +79,7 @@
     <Compile Include="model\WowsUserInfo.cs" />
     <Compile Include="utils\HttpUtils.cs" />
     <Compile Include="utils\InitialUtils.cs" />
+    <Compile Include="utils\ShipUtils.cs" />
     <Compile Include="WowsMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +110,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="temp\ship.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

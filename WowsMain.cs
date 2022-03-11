@@ -119,16 +119,18 @@ namespace WowsTools
                     item.accountId = info.AccountInfo.AccountId;
                     //船只信息
                     WowsShipData shipData = WowsAccount.GameShip(server, item);
+                    ShipUtils shipUtils = ShipUtils.Get(shipData.shipId,false);
+                    item.shipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
+                    item.shipLevel = ShipUtils.LevelInfo(shipUtils.tier);
+                    item.shipTypeNumber = ShipUtils.ShipType(shipUtils.ship_type);
                     if (item.relation >= 2)
                     {
                         shiFouA = false;
                         winsB += info.GameWins();
-                        b.Add(item);
                     }
                     else
                     {
                         winsA += info.GameWins();
-                        a.Add(item);
                     }
 
                     if (info.Battles >= 0)
@@ -146,6 +148,14 @@ namespace WowsTools
                         item.shipWins = shipData.GameWins().ToString("f2") + "%";
                         item.wins = info.GameWins().ToString("f2") + "%";
                     }
+                    if (shiFouA)
+                    {
+                        a.Add(item);
+                    }
+                    else
+                    {
+                        b.Add(item);
+                    }
                 }
                 DataViewLoad(a, winsA,CA, b, winsB,CB);
             }
@@ -155,6 +165,9 @@ namespace WowsTools
         {
             Invoke((new Action(() =>
             {
+                //排序
+                teamA.Sort((l, r) => l.shipTypeNumber.CompareTo(r.shipTypeNumber));
+                teamB.Sort((l, r) => l.shipTypeNumber.CompareTo(r.shipTypeNumber));
                 this.dataGridViewOne.Rows.Clear();
                 this.dataGridViewTwo.Rows.Clear();
                 int i = 0;

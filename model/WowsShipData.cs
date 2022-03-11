@@ -62,7 +62,7 @@ namespace WowsTools.model
             if (wowsJsonData.status)
             {
                 JToken data = wowsJsonData.jToken["data"];
-                int BattlesTem = -1;
+                int BattlesTem = 0;
                 long DamageDealtTem = 0;
                 double WinsTem = 0;
                 int FragsTem = 0;

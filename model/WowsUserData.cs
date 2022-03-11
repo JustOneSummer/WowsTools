@@ -2,6 +2,7 @@
 {
     class WowsUserData
     {
+        public int shipTypeNumber;
         public int playersPerTeam;
         public long accountId;
         public long id;
