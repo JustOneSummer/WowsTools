@@ -46,6 +46,7 @@ namespace WowsTools
             this.dataGridViewOne.Columns.Add("shipPr", "评分");
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             this.dataGridViewTwo.RowHeadersVisible = false;
             this.dataGridViewTwo.Columns.Add("shipPr", "评分");
@@ -59,6 +60,7 @@ namespace WowsTools
             this.dataGridViewTwo.Columns.Add("userName", "玩家");
             this.dataGridViewTwo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         /// <summary>

@@ -67,15 +67,19 @@ namespace WowsTools.model
                 double WinsTem = 0;
                 int FragsTem = 0;
                 int SurvivedBattlesTem = 0;
-                if (data.ToList().Count >=1 )
+                if (data.ToList().Count >= 1)
                 {
-                    JToken list = data.Value<JToken>(info.accountId.ToString()).ToList().ElementAt(0);
-                    JToken pvp = list.Value<JToken>("pvp");
-                    BattlesTem = pvp.Value<int>("battles");
-                    DamageDealtTem = pvp.Value<long>("damage_dealt");
-                    WinsTem = pvp.Value<double>("wins");
-                    FragsTem = pvp.Value<int>("frags");
-                    SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                    JToken item = data.Value<JToken>(info.accountId.ToString());
+                    if (item.Type != JTokenType.Null)
+                    {
+                        JToken list = item.ToList().ElementAt(0);
+                        JToken pvp = list.Value<JToken>("pvp");
+                        BattlesTem = pvp.Value<int>("battles");
+                        DamageDealtTem = pvp.Value<long>("damage_dealt");
+                        WinsTem = pvp.Value<double>("wins");
+                        FragsTem = pvp.Value<int>("frags");
+                        SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                    }
                 }
                 shipData.Battles = BattlesTem;
                 shipData.DamageDealt = DamageDealtTem;
