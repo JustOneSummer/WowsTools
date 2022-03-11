@@ -61,55 +61,6 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
 
-        private void DataViewLoad(List<WowsUserData> wowsUserDatas)
-        {
-            Invoke((new Action(() =>
-            {
-                this.dataGridViewOne.Rows.Clear();
-                this.dataGridViewTwo.Rows.Clear();
-                int i = 0;
-                foreach (var data in wowsUserDatas)
-                {
-                    if (data.relation >= 2)
-                    {
-                        string[] vs = {
-                    data.shipPr+"",
-                    data.shipWins,
-                    data.shipDamage+"",
-                    data.shipBattles+"",
-                    data.shipName,
-                    data.shipLevel,
-                    data.wins,
-                    data.userName
-                    };
-                        this.dataGridViewTwo.Rows.Add(vs);
-                    }
-                    else
-                    {
-                        string[] vs = {
-                    data.userName,
-                    data.wins,
-                    data.shipLevel,
-                    data.shipName,
-                    data.shipBattles+"",
-                    data.shipDamage+"",
-                    data.shipWins,
-                    data.shipPr+""
-                    };
-                        this.dataGridViewOne.Rows.Add(vs);
-                    }
-                    for (int j = 0; j < 8; j++)
-                    {
-                        //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                        this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                        //this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                        this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
-                    i++;
-                }
-            })));
-        }
-
         /// <summary>
         /// 定时器事件
         /// </summary>
@@ -150,16 +101,122 @@ namespace WowsTools
                 WowsServer server;
                 WowsServer.SERVER.TryGetValue(gameServer, out server);
                 Dictionary<string, WowsUserInfo> map = WowsAccount.GameInfo(server, WowsAccount.AccountId(server, wowsUserDatas));
+
+                //区分团队
+                List<WowsUserData> a = new List<WowsUserData>();
+                List<WowsUserData> b = new List<WowsUserData>();
+                double winsA = 0;
+                double winsB = 0;
+                int CA = 0;
+                int CB = 0;
                 foreach (var item in wowsUserDatas)
                 {
+                    bool shiFouA = true;
                     WowsUserInfo info;
                     map.TryGetValue(item.userName, out info);
                     item.accountId = info.AccountInfo.AccountId;
-                    item.wins = info.GameWins().ToString("f2") + "%";
+                    //船只信息
+                    WowsShipData shipData = WowsAccount.GameShip(server, item);
+                    if (item.relation >= 2)
+                    {
+                        shiFouA = false;
+                        winsB += info.GameWins();
+                        b.Add(item);
+                    }
+                    else
+                    {
+                        winsA += info.GameWins();
+                        a.Add(item);
+                    }
+
+                    if (info.Battles >= 0)
+                    {
+                        if (shiFouA)
+                        {
+                            CA++;
+                        }
+                        else
+                        {
+                            CB++;
+                        }
+                        item.shipBattles = shipData.Battles.ToString();
+                        item.shipDamage = shipData.GameDamage().ToString();
+                        item.shipWins = shipData.GameWins().ToString("f2") + "%";
+                        item.wins = info.GameWins().ToString("f2") + "%";
+                    }
                 }
-                //查询用户游戏信息
-                DataViewLoad(wowsUserDatas);
+                DataViewLoad(a, winsA,CA, b, winsB,CB);
             }
+        }
+
+        private void DataViewLoad(List<WowsUserData> teamA, double winsA,int countA, List<WowsUserData> teamB, double winsB, int countB)
+        {
+            Invoke((new Action(() =>
+            {
+                this.dataGridViewOne.Rows.Clear();
+                this.dataGridViewTwo.Rows.Clear();
+                int i = 0;
+                this.labelWinsA.Text = "平均胜率：" + (winsA / countA).ToString("f2") + "%";
+                this.labelWinsB.Text = "平均胜率：" + (winsB / countB).ToString("f2") + "%";
+
+                foreach (var data in teamA)
+                {
+                    string[] vs = {
+                    data.userName,
+                    data.wins,
+                    data.shipLevel,
+                    data.shipName,
+                    data.shipBattles+"",
+                    data.shipDamage+"",
+                    data.shipWins,
+                    data.shipPr+""
+                    };
+                    this.dataGridViewOne.Rows.Add(vs);
+                }
+                foreach (var data in teamB)
+                {
+                    string[] vs = {
+                    data.shipPr+"",
+                    data.shipWins,
+                    data.shipDamage+"",
+                    data.shipBattles+"",
+                    data.shipName,
+                    data.shipLevel,
+                    data.wins,
+                    data.userName
+                    };
+                    this.dataGridViewTwo.Rows.Add(vs);
+                }
+                for (int j = 0; j < 8; j++)
+                {
+                    //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    //this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+                this.dataGridViewOne.Columns[0].FillWeight = 26;
+                this.dataGridViewOne.Columns[1].FillWeight = 12;
+                this.dataGridViewOne.Columns[2].FillWeight = 9;
+                this.dataGridViewOne.Columns[3].FillWeight = 16;
+
+                this.dataGridViewOne.Columns[4].FillWeight = 9;
+                this.dataGridViewOne.Columns[5].FillWeight = 10;
+                this.dataGridViewOne.Columns[6].FillWeight = 9;
+                this.dataGridViewOne.Columns[7].FillWeight = 9;
+
+
+                this.dataGridViewTwo.Columns[7].FillWeight = 26;
+                this.dataGridViewTwo.Columns[6].FillWeight = 12;
+                this.dataGridViewTwo.Columns[5].FillWeight = 9;
+                this.dataGridViewTwo.Columns[4].FillWeight = 16;
+
+                this.dataGridViewTwo.Columns[3].FillWeight = 9;
+                this.dataGridViewTwo.Columns[2].FillWeight = 10;
+                this.dataGridViewTwo.Columns[1].FillWeight = 9;
+                this.dataGridViewTwo.Columns[0].FillWeight = 9;
+                i++;
+
+            })));
         }
     }
 }

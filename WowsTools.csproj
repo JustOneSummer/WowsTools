@@ -74,6 +74,7 @@
     <Compile Include="api\WowsServer.cs" />
     <Compile Include="model\WowsJsonData.cs" />
     <Compile Include="model\WowsQueryAccountInfo.cs" />
+    <Compile Include="model\WowsShipData.cs" />
     <Compile Include="model\WowsUserData.cs" />
     <Compile Include="model\WowsUserInfo.cs" />
     <Compile Include="utils\HttpUtils.cs" />

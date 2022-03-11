@@ -23,7 +23,7 @@ namespace WowsTools.utils
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
             request.ContentType = "text/html;charset=UTF-8";
-            request.Timeout = 3000;
+            request.Timeout = 10000;
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream myResponseStream = response.GetResponseStream();
             StreamReader myStreamReader = new StreamReader(myResponseStream, Encoding.GetEncoding("utf-8"));
@@ -40,7 +40,7 @@ namespace WowsTools.utils
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "POST";
             request.ContentType = "application/json;charset=UTF-8";
-            request.Timeout = 3000;
+            request.Timeout = 10000;
 
             NameValueCollection outgoingQueryString = HttpUtility.ParseQueryString(String.Empty);
             foreach (var item in map)

@@ -43,8 +43,8 @@ namespace WowsTools
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
             this.VsLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelWinsA = new System.Windows.Forms.Label();
+            this.labelWinsB = new System.Windows.Forms.Label();
             this.dataGridViewTwo = new System.Windows.Forms.DataGridView();
             this.labelMyTeam = new System.Windows.Forms.Label();
             this.labelDIJun = new System.Windows.Forms.Label();
@@ -132,27 +132,27 @@ namespace WowsTools
             this.VsLabel.TabIndex = 3;
             this.VsLabel.Text = "VS";
             // 
-            // label1
+            // labelWinsA
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(402, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 26);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "平均胜率：55.47%";
+            this.labelWinsA.AutoSize = true;
+            this.labelWinsA.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelWinsA.ForeColor = System.Drawing.Color.Black;
+            this.labelWinsA.Location = new System.Drawing.Point(402, 37);
+            this.labelWinsA.Name = "labelWinsA";
+            this.labelWinsA.Size = new System.Drawing.Size(149, 26);
+            this.labelWinsA.TabIndex = 4;
+            this.labelWinsA.Text = "平均胜率：50%";
             // 
-            // label2
+            // labelWinsB
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(859, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(178, 26);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "平均胜率：56.67%";
+            this.labelWinsB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelWinsB.AutoSize = true;
+            this.labelWinsB.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelWinsB.Location = new System.Drawing.Point(859, 37);
+            this.labelWinsB.Name = "labelWinsB";
+            this.labelWinsB.Size = new System.Drawing.Size(149, 26);
+            this.labelWinsB.TabIndex = 5;
+            this.labelWinsB.Text = "平均胜率：50%";
             // 
             // dataGridViewTwo
             // 
@@ -221,8 +221,8 @@ namespace WowsTools
             this.Controls.Add(this.labelDIJun);
             this.Controls.Add(this.labelMyTeam);
             this.Controls.Add(this.dataGridViewTwo);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelWinsB);
+            this.Controls.Add(this.labelWinsA);
             this.Controls.Add(this.VsLabel);
             this.Controls.Add(this.dataGridViewOne);
             this.Controls.Add(this.ServerLable);
@@ -250,8 +250,8 @@ namespace WowsTools
         private System.Windows.Forms.Label ServerLable;
         private System.Windows.Forms.DataGridView dataGridViewOne;
         private System.Windows.Forms.Label VsLabel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelWinsA;
+        private System.Windows.Forms.Label labelWinsB;
         private System.Windows.Forms.DataGridView dataGridViewTwo;
         private System.Windows.Forms.Label labelMyTeam;
         private System.Windows.Forms.Label labelDIJun;

@@ -36,6 +36,7 @@ namespace WowsTools.model
             //map.Add("extra", "statistics.pvp_div2,statistics.pvp_div3,statistics.pvp_solo");
             //map.Add("fields", "last_battle_time,nickname,statistics.pvp_solo.xp,statistics.pvp_solo.main_battery,statistics.pvp_solo.battles,statistics.pvp_solo.wins,statistics.pvp_solo.survived_battles,statistics.pvp_solo.damage_dealt,statistics.pvp_solo.frags,statistics.pvp_div3.xp,statistics.pvp_div3.main_battery,statistics.pvp_div3.battles,statistics.pvp_div3.wins,statistics.pvp_div3.survived_battles,statistics.pvp_div3.damage_dealt,statistics.pvp_div3.frags,statistics.pvp_div2.xp,statistics.pvp_div2.main_battery,statistics.pvp_div2.battles,statistics.pvp_div2.wins,statistics.pvp_div2.survived_battles,statistics.pvp_div2.damage_dealt,statistics.pvp_div2.frags,statistics.pvp.xp,statistics.pvp.main_battery,statistics.pvp.battles,statistics.pvp.wins,statistics.pvp.survived_battles,statistics.pvp.damage_dealt,statistics.pvp.frags");
             map.Add("fields", "last_battle_time,nickname,statistics.pvp.xp,statistics.pvp.main_battery,statistics.pvp.battles,statistics.pvp.wins,statistics.pvp.survived_battles,statistics.pvp.damage_dealt,statistics.pvp.frags");
+
             StringBuilder builder = new StringBuilder();
             foreach (var item in infos)
             {

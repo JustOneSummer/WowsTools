@@ -27,7 +27,7 @@
         /// <summary>
         /// 船只PR评分
         /// </summary>
-        public int shipPr = -1;
+        public string shipPr = "N/A";
 
         /// <summary>
         /// 船只等级
@@ -37,7 +37,7 @@
         /// <summary>
         /// 船只场次
         /// </summary>
-        public int shipBattles = 0;
+        public string shipBattles = "N/A";
         /// <summary>
         /// 船只胜率
         /// </summary>
@@ -45,6 +45,6 @@
         /// <summary>
         /// 船只场均
         /// </summary>
-        public int shipDamage = -1;
+        public string shipDamage = "N/A";
     }
 }

@@ -38,5 +38,10 @@ namespace WowsTools.api
             }
           return pairs;
         }
+
+        public static WowsShipData GameShip(WowsServer server, WowsUserData list)
+        {
+            return WowsShipData.Info(server, list);
+        }
     }
 }
