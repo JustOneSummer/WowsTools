@@ -9,6 +9,8 @@ namespace WowsTools
 {
     static class Program
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -24,6 +26,7 @@ namespace WowsTools
             catch (Exception ex)
             {
                 string str = GetExceptionMsg(ex, string.Empty);
+                log.Error(str);
                 MessageBox.Show(str, "系统错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
