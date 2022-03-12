@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
@@ -16,7 +17,7 @@ namespace WowsTools
             InitializeComponent();
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.1";
+        private const string VERSION = "0.0.2";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
@@ -27,7 +28,6 @@ namespace WowsTools
         /// <param name="e"></param>
         private void GuanYuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("yuyuko战舰世界助手工具箱\r\n开发者Q群：872725671\r\nQQ频道：yuyuko助手");
             Author author = new Author();
             author.ShowDialog();
         }
@@ -35,10 +35,8 @@ namespace WowsTools
         private void WowsMain_Load(object sender, EventArgs e)
         {
             log4net.Config.XmlConfigurator.Configure();
-            //WowsServer server;
-            //WowsServer.SERVER.TryGetValue("asia", out server);
-            //long id= WowsAccount.AccountId(server, "JustOneSummer");
-            //Console.WriteLine(id);
+            log.Info("当前平台的 .net framework 信息："+ System.Environment.Version.ToString());
+            log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne.RowHeadersVisible = false;
             //this.dataGridViewOne.Columns.Add("clan", "军团");
             this.dataGridViewOne.Columns.Add("userName", "玩家");

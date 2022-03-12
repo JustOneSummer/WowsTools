@@ -13,11 +13,21 @@ namespace WowsTools.utils
 {
     class HttpUtils
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public static string URL = "http://public.wows.shinoaki.com:7152";
         public static string GetVersion()
         {
-            Get(URL + "/public/upload?info=" + InitialUtils.GetCpuID());
-            return Get(URL+"/public/version");
+            try
+            {
+                Get(URL + "/public/upload?info=" + InitialUtils.GetCpuID());
+                return Get(URL + "/public/version");
+            }
+            catch (Exception e)
+            {
+                log.Error("版本相关信息获取异常 : " + e.Message);
+            }
+            return "0.0.1";
         }
 
         public static string Get(string url)
@@ -35,12 +45,12 @@ namespace WowsTools.utils
             return retString;
         }
 
-            public static string Get(WowsServer server,string path, Dictionary<string,string> map)
+        public static string Get(WowsServer server, string path, Dictionary<string, string> map)
         {
-            string url = server.ServiceApi+path+ "?application_id="+WowsServer.KEY;
-            foreach(var data in map)
+            string url = server.ServiceApi + path + "?application_id=" + WowsServer.KEY;
+            foreach (var data in map)
             {
-                url += ("&"+ data.Key + "=" + data.Value);
+                url += ("&" + data.Key + "=" + data.Value);
             }
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -69,12 +79,12 @@ namespace WowsTools.utils
             {
                 outgoingQueryString.Add(item.Key, item.Value);
             }
-           string fromData =  outgoingQueryString.ToString();
+            string fromData = outgoingQueryString.ToString();
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 //string json = JsonConvert.SerializeObject(map);
                 //streamWriter.Write(json);
-                streamWriter.Write(fromData,0, fromData.Length);
+                streamWriter.Write(fromData, 0, fromData.Length);
             }
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             Stream myResponseStream = response.GetResponseStream();

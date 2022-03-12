@@ -50,6 +50,7 @@ namespace WowsTools.model
             log.Info("查询用户账号信息："+ accINfo);
             map.Add("account_id", accINfo.Substring(0,builder.Length-1));
             string v = HttpUtils.PostFrom(server, "/wows/account/info/", map);
+            log.Info("游戏用户信息：" + v);
             WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
             if (wowsJsonData.status)
             {

@@ -9,6 +9,8 @@ namespace WowsTools.model
 {
     class WowsShipData
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public long AccountId;
         public long shipId;
         public int Battles;
@@ -58,6 +60,7 @@ namespace WowsTools.model
             map.Add("ship_id", info.shipId.ToString());
 
             string v = HttpUtils.PostFrom(server, "/wows/ships/stats/", map);
+            log.Info("游戏用户船只信息：" + v);
             WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
             if (wowsJsonData.status)
             {
