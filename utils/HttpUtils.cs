@@ -13,9 +13,10 @@ namespace WowsTools.utils
 {
     class HttpUtils
     {
+        public static string URL = "http://public.wows.shinoaki.com:7152";
         public static string GetVersion()
         {
-            return Get("http://127.0.0.1:7152/public/version");
+            return Get(URL+"/public/version");
         }
 
         public static string Get(string url)

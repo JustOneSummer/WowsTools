@@ -29,7 +29,7 @@ namespace WowsTools.utils
                 string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 if (!lastDate.Equals(dayDate))
                 {
-                    string jsonData = HttpUtils.Get("http://public.wows.shinoaki.com:7152/public/ship/list");
+                    string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/list");
                     using (StreamWriter streamWriter = new StreamWriter(path,false))
                     {
                         streamWriter.WriteLine(jsonData);
