@@ -209,32 +209,26 @@ namespace WowsTools
                     row.Cells[7].Value = data.shipPr;
                     row.Cells[7].Style.ForeColor = ColorUtils.PrColor(data.shipPr);
                     this.dataGridViewOne.Rows.Add(row);
-                    /*string[] vs = {
-                    data.userName,
-                    data.wins,
-                    data.shipLevel,
-                    data.shipName,
-                    data.shipBattles+"",
-                    data.shipDamage+"",
-                    data.shipWins,
-                    data.shipPr+""
-                    };
-                    this.dataGridViewOne.Rows.Add(vs);*/
 
                 }
                 foreach (var data in teamB)
                 {
-                    string[] vs = {
-                    data.shipPr+"",
-                    data.shipWins,
-                    data.shipDamage+"",
-                    data.shipBattles+"",
-                    data.shipName,
-                    data.shipLevel,
-                    data.wins,
-                    data.userName
-                    };
-                    this.dataGridViewTwo.Rows.Add(vs);
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(this.dataGridViewOne);
+                    row.Cells[7].Value = data.userName;
+                    row.Cells[6].Value = data.wins;
+                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+                    row.Cells[5].Value = data.shipLevel;
+                    row.Cells[4].Value = data.shipName;
+                    row.Cells[3].Value = data.shipBattles;
+                    row.Cells[2].Value = data.shipDamage;
+
+                    row.Cells[1].Value = data.shipWins;
+                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+
+                    row.Cells[0].Value = data.shipPr;
+                    row.Cells[0].Style.ForeColor = ColorUtils.PrColor(data.shipPr);
+                    this.dataGridViewTwo.Rows.Add(row);
                 }
                 for (int j = 0; j < 8; j++)
                 {
