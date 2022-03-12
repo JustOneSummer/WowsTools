@@ -22,6 +22,7 @@ namespace WowsTools
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
+        private static WowsServer WowsServer = null;
         private static List<GameAccountInfoData> GAME_INFO_LIST = new List<GameAccountInfoData>();
 
         /// <summary>
@@ -85,6 +86,18 @@ namespace WowsTools
             this.dataGridViewOne.ClearSelection();
         }
 
+        public void CheckUpdate()
+        {
+            int localV = int.Parse(VERSION.Replace(".", ""));
+            string newV = HttpUtils.GetVersion();
+            log.Info("检查版本 新版本=" + newV);
+            int ver = int.Parse(newV.Replace(".", ""));
+            if (ver > localV)
+            {
+                MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
+            }
+        }
+
         /// <summary>
         /// 定时器事件
         /// </summary>
@@ -97,48 +110,83 @@ namespace WowsTools
                 UPDATE = false;
                 CheckUpdate();
             }
-            Invoke((new Action(() =>
+            //加载游戏进程信息
+            string jsonFilePath = InitialUtils.ReplaysPath();
+            if (!string.IsNullOrEmpty(InitialUtils.wowsExeHomePath()) && File.Exists(jsonFilePath))
             {
-                //加载游戏进程信息
-                string gamePath = InitialUtils.wowsExeHomePath();
-                if (!string.IsNullOrEmpty(gamePath))
+                if (GAME_RUN)
                 {
-                    string jsonFilePath = InitialUtils.ReplaysPath();
-                    if (File.Exists(jsonFilePath))
-                    {
-                        if (GAME_RUN)
-                        {
-                            log.Info("游戏路径:" + gamePath);
-                            log.Info("游戏replays路径:" + jsonFilePath);
-                            GAME_RUN = false;
-                            ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), null);
-                        }
-                    }
-                    else
-                    {
-                        GAME_RUN = true;
-                    }
+                    GAME_RUN = false;
+                    log.Info("游戏replays路径:" + jsonFilePath);
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
                 }
-            })));
+            }
+            else
+            {
+                GAME_RUN = true;
+            }
         }
 
-        public void LoadGameInfo(object o)
+        public int ThreadCount()
+        {
+            int MaxWorkerThreads, miot, AvailableWorkerThreads, aiot;
+            //获得最大的线程数量  
+            ThreadPool.GetMaxThreads(out MaxWorkerThreads, out miot);
+            //获得可用的线程数量  
+            ThreadPool.GetAvailableThreads(out AvailableWorkerThreads, out aiot);
+            return MaxWorkerThreads - AvailableWorkerThreads;
+        }
+
+        /// <summary>
+        /// 游戏信息
+        /// </summary>
+        /// <param name="state"></param>
+        public void GameInfo(object state)
         {
             GAME_INFO_LIST.Clear();
             string gameServer = InitialUtils.ServerInfo();
             log.Info("所在服务器：" + gameServer);
-            WowsServer server;
-            WowsServer.SERVER.TryGetValue(gameServer, out server);
-            List<GameAccountInfoData> gameAccountInfoDatas = PvpService.ReadReplays();
-            log.Info("对局用户数量：" + gameAccountInfoDatas.Count);
-            //开启多线程
-            foreach(var item in gameAccountInfoDatas)
+            WowsServer.SERVER.TryGetValue(gameServer, out WowsServer);
+            List<GameAccountInfoData> dataList = PvpService.ReadReplays();
+            log.Info("对局用户数量：" + dataList.Count);
+            int i = 0;
+            while (true)
             {
-                GAME_INFO_LIST.Add(PvpService.AccountInfo(server, item));
+                if (i < dataList.Count)
+                {
+                    if (ThreadCount() < 8)
+                    {
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), dataList[i]);
+                        i++;
+                    }
+                }
+                else
+                {
+                    if (GAME_INFO_LIST.Count >= dataList.Count)
+                    {
+                        break;
+                    }
+                }
             }
-            DataViewLoad(server);
+            DataViewLoad(WowsServer);
         }
 
+        /// <summary>
+        /// 加载游戏信息
+        /// </summary>
+        /// <param name="state"></param>
+        public void LoadGameInfo(object state)
+        {
+            if (WowsServer != null)
+            {
+                GAME_INFO_LIST.Add(PvpService.AccountInfo(WowsServer, (GameAccountInfoData)state));
+            }
+        }
+
+        /// <summary>
+        /// 渲染
+        /// </summary>
+        /// <param name="server"></param>
         private void DataViewLoad(WowsServer server)
         {
             Invoke((new Action(() =>
@@ -227,18 +275,6 @@ namespace WowsTools
                 this.dataGridViewTwo.Columns[1].FillWeight = 9;
                 this.dataGridViewTwo.Columns[0].FillWeight = 9;
             })));
-        }
-
-        public void CheckUpdate()
-        {
-            int localV = int.Parse(VERSION.Replace(".",""));
-            string newV = HttpUtils.GetVersion();
-            log.Info("检查版本 新版本=" + newV);
-            int ver = int.Parse(newV.Replace(".", ""));
-            if (ver > localV)
-            {
-                MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
-            }
         }
     }
 }
