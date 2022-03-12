@@ -6,6 +6,7 @@ using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
 using WowsTools.model;
+using WowsTools.service;
 using WowsTools.utils;
 
 namespace WowsTools
@@ -20,6 +21,8 @@ namespace WowsTools
         private const string VERSION = "0.0.2";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
+
+        private static List<GameAccountInfoData> GAME_INFO_LIST = new List<GameAccountInfoData>();
 
         /// <summary>
         /// 关于界面
@@ -68,6 +71,8 @@ namespace WowsTools
             this.dataGridViewTwo.ClearSelection();
             log.Info("初始化 版本="+ VERSION);
             log.Info("游戏路径：" + InitialUtils.wowsExeHomePath());
+            ShipUtils.Get(0, true);
+            ShipPrUtils.Get(0, true);
         }
 
         private void dataGridViewTwo_SelectionChanged(object sender, EventArgs e)
@@ -119,130 +124,81 @@ namespace WowsTools
 
         public void LoadGameInfo(object o)
         {
-            //获取所在服务器
+            GAME_INFO_LIST.Clear();
             string gameServer = InitialUtils.ServerInfo();
-            log.Info("所在服务器："+gameServer);
-            List<WowsUserData> wowsUserDatas = InitialUtils.getReplaysData();
-            log.Info("对局用户数量："+wowsUserDatas.Count);
-            if (wowsUserDatas.Count >= 1)
+            log.Info("所在服务器：" + gameServer);
+            WowsServer server;
+            WowsServer.SERVER.TryGetValue(gameServer, out server);
+            List<GameAccountInfoData> gameAccountInfoDatas = PvpService.ReadReplays();
+            log.Info("对局用户数量：" + gameAccountInfoDatas.Count);
+            //开启多线程
+            foreach(var item in gameAccountInfoDatas)
             {
-                WowsServer server;
-                WowsServer.SERVER.TryGetValue(gameServer, out server);
-                Dictionary<string, WowsUserInfo> map = WowsAccount.GameInfo(server, WowsAccount.AccountId(server, wowsUserDatas));
-                //区分团队
-                List<WowsUserData> a = new List<WowsUserData>();
-                List<WowsUserData> b = new List<WowsUserData>();
-                double winsA = 0;
-                double winsB = 0;
-                int CA = 0;
-                int CB = 0;
-                foreach (var item in wowsUserDatas)
-                {
-                    item.server = server;
-                    bool shiFouA = true;
-                    WowsUserInfo info;
-                    map.TryGetValue(item.userName, out info);
-                    item.accountId = info.AccountInfo.AccountId;
-                    //船只信息
-                    WowsShipData shipData = WowsAccount.GameShip(server, item);
-                    ShipUtils shipUtils = ShipUtils.Get(shipData.shipId,false);
-                    item.shipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
-                    item.shipLevel = ShipUtils.LevelInfo(shipUtils.tier);
-                    item.shipTypeNumber = ShipUtils.ShipType(shipUtils.ship_type);
-                    //PR
-                    ShipPrUtils shipPrUtils = ShipPrUtils.Get(shipData.shipId, false);
-                    item.shipPr =  ShipPrUtils.Pr(shipData, shipPrUtils);
-                    if (item.relation >= 2)
-                    {
-                        shiFouA = false;
-                        winsB += info.GameWins();
-                    }
-                    else
-                    {
-                        winsA += info.GameWins();
-                    }
-
-                    if (info.Battles >= 0)
-                    {
-                        if (shiFouA)
-                        {
-                            CA++;
-                        }
-                        else
-                        {
-                            CB++;
-                        }
-                        item.shipBattles = shipData.Battles.ToString();
-                        item.shipDamage = shipData.GameDamage().ToString();
-                        item.shipWins = shipData.GameWins().ToString("f2") + "%";
-                        item.wins = info.GameWins().ToString("f2") + "%";
-                    }
-                    if (shiFouA)
-                    {
-                        a.Add(item);
-                    }
-                    else
-                    {
-                        b.Add(item);
-                    }
-                }
-                DataViewLoad(a, winsA,CA, b, winsB,CB);
+                GAME_INFO_LIST.Add(PvpService.AccountInfo(server, item));
             }
+            DataViewLoad(server);
         }
 
-        private void DataViewLoad(List<WowsUserData> teamA, double winsA,int countA, List<WowsUserData> teamB, double winsB, int countB)
+        private void DataViewLoad(WowsServer server)
         {
-            log.Info("开始渲染数据...");
             Invoke((new Action(() =>
             {
+                this.ServerLable.Text = server.ServerName;
+                GameInfoData gameInfoData = PvpService.GameInfoData(server,GAME_INFO_LIST);
+                
+                this.labelWinsA.Text = "平均胜率：" + (gameInfoData.TeamOneWins / gameInfoData.TeamOneCount).ToString("f2") + "%";
+                this.labelWinsB.Text = "平均胜率：" + (gameInfoData.TeamTwoWins / gameInfoData.TeamTwoCount).ToString("f2") + "%";
                 //排序
-                teamA.Sort((l, r) => l.shipTypeNumber.CompareTo(r.shipTypeNumber));
-                teamB.Sort((l, r) => l.shipTypeNumber.CompareTo(r.shipTypeNumber));
-                this.dataGridViewOne.Rows.Clear();
-                this.dataGridViewTwo.Rows.Clear();
-                int i = 0;
-                this.labelWinsA.Text = "平均胜率：" + (winsA / countA).ToString("f2") + "%";
-                this.labelWinsB.Text = "平均胜率：" + (winsB / countB).ToString("f2") + "%";
-                this.ServerLable.Text = teamA[0].server.ServerName;
-                foreach (var data in teamA)
+                gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
+                gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
+                string na = "N/A";
+                foreach (var data in gameInfoData.TeamOneList)
                 {
+                    GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(this.dataGridViewOne);
-                    row.Cells[0].Value = data.userName;
-                    row.Cells[1].Value = data.wins;
-                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.wins);
-                    row.Cells[2].Value = data.shipLevel;
-                    row.Cells[3].Value = data.shipName;
-                    row.Cells[4].Value = data.shipBattles;
-                    row.Cells[5].Value = data.shipDamage;
+                    row.Cells[0].Value = data.AccountName;
 
-                    row.Cells[6].Value = data.shipWins;
-                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+                    row.Cells[1].Value = data.Hide ? na : data.GameWins().ToString("f2")+"%";
+                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
-                    row.Cells[7].Value = data.shipPr;
-                    row.Cells[7].Style.ForeColor = ColorUtils.PrColor(data.shipPr);
+                    row.Cells[2].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
+                    row.Cells[3].Value = data.Hide ? na : shipData.ShipName;
+                    row.Cells[4].Value = data.Hide ? na : shipData.Battles.ToString();
+                    row.Cells[5].Value = data.Hide ? na : shipData.GameDamage().ToString("f2") + "%";
+
+                    row.Cells[6].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
+                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
+
+                    row.Cells[7].Value = data.Hide ? na : shipData.Pr.ToString();
+                    row.Cells[7].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
                     this.dataGridViewOne.Rows.Add(row);
 
                 }
-                foreach (var data in teamB)
+
+                foreach (var data in gameInfoData.TeamTwoList)
                 {
+                    GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(this.dataGridViewOne);
-                    row.Cells[7].Value = data.userName;
-                    row.Cells[6].Value = data.wins;
-                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.wins);
-                    row.Cells[5].Value = data.shipLevel;
-                    row.Cells[4].Value = data.shipName;
-                    row.Cells[3].Value = data.shipBattles;
-                    row.Cells[2].Value = data.shipDamage;
+                    row.Cells[7].Value = data.AccountName;
 
-                    row.Cells[1].Value = data.shipWins;
-                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+                    row.Cells[6].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
+                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
-                    row.Cells[0].Value = data.shipPr;
-                    row.Cells[0].Style.ForeColor = ColorUtils.PrColor(data.shipPr);
+                    row.Cells[5].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
+                    row.Cells[4].Value = data.Hide ? na : shipData.ShipName;
+                    row.Cells[3].Value = data.Hide ? na : shipData.Battles.ToString();
+                    row.Cells[2].Value = data.Hide ? na : shipData.GameDamage().ToString("f2") + "%";
+
+                    row.Cells[1].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
+                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
+
+                    row.Cells[0].Value = data.Hide ? na : shipData.Pr.ToString();
+                    row.Cells[0].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
                     this.dataGridViewTwo.Rows.Add(row);
                 }
+
                 for (int j = 0; j < 8; j++)
                 {
                     //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -270,8 +226,6 @@ namespace WowsTools
                 this.dataGridViewTwo.Columns[2].FillWeight = 10;
                 this.dataGridViewTwo.Columns[1].FillWeight = 9;
                 this.dataGridViewTwo.Columns[0].FillWeight = 9;
-                i++;
-
             })));
         }
 

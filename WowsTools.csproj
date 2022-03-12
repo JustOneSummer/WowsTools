@@ -83,11 +83,11 @@
     <Compile Include="Author.Designer.cs">
       <DependentUpon>Author.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\GameAccountInfoData.cs" />
+    <Compile Include="model\GameAccountShipInfoData.cs" />
+    <Compile Include="model\GameInfoData.cs" />
     <Compile Include="model\WowsJsonData.cs" />
-    <Compile Include="model\WowsQueryAccountInfo.cs" />
-    <Compile Include="model\WowsShipData.cs" />
-    <Compile Include="model\WowsUserData.cs" />
-    <Compile Include="model\WowsUserInfo.cs" />
+    <Compile Include="service\PvpService.cs" />
     <Compile Include="utils\ColorUtils.cs" />
     <Compile Include="utils\HttpUtils.cs" />
     <Compile Include="utils\InitialUtils.cs" />

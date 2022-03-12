@@ -62,9 +62,9 @@ namespace WowsTools.utils
             return ship;
         }
 
-        public static int Pr(WowsShipData ship,ShipPrUtils pr)
+        public static int Pr(GameAccountShipInfoData ship, ShipPrUtils pr)
         {
-            if(ship.Battles <=0 || pr == null || pr.winRate <= 0 || pr.averageDamageDealt <= 0 || pr.averageFrags <= 0)
+            if (ship.Battles <= 0 || pr == null || pr.winRate <= 0 || pr.averageDamageDealt <= 0 || pr.averageFrags <= 0)
             {
                 return 0;
             }

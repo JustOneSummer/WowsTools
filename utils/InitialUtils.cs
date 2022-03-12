@@ -1,11 +1,8 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
 using System.Text;
-using WowsTools.model;
 
 namespace WowsTools.utils
 {
@@ -68,7 +65,7 @@ namespace WowsTools.utils
             }
             sr.Close();
             fs.Close();
-            for (int i = list.Count-1; i > 0; i--)
+            for (int i = list.Count - 1; i > 0; i--)
             {
                 string tem = list[i];
                 if (tem.Contains("Selected realm"))
@@ -84,9 +81,8 @@ namespace WowsTools.utils
         /// 读取用户replays
         /// </summary>
         /// <returns></returns>
-        public static List<WowsUserData> getReplaysData()
+        public static string getReplaysJsonData()
         {
-            List<WowsUserData> dataList = new List<WowsUserData>();
             //检测文件是否存在，游戏开始文件存在，结束则删除
             string jsonFilePath = ReplaysPath();
             if (File.Exists(jsonFilePath))
@@ -106,21 +102,9 @@ namespace WowsTools.utils
                 {
                     streamWriter.WriteLine(infoJson);
                 }
-                //解析
-                JToken token = JsonConvert.DeserializeObject<JToken>(infoJson);
-                int playersPerTeam = token["playersPerTeam"].Value<int>();
-                foreach (var jt in token["vehicles"])
-                {
-                    WowsUserData data = new WowsUserData();
-                    data.playersPerTeam = playersPerTeam;
-                    data.id = jt["id"].Value<long>();
-                    data.relation = jt["relation"].Value<int>();
-                    data.userName = jt["name"].Value<string>();
-                    data.shipId = jt["shipId"].Value<long>();
-                    dataList.Add(data);
-                }
+                return infoJson;
             }
-            return dataList;
+            return null;
         }
 
         public static string GetCpuID()

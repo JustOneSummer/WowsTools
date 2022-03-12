@@ -42,13 +42,8 @@ namespace WowsTools.utils
             return color;
         }
 
-        public static Color WinsColor(string winsData)
+        public static Color WinsColor(double wins)
         {
-            if ("N/A".Equals(winsData))
-            {
-                return Color.FromArgb(254, 14, 0);
-            }
-            double wins = double.Parse(winsData.Substring(0, winsData.Length - 1));
             Color color = Color.FromArgb(254, 14, 0);
             if (wins < 45.0)
             {
