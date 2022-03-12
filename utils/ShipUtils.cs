@@ -48,10 +48,10 @@ namespace WowsTools.utils
                 {
                     ShipUtils shipUtils = new ShipUtils();
                     shipUtils.shipId = item.Value<long>("id");
-                    shipUtils.ship_name_cn = item.Value<string>("ship_name_cn");
+                    shipUtils.ship_name_cn = item.Value<string>("shipNameCn");
                     shipUtils.name = item.Value<string>("name");
                     shipUtils.tier = item.Value<int>("tier");
-                    shipUtils.ship_type = item.Value<string>("ship_type");
+                    shipUtils.ship_type = item.Value<string>("shipType");
                     SHIP_MAP.Add(shipUtils.shipId, shipUtils);
                 }
             }
