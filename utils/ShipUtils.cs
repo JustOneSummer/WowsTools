@@ -25,7 +25,9 @@ namespace WowsTools.utils
                 //检测文件时间是否超过一天，一天更新一次
                 FileInfo fileInfo = new FileInfo(path);
                 DateTime lastWriteTimeUtc = fileInfo.LastWriteTimeUtc;
-                if(!DateTime.Equals(lastWriteTimeUtc, DateTime.UtcNow))
+                string lastDate = lastWriteTimeUtc.ToString("yyyy-MM-dd");
+                string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
+                if (!lastDate.Equals(dayDate))
                 {
                     string jsonData = HttpUtils.Get("http://public.wows.shinoaki.com:7152/public/ship/list");
                     using (StreamWriter streamWriter = new StreamWriter(path,false))
