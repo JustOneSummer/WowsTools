@@ -35,7 +35,7 @@ namespace WowsTools.model
                     JToken users = jsonData.jToken["data"].Value<JToken>();
                     foreach (JToken jt in users)
                     {
-                        if (jt["nickname"].Value<string>().Contains(item.userName))
+                        if (jt["nickname"].Value<string>().ToUpper().Equals(item.userName.ToUpper()))
                         {
                             accountInfo.AccountId = jt["account_id"].Value<long>();
                         }
