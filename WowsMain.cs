@@ -213,7 +213,7 @@ namespace WowsTools
                     row.Cells[2].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
                     row.Cells[3].Value = data.Hide ? na : shipData.ShipName;
                     row.Cells[4].Value = data.Hide ? na : shipData.Battles.ToString();
-                    row.Cells[5].Value = data.Hide ? na : shipData.GameDamage().ToString("f2") + "%";
+                    row.Cells[5].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
                     row.Cells[6].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
                     row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
@@ -237,7 +237,7 @@ namespace WowsTools
                     row.Cells[5].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
                     row.Cells[4].Value = data.Hide ? na : shipData.ShipName;
                     row.Cells[3].Value = data.Hide ? na : shipData.Battles.ToString();
-                    row.Cells[2].Value = data.Hide ? na : shipData.GameDamage().ToString("f2") + "%";
+                    row.Cells[2].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
                     row.Cells[1].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
                     row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
