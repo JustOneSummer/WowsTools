@@ -11,13 +11,13 @@ namespace WowsTools.utils
             {
                 return color;
             }
-            else if(pr <= 1100)
+            else if (pr <= 1100)
             {
                 color = Color.FromArgb(254, 121, 3);
             }
             else if (pr <= 1350)
             {
-                color =Color.FromArgb(255, 199, 31);
+                color = Color.FromArgb(255, 199, 31);
             }
             else if (pr <= 1550)
             {
@@ -48,7 +48,7 @@ namespace WowsTools.utils
             {
                 return Color.FromArgb(254, 14, 0);
             }
-            double wins = double.Parse(winsData.Substring(0,winsData.Length-1));
+            double wins = double.Parse(winsData.Substring(0, winsData.Length - 1));
             Color color = Color.FromArgb(254, 14, 0);
             if (wins < 45.0)
             {
@@ -60,11 +60,11 @@ namespace WowsTools.utils
             }
             else if (wins < 55.0)
             {
-                color = Color.FromArgb(255, 199, 31);
+                color = Color.FromArgb(68, 179, 0);
             }
             else if (wins < 60.0)
             {
-                color = Color.FromArgb(68, 179, 0);
+                color = Color.FromArgb(49, 128, 0);
             }
             else if (wins < 65.0)
             {
