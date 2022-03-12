@@ -67,6 +67,7 @@ namespace WowsTools
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTwo.ClearSelection();
             log.Info("初始化 版本="+ VERSION);
+            log.Info("游戏路径：" + InitialUtils.wowsExeHomePath());
         }
 
         private void dataGridViewTwo_SelectionChanged(object sender, EventArgs e)

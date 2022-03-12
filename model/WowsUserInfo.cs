@@ -44,7 +44,10 @@ namespace WowsTools.model
                 WowsUserInfo userInfo = new WowsUserInfo();
                 userInfo.AccountInfo = item;
                 info.Add(userInfo);
-                builder.Append(item.AccountId).Append(",");
+                if (item.AccountId != 0)
+                {
+                    builder.Append(item.AccountId).Append(",");
+                }
             }
             string accINfo = builder.ToString();
             log.Info("查询用户账号信息："+ accINfo);
@@ -57,17 +60,20 @@ namespace WowsTools.model
                 JToken data = wowsJsonData.jToken["data"];
                 foreach (var item in info)
                 {
-                    JToken userToken =  data.Value<JToken>(item.AccountInfo.AccountId.ToString());
-                    JToken statistics = userToken.Value<JToken>("statistics");
                     int battles = -1;
                     long dd = -1;
                     double wins = 0;
-                    if (statistics.Type != JTokenType.Null)
+                    JToken userToken =  data.Value<JToken>(item.AccountInfo.AccountId.ToString());
+                    if(userToken!=null && userToken.Type != JTokenType.Null)
                     {
-                        JToken pvp = statistics.Value<JToken>("pvp");
-                        battles = pvp.Value<int>("battles");
-                        dd = pvp.Value<long>("damage_dealt");
-                        wins = pvp.Value<double>("wins");
+                        JToken statistics = userToken.Value<JToken>("statistics");
+                        if (statistics.Type != JTokenType.Null)
+                        {
+                            JToken pvp = statistics.Value<JToken>("pvp");
+                            battles = pvp.Value<int>("battles");
+                            dd = pvp.Value<long>("damage_dealt");
+                            wins = pvp.Value<double>("wins");
+                        }
                     }
                     item.Battles = battles;
                     item.DamageDealt = dd;

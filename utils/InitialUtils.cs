@@ -14,6 +14,8 @@ namespace WowsTools.utils
     /// </summary>
     class InitialUtils
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static string HOME = null;
 
         /// <summary>
@@ -25,7 +27,7 @@ namespace WowsTools.utils
             Process[] processes = Process.GetProcesses();
             foreach (Process process in processes)
             {
-                if (process.ProcessName.Contains("World"))
+                if (process.ProcessName.IndexOf("WorldOfWarships") == 0)
                 {
                     ProcessModule mainModule = process.MainModule;
                     string wows = mainModule.FileName;
