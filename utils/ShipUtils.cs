@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -18,10 +19,22 @@ namespace WowsTools.utils
 
         public static ShipUtils Get(long shipId, bool update)
         {
+            string path = System.Environment.CurrentDirectory + "/ship.json";
             if (SHIP_MAP.Count <= 0 || update)
             {
+                //检测文件时间是否超过一天，一天更新一次
+                FileInfo fileInfo = new FileInfo(path);
+                DateTime lastWriteTimeUtc = fileInfo.LastWriteTimeUtc;
+                if(!DateTime.Equals(lastWriteTimeUtc, DateTime.UtcNow))
+                {
+                    string jsonData = HttpUtils.Get("http://public.wows.shinoaki.com:7152/public/ship/list");
+                    using (StreamWriter streamWriter = new StreamWriter(path,false))
+                    {
+                        streamWriter.WriteLine(jsonData);
+                    }
+                }
                 SHIP_MAP.Clear();
-                FileStream fs = new FileStream(System.Environment.CurrentDirectory + "/ship.json", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
                 StreamReader sr = new StreamReader(fs, System.Text.Encoding.UTF8);
                 StringBuilder info = new StringBuilder();
                 while (!sr.EndOfStream)
@@ -30,7 +43,7 @@ namespace WowsTools.utils
                 }
                 sr.Close();
                 fs.Close();
-                JToken token = JToken.Parse(info.ToString());
+                JToken token = JToken.Parse(info.ToString()).Value<JToken>("data");
                 foreach (var item in token.ToList())
                 {
                     ShipUtils shipUtils = new ShipUtils();

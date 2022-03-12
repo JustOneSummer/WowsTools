@@ -28,7 +28,7 @@
         /// <summary>
         /// 船只PR评分
         /// </summary>
-        public string shipPr = "N/A";
+        public int shipPr = 0;
 
         /// <summary>
         /// 船只等级

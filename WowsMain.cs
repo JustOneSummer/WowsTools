@@ -125,6 +125,9 @@ namespace WowsTools
                     item.shipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
                     item.shipLevel = ShipUtils.LevelInfo(shipUtils.tier);
                     item.shipTypeNumber = ShipUtils.ShipType(shipUtils.ship_type);
+                    //PR
+                    ShipPrUtils shipPrUtils = ShipPrUtils.Get(shipData.shipId, false);
+                    item.shipPr =  ShipPrUtils.Pr(shipData, shipPrUtils);
                     if (item.relation >= 2)
                     {
                         shiFouA = false;

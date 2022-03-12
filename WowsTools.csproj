@@ -85,6 +85,7 @@
     <Compile Include="model\WowsUserInfo.cs" />
     <Compile Include="utils\HttpUtils.cs" />
     <Compile Include="utils\InitialUtils.cs" />
+    <Compile Include="utils\ShipPrUtils.cs" />
     <Compile Include="utils\ShipUtils.cs" />
     <Compile Include="WowsMain.cs">
       <SubType>Form</SubType>
@@ -125,10 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\QQ图片20220312153455.jpg" />
+    <None Include="Resources\1647070636189.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1647070636189.png" />
+    <Content Include="Resources\QQ图片20220312153455.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
