@@ -10,3 +10,4 @@ C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.exe
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.pdb
 C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\Newtonsoft.Json.dll
 C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\Newtonsoft.Json.xml
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.Author.resources

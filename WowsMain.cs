@@ -25,7 +25,9 @@ namespace WowsTools
         /// <param name="e"></param>
         private void GuanYuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("yuyuko战舰世界助手工具箱\r\n开发者Q群：872725671\r\nQQ频道：yuyuko助手");
+            //MessageBox.Show("yuyuko战舰世界助手工具箱\r\n开发者Q群：872725671\r\nQQ频道：yuyuko助手");
+            Author author = new Author();
+            author.ShowDialog();
         }
 
         private void WowsMain_Load(object sender, EventArgs e)

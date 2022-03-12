@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace WowsTools
 {
@@ -15,6 +7,12 @@ namespace WowsTools
         public Author()
         {
             InitializeComponent();
+        }
+
+        private void linkLabelQQ_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            linkLabelQQ.LinkVisited = true;
+            System.Diagnostics.Process.Start("http://www.microsoft.com");
         }
     }
 }
