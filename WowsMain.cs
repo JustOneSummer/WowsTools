@@ -16,6 +16,8 @@ namespace WowsTools
             InitializeComponent();
         }
 
+        private const string VERSION = "0.0.1";
+        private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
         /// <summary>
@@ -84,6 +86,11 @@ namespace WowsTools
         /// <param name="e"></param>
         private void timerGameCheck_Tick(object sender, EventArgs e)
         {
+            if (UPDATE)
+            {
+                UPDATE = false;
+                CheckUpdate();
+            }
             Invoke((new Action(() =>
             {
                 //加载游戏进程信息
@@ -260,6 +267,18 @@ namespace WowsTools
                 i++;
 
             })));
+        }
+
+        public void CheckUpdate()
+        {
+            int localV = int.Parse(VERSION.Replace(".",""));
+
+            int ver = int.Parse(HttpUtils.GetVersion().Replace(".", ""));
+
+            if (ver > localV)
+            {
+                MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
+            }
         }
     }
 }
