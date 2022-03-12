@@ -1072,3 +1072,13 @@
 2022-03-12 22:38:29,625 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
 
 2022-03-12 22:38:29,693 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:39:11,173 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:39:11,202 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:39:11,242 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:39:11,258 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:39:15,579 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
