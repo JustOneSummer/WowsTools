@@ -9,3 +9,43 @@
 2022-03-12 20:04:20,847 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.1
 
 2022-03-12 20:04:24,951 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=1
+
+2022-03-12 20:09:59,591 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.1
+
+2022-03-12 20:10:03,795 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 20:10:03,810 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:03,814 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:03,819 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 20:10:03,938 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-12 20:10:05,429 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:05,430 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:06,617 [5] INFO  WowsTools.model.WowsUserInfo - 查询用户账号信息：2025475420,2020399714,2023841999,2032204582,2023915835,2022214870,2022771624,2025528770,2024540290,2022515210,2008372091,2017809493,2020438358,2033437990,2034043504,2030308453,2025973286,2019290489,2026737974,2036842169,2023838310,2026740012,2023947023,2007037012,
+
+2022-03-12 20:10:08,427 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:08,428 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:11,431 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:11,432 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:11,732 [5] INFO  WowsTools.WowsMain - 开始渲染数据...
+
+2022-03-12 20:10:14,428 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:14,429 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:17,424 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:17,425 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 20:10:20,427 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 20:10:20,428 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json

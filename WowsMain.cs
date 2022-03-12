@@ -97,15 +97,15 @@ namespace WowsTools
             {
                 //加载游戏进程信息
                 string gamePath = InitialUtils.wowsExeHomePath();
-                log.Info("游戏路径:"+ gamePath);
                 if (!string.IsNullOrEmpty(gamePath))
                 {
                     string jsonFilePath = InitialUtils.ReplaysPath();
-                    log.Info("游戏replays路径:" + jsonFilePath);
                     if (File.Exists(jsonFilePath))
                     {
                         if (GAME_RUN)
                         {
+                            log.Info("游戏路径:" + gamePath);
+                            log.Info("游戏replays路径:" + jsonFilePath);
                             GAME_RUN = false;
                             ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), null);
                         }
