@@ -93,8 +93,14 @@ namespace WowsTools.utils
                 }
                 sr.Close();
                 fs.Close();
+                string infoJson = info.ToString();
+                string path = System.Environment.CurrentDirectory + "/tempArenaInfo.json";
+                using (StreamWriter streamWriter = new StreamWriter(path, false))
+                {
+                    streamWriter.WriteLine(infoJson);
+                }
                 //解析
-                JToken token = JsonConvert.DeserializeObject<JToken>(info.ToString());
+                JToken token = JsonConvert.DeserializeObject<JToken>(infoJson);
                 int playersPerTeam = token["playersPerTeam"].Value<int>();
                 foreach (var jt in token["vehicles"])
                 {
