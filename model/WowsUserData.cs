@@ -1,4 +1,6 @@
-﻿namespace WowsTools.model
+﻿using WowsTools.api;
+
+namespace WowsTools.model
 {
     class WowsUserData
     {
@@ -7,6 +9,7 @@
         public long accountId;
         public long id;
         public string userName;
+        public WowsServer server;
         /// <summary>
         /// 1和0是自己的人 2是敌人
         /// </summary>

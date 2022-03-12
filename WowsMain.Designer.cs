@@ -38,7 +38,6 @@ namespace WowsTools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.SheZhiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
@@ -58,19 +57,12 @@ namespace WowsTools
             // 
             this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SheZhiToolStripMenuItem,
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1484, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // SheZhiToolStripMenuItem
-            // 
-            this.SheZhiToolStripMenuItem.Name = "SheZhiToolStripMenuItem";
-            this.SheZhiToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.SheZhiToolStripMenuItem.Text = "设置";
             // 
             // GuanYuToolStripMenuItem
             // 
@@ -87,9 +79,9 @@ namespace WowsTools
             this.ServerLable.ForeColor = System.Drawing.Color.Blue;
             this.ServerLable.Location = new System.Drawing.Point(718, 37);
             this.ServerLable.Name = "ServerLable";
-            this.ServerLable.Size = new System.Drawing.Size(50, 26);
+            this.ServerLable.Size = new System.Drawing.Size(51, 26);
             this.ServerLable.TabIndex = 1;
-            this.ServerLable.Text = "亚服";
+            this.ServerLable.Text = "N/A";
             // 
             // dataGridViewOne
             // 
@@ -251,7 +243,6 @@ namespace WowsTools
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem SheZhiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem GuanYuToolStripMenuItem;
         private System.Windows.Forms.Label ServerLable;
         private System.Windows.Forms.DataGridView dataGridViewOne;

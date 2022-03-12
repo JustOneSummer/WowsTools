@@ -1082,3 +1082,245 @@
 2022-03-12 22:39:11,258 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
 
 2022-03-12 22:39:15,579 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:47:05,367 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:47:05,396 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:47:05,481 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:47:05,495 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:47:09,517 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:51:23,878 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:51:23,906 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:51:24,050 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:51:24,066 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:51:29,060 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:51:29,071 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 22:51:29,072 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 22:51:29,081 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 22:51:29,201 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-12 22:51:31,917 [5] INFO  WowsTools.model.WowsUserInfo - 查询用户账号信息：2030357703,2011669492,
+
+2022-03-12 22:51:32,218 [5] INFO  WowsTools.model.WowsUserInfo - 游戏用户信息：{"status":"ok","meta":{"count":2,"hidden":[2011669492]},"data":{"2011669492":{"statistics":null,"nickname":"BB71_Louisiana","last_battle_time":1624735900},"2030357703":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"max_frags_ship_id":null,"hits":0,"shots":0},"battles":0,"damage_dealt":0,"wins":0,"xp":0,"frags":0,"survived_battles":0}},"nickname":"MAOTT8989","last_battle_time":0}}}
+
+2022-03-12 22:52:12,643 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:52:12,673 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:52:12,720 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:52:12,736 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:52:16,794 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:52:16,805 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 22:52:16,806 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 22:52:16,812 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 22:52:16,931 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-12 22:52:26,782 [5] INFO  WowsTools.model.WowsUserInfo - 查询用户账号信息：501663736,553754318,575965592,539701863,544094003,528943830,564460031,560732293,532736878,585387968,560247138,510464827,521646683,548718118,519059209,574441462,504810066,537530748,532296617,532365836,580955084,584112864,586705687,500302319,
+
+2022-03-12 22:52:27,377 [5] INFO  WowsTools.model.WowsUserInfo - 游戏用户信息：{"status":"ok","meta":{"count":24,"hidden":[544094003,560732293,553754318]},"data":{"560732293":{"statistics":null,"nickname":"andreios_81","last_battle_time":1647093183},"519059209":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2072,"max_frags_ship_id":4284430032,"hits":203630,"shots":681710},"battles":3971,"damage_dealt":266683339,"wins":2003,"xp":6830147,"frags":2652,"survived_battles":1332}},"nickname":"Oguz__SOYSAL","last_battle_time":1647094349},"532365836":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":3535,"max_frags_ship_id":4184782288,"hits":252710,"shots":843725},"battles":9104,"damage_dealt":274775482,"wins":4669,"xp":7392761,"frags":6473,"survived_battles":2949}},"nickname":"jochny66","last_battle_time":1647094561},"586705687":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":102,"max_frags_ship_id":4293834736,"hits":8925,"shots":29174},"battles":242,"damage_dealt":4843554,"wins":127,"xp":272933,"frags":133,"survived_battles":110}},"nickname":"kizilsakal_1071","last_battle_time":1647094804},"575965592":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":4,"frags":463,"max_frags_ship_id":3760109264,"hits":32321,"shots":99461},"battles":851,"damage_dealt":46664392,"wins":422,"xp":1336138,"frags":570,"survived_battles":304}},"nickname":"MaoTT8989","last_battle_time":1647095248},"548718118":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":1009,"max_frags_ship_id":4076812080,"hits":93523,"shots":349479},"battles":2359,"damage_dealt":96786757,"wins":1151,"xp":2928771,"frags":1480,"survived_battles":1045}},"nickname":"Lothinr","last_battle_time":1647095407},"532296617":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":101,"max_frags_ship_id":4284430032,"hits":3373,"shots":14704},"battles":389,"damage_dealt":6558577,"wins":155,"xp":259649,"frags":174,"survived_battles":83}},"nickname":"Sink_The_Pink","last_battle_time":1647081750},"544094003":{"statistics":null,"nickname":"MORGOTH_344","last_battle_time":1647095485},"510464827":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":8797,"max_frags_ship_id":4180620752,"hits":676748,"shots":1971504},"battles":11861,"damage_dealt":633720830,"wins":6688,"xp":19845281,"frags":13313,"survived_battles":6174}},"nickname":"statist9999","last_battle_time":1647095218},"585387968":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":2,"frags":2,"max_frags_ship_id":3763287856,"hits":379,"shots":2016},"battles":16,"damage_dealt":390497,"wins":5,"xp":16805,"frags":5,"survived_battles":4}},"nickname":"Noopukki","last_battle_time":1644856230},"580955084":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":746,"max_frags_ship_id":3762239312,"hits":67160,"shots":223184},"battles":1499,"damage_dealt":85377670,"wins":763,"xp":2363422,"frags":1006,"survived_battles":579}},"nickname":"Jnbw","last_battle_time":1647095299},"553754318":{"statistics":null,"nickname":"Lord_Of_Admiralty","last_battle_time":1647094300},"504810066":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2629,"max_frags_ship_id":4179572528,"hits":177720,"shots":592871},"battles":4477,"damage_dealt":253589670,"wins":2204,"xp":6635553,"frags":3398,"survived_battles":1312}},"nickname":"GIFake","last_battle_time":1647095039},"528943830":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":5097,"max_frags_ship_id":4273911792,"hits":597523,"shots":1769582},"battles":13262,"damage_dealt":666404755,"wins":6709,"xp":18235816,"frags":10094,"survived_battles":5229}},"nickname":"ptitpainaulait","last_battle_time":1647094900},"521646683":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":4,"frags":1937,"max_frags_ship_id":4078909232,"hits":235051,"shots":728477},"battles":5788,"damage_dealt":216286727,"wins":2771,"xp":8385113,"frags":3003,"survived_battles":1187}},"nickname":"winisle","last_battle_time":1646994620},"584112864":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":9,"frags":295,"max_frags_ship_id":4293834544,"hits":33626,"shots":82401},"battles":235,"damage_dealt":26077234,"wins":145,"xp":567943,"frags":375,"survived_battles":130}},"nickname":"BB71_Louisiana","last_battle_time":1647095128},"560247138":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":8,"frags":2175,"max_frags_ship_id":4293834544,"hits":229323,"shots":866869},"battles":11403,"damage_dealt":332209197,"wins":4907,"xp":10532465,"frags":4497,"survived_battles":1985}},"nickname":"libsveclibtoz","last_battle_time":1647094831},"539701863":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2090,"max_frags_ship_id":4181636560,"hits":232829,"shots":645028},"battles":2925,"damage_dealt":183323451,"wins":1595,"xp":4488725,"frags":2716,"survived_battles":1213}},"nickname":"Wolfiene","last_battle_time":1647094780},"532736878":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":3130,"max_frags_ship_id":4182685648,"hits":261507,"shots":843606},"battles":5929,"damage_dealt":297291069,"wins":3158,"xp":8405388,"frags":4742,"survived_battles":2124}},"nickname":"Kaleu_Northern","last_battle_time":1647095662},"500302319":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":7,"frags":8446,"max_frags_ship_id":4291737584,"hits":753400,"shots":2304960},"battles":14047,"damage_dealt":635855380,"wins":7462,"xp":15897893,"frags":12512,"survived_battles":5154}},"nickname":"KillerMachines","last_battle_time":1647089602},"574441462":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":270,"max_frags_ship_id":3761190608,"hits":19183,"shots":71328},"battles":869,"damage_dealt":38250549,"wins":374,"xp":1159610,"frags":346,"survived_battles":157}},"nickname":"kai_kia","last_battle_time":1647095410},"501663736":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":7,"frags":5728,"max_frags_ship_id":3765384656,"hits":501246,"shots":1605454},"battles":8244,"damage_dealt":484697269,"wins":4691,"xp":12896214,"frags":8385,"survived_battles":3409}},"nickname":"TomToTom","last_battle_time":1647094516},"537530748":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":933,"max_frags_ship_id":4179572528,"hits":73956,"shots":302765},"battles":2631,"damage_dealt":95917650,"wins":1208,"xp":2749730,"frags":1196,"survived_battles":613}},"nickname":"VauMan","last_battle_time":1647095039},"564460031":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":1641,"max_frags_ship_id":4288624624,"hits":118060,"shots":358235},"battles":2321,"damage_dealt":105295675,"wins":1359,"xp":3627186,"frags":2435,"survived_battles":1143}},"nickname":"X_DUDE_14","last_battle_time":1647095593}}}
+
+2022-03-12 22:55:59,469 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:55:59,498 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:55:59,553 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:55:59,570 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:56:03,595 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:56:03,607 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 22:56:03,608 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 22:56:03,614 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 22:56:03,734 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-12 22:56:11,506 [5] INFO  WowsTools.model.WowsUserInfo - 查询用户账号信息：501663736,553754318,575965592,539701863,544094003,528943830,564460031,560732293,532736878,585387968,560247138,510464827,521646683,548718118,519059209,574441462,504810066,537530748,532296617,532365836,580955084,584112864,586705687,500302319,
+
+2022-03-12 22:56:12,099 [5] INFO  WowsTools.model.WowsUserInfo - 游戏用户信息：{"status":"ok","meta":{"count":24,"hidden":[544094003,560732293,553754318]},"data":{"560732293":{"statistics":null,"nickname":"andreios_81","last_battle_time":1647096030},"519059209":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2072,"max_frags_ship_id":4284430032,"hits":203630,"shots":681710},"battles":3972,"damage_dealt":266749601,"wins":2003,"xp":6831397,"frags":2653,"survived_battles":1332}},"nickname":"Oguz__SOYSAL","last_battle_time":1647096030},"532365836":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":3535,"max_frags_ship_id":4184782288,"hits":252832,"shots":844071},"battles":9105,"damage_dealt":274849366,"wins":4670,"xp":7395071,"frags":6473,"survived_battles":2949}},"nickname":"jochny66","last_battle_time":1647096030},"586705687":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":103,"max_frags_ship_id":4293834736,"hits":8959,"shots":29339},"battles":243,"damage_dealt":4894649,"wins":128,"xp":275324,"frags":135,"survived_battles":111}},"nickname":"kizilsakal_1071","last_battle_time":1647096030},"575965592":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":4,"frags":466,"max_frags_ship_id":3760109264,"hits":32372,"shots":99650},"battles":852,"damage_dealt":46798557,"wins":423,"xp":1339646,"frags":573,"survived_battles":305}},"nickname":"MaoTT8989","last_battle_time":1647096030},"548718118":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":1009,"max_frags_ship_id":4076812080,"hits":93525,"shots":349495},"battles":2360,"damage_dealt":96788935,"wins":1151,"xp":2929549,"frags":1480,"survived_battles":1045}},"nickname":"Lothinr","last_battle_time":1647096030},"532296617":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":101,"max_frags_ship_id":4284430032,"hits":3376,"shots":14710},"battles":390,"damage_dealt":6558797,"wins":155,"xp":259857,"frags":174,"survived_battles":83}},"nickname":"Sink_The_Pink","last_battle_time":1647096030},"544094003":{"statistics":null,"nickname":"MORGOTH_344","last_battle_time":1647096030},"510464827":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":8798,"max_frags_ship_id":4180620752,"hits":676916,"shots":1971858},"battles":11862,"damage_dealt":633795592,"wins":6688,"xp":19846877,"frags":13314,"survived_battles":6174}},"nickname":"statist9999","last_battle_time":1647096030},"585387968":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":2,"frags":2,"max_frags_ship_id":3763287856,"hits":403,"shots":2205},"battles":17,"damage_dealt":406591,"wins":5,"xp":17840,"frags":5,"survived_battles":4}},"nickname":"Noopukki","last_battle_time":1647096030},"580955084":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":747,"max_frags_ship_id":3762239312,"hits":67182,"shots":223318},"battles":1500,"damage_dealt":85399155,"wins":764,"xp":2365282,"frags":1007,"survived_battles":580}},"nickname":"Jnbw","last_battle_time":1647096030},"553754318":{"statistics":null,"nickname":"Lord_Of_Admiralty","last_battle_time":1647096030},"504810066":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2629,"max_frags_ship_id":4179572528,"hits":177741,"shots":592985},"battles":4478,"damage_dealt":253615913,"wins":2205,"xp":6637731,"frags":3398,"survived_battles":1312}},"nickname":"GIFake","last_battle_time":1647096030},"528943830":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":5097,"max_frags_ship_id":4273911792,"hits":597547,"shots":1769662},"battles":13263,"damage_dealt":666412822,"wins":6709,"xp":18236580,"frags":10094,"survived_battles":5229}},"nickname":"ptitpainaulait","last_battle_time":1647096030},"521646683":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":4,"frags":1937,"max_frags_ship_id":4078909232,"hits":235069,"shots":728499},"battles":5789,"damage_dealt":216295160,"wins":2772,"xp":8386645,"frags":3003,"survived_battles":1187}},"nickname":"winisle","last_battle_time":1647096030},"584112864":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":9,"frags":295,"max_frags_ship_id":4293834544,"hits":33626,"shots":82401},"battles":236,"damage_dealt":26203082,"wins":146,"xp":571105,"frags":378,"survived_battles":131}},"nickname":"BB71_Louisiana","last_battle_time":1647096030},"560247138":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":8,"frags":2176,"max_frags_ship_id":4293834544,"hits":229331,"shots":866897},"battles":11404,"damage_dealt":332222516,"wins":4907,"xp":10533284,"frags":4498,"survived_battles":1985}},"nickname":"libsveclibtoz","last_battle_time":1647096030},"539701863":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":2091,"max_frags_ship_id":4181636560,"hits":233008,"shots":645347},"battles":2926,"damage_dealt":183398245,"wins":1595,"xp":4489823,"frags":2718,"survived_battles":1213}},"nickname":"Wolfiene","last_battle_time":1647096030},"532736878":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":3130,"max_frags_ship_id":4182685648,"hits":261541,"shots":843699},"battles":5930,"damage_dealt":297336541,"wins":3158,"xp":8406298,"frags":4742,"survived_battles":2124}},"nickname":"Kaleu_Northern","last_battle_time":1647096030},"500302319":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":7,"frags":8447,"max_frags_ship_id":4291737584,"hits":753450,"shots":2305096},"battles":14048,"damage_dealt":635893605,"wins":7463,"xp":15899822,"frags":12513,"survived_battles":5154}},"nickname":"KillerMachines","last_battle_time":1647096030},"574441462":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":270,"max_frags_ship_id":3761190608,"hits":19187,"shots":71361},"battles":870,"damage_dealt":38269028,"wins":375,"xp":1161194,"frags":346,"survived_battles":157}},"nickname":"kai_kia","last_battle_time":1647096030},"501663736":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":7,"frags":5729,"max_frags_ship_id":3765384656,"hits":501296,"shots":1605574},"battles":8245,"damage_dealt":484749664,"wins":4691,"xp":12896970,"frags":8386,"survived_battles":3409}},"nickname":"TomToTom","last_battle_time":1647096030},"537530748":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":933,"max_frags_ship_id":4179572528,"hits":73969,"shots":302815},"battles":2632,"damage_dealt":95937862,"wins":1209,"xp":2750878,"frags":1196,"survived_battles":613}},"nickname":"VauMan","last_battle_time":1647096030},"564460031":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":1641,"max_frags_ship_id":4288624624,"hits":118138,"shots":358474},"battles":2322,"damage_dealt":105330676,"wins":1360,"xp":3629922,"frags":2435,"survived_battles":1144}},"nickname":"X_DUDE_14","last_battle_time":1647096030}}}
+
+2022-03-12 22:56:12,607 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"501663736":[{"pvp":{"main_battery":{"max_frags_battle":3,"frags":16,"hits":872,"shots":3660},"battles":16,"damage_dealt":1117784,"wins":7,"xp":22946,"frags":20,"survived_battles":7},"last_battle_time":1647096030,"account_id":501663736,"ship_id":4182718288}]}}
+
+2022-03-12 22:56:13,102 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":0,"hidden":[553754318]},"data":{}}
+
+2022-03-12 22:56:13,621 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"575965592":[{"pvp":{"main_battery":{"max_frags_battle":3,"frags":14,"hits":661,"shots":2124},"battles":21,"damage_dealt":1408042,"wins":16,"xp":42953,"frags":14,"survived_battles":10},"last_battle_time":1647096030,"account_id":575965592,"ship_id":4272895696}]}}
+
+2022-03-12 22:56:14,141 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"539701863":[{"pvp":{"main_battery":{"max_frags_battle":4,"frags":28,"hits":2732,"shots":4929},"battles":40,"damage_dealt":1784017,"wins":26,"xp":79428,"frags":46,"survived_battles":18},"last_battle_time":1647096030,"account_id":539701863,"ship_id":4181604176}]}}
+
+2022-03-12 22:56:14,619 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":0,"hidden":[544094003]},"data":{}}
+
+2022-03-12 22:56:15,130 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"528943830":[{"pvp":{"main_battery":{"max_frags_battle":3,"frags":15,"hits":3032,"shots":5920},"battles":61,"damage_dealt":2059808,"wins":25,"xp":100140,"frags":34,"survived_battles":15},"last_battle_time":1647096030,"account_id":528943830,"ship_id":4180555568}]}}
+
+2022-03-12 22:56:15,635 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"564460031":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":9,"hits":1471,"shots":3751},"battles":18,"damage_dealt":740456,"wins":14,"xp":43151,"frags":17,"survived_battles":11},"last_battle_time":1647096030,"account_id":564460031,"ship_id":4286461936}]}}
+
+2022-03-12 22:56:16,109 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":0,"hidden":[560732293]},"data":{}}
+
+2022-03-12 22:56:16,613 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"532736878":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":1,"hits":264,"shots":726},"battles":4,"damage_dealt":250888,"wins":2,"xp":7592,"frags":2,"survived_battles":0},"last_battle_time":1647096030,"account_id":532736878,"ship_id":4076779472}]}}
+
+2022-03-12 22:56:17,142 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"585387968":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":2,"hits":403,"shots":2205},"battles":17,"damage_dealt":406591,"wins":5,"xp":17840,"frags":5,"survived_battles":4},"last_battle_time":1647096030,"account_id":585387968,"ship_id":3763287856}]}}
+
+2022-03-12 22:56:17,652 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"560247138":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":7,"hits":392,"shots":2076},"battles":32,"damage_dealt":825113,"wins":10,"xp":25885,"frags":8,"survived_battles":5},"last_battle_time":1647096030,"account_id":560247138,"ship_id":4284430032}]}}
+
+2022-03-12 22:56:18,184 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"510464827":[{"pvp":{"main_battery":{"max_frags_battle":5,"frags":11,"hits":850,"shots":2430},"battles":6,"damage_dealt":378461,"wins":3,"xp":13811,"frags":11,"survived_battles":3},"last_battle_time":1647096030,"account_id":510464827,"ship_id":3762206544}]}}
+
+2022-03-12 22:56:18,709 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"521646683":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":8,"hits":1739,"shots":3390},"battles":33,"damage_dealt":1166231,"wins":19,"xp":58948,"frags":20,"survived_battles":10},"last_battle_time":1647096030,"account_id":521646683,"ship_id":4182652368}]}}
+
+2022-03-12 22:56:19,339 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"548718118":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":1,"hits":249,"shots":728},"battles":9,"damage_dealt":256855,"wins":4,"xp":13355,"frags":1,"survived_battles":3},"last_battle_time":1647096030,"account_id":548718118,"ship_id":4286494416}]}}
+
+2022-03-12 22:56:20,149 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"519059209":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":0,"shots":0},"battles":7,"damage_dealt":353213,"wins":4,"xp":11759,"frags":3,"survived_battles":4},"last_battle_time":1647096030,"account_id":519059209,"ship_id":4181702352}]}}
+
+2022-03-12 22:56:20,854 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"574441462":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":4,"hits":431,"shots":1287},"battles":19,"damage_dealt":963727,"wins":8,"xp":26170,"frags":4,"survived_battles":1},"last_battle_time":1647096030,"account_id":574441462,"ship_id":4180620752}]}}
+
+2022-03-12 22:56:21,456 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"504810066":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":14,"hits":297,"shots":892},"battles":9,"damage_dealt":697068,"wins":6,"xp":17946,"frags":17,"survived_battles":2},"last_battle_time":1647096030,"account_id":504810066,"ship_id":4077860656}]}}
+
+2022-03-12 22:56:22,015 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"537530748":[{"pvp":{"main_battery":{"max_frags_battle":3,"frags":42,"hits":1552,"shots":5920},"battles":77,"damage_dealt":3308358,"wins":44,"xp":100304,"frags":46,"survived_battles":22},"last_battle_time":1647096030,"account_id":537530748,"ship_id":4286527472}]}}
+
+2022-03-12 22:56:22,743 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"532296617":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":10,"shots":34},"battles":4,"damage_dealt":18190,"wins":1,"xp":3020,"frags":0,"survived_battles":0},"last_battle_time":1647096030,"account_id":532296617,"ship_id":4076746448}]}}
+
+2022-03-12 22:56:24,003 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"532365836":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":3,"hits":312,"shots":740},"battles":9,"damage_dealt":316429,"wins":6,"xp":14482,"frags":4,"survived_battles":1},"last_battle_time":1647096030,"account_id":532365836,"ship_id":4181604304}]}}
+
+2022-03-12 22:56:24,534 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"580955084":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":6,"hits":341,"shots":1658},"battles":12,"damage_dealt":573897,"wins":6,"xp":17109,"frags":6,"survived_battles":7},"last_battle_time":1647096030,"account_id":580955084,"ship_id":4182718416}]}}
+
+2022-03-12 22:56:25,102 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"584112864":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":0,"shots":0},"battles":1,"damage_dealt":125848,"wins":1,"xp":3162,"frags":3,"survived_battles":1},"last_battle_time":1647096030,"account_id":584112864,"ship_id":4181702352}]}}
+
+2022-03-12 22:56:25,624 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"586705687":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":22,"hits":3281,"shots":13089},"battles":70,"damage_dealt":1608652,"wins":41,"xp":93168,"frags":29,"survived_battles":36},"last_battle_time":1647096030,"account_id":586705687,"ship_id":4285445840}]}}
+
+2022-03-12 22:56:26,142 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"500302319":[{"pvp":{"main_battery":{"max_frags_battle":4,"frags":45,"hits":5544,"shots":18614},"battles":91,"damage_dealt":4244996,"wins":48,"xp":102779,"frags":64,"survived_battles":36},"last_battle_time":1647096030,"account_id":500302319,"ship_id":4182685520}]}}
+
+2022-03-12 22:56:26,144 [5] INFO  WowsTools.WowsMain - 开始渲染数据...
+
+2022-03-12 22:57:57,891 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:57:57,919 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:57:57,949 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:57:57,964 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:58:02,159 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:58:02,170 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 22:58:02,171 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 22:58:02,193 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 22:58:02,312 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-12 22:58:05,640 [5] INFO  WowsTools.model.WowsUserInfo - 查询用户账号信息：2030357703,2011669492,
+
+2022-03-12 22:58:05,853 [5] INFO  WowsTools.model.WowsUserInfo - 游戏用户信息：{"status":"ok","meta":{"count":2,"hidden":[2011669492]},"data":{"2011669492":{"statistics":null,"nickname":"BB71_Louisiana","last_battle_time":1624735900},"2030357703":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"max_frags_ship_id":null,"hits":0,"shots":0},"battles":0,"damage_dealt":0,"wins":0,"xp":0,"frags":0,"survived_battles":0}},"nickname":"MAOTT8989","last_battle_time":0}}}
+
+2022-03-12 22:58:06,792 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:08,043 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:08,383 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2030357703":null}}
+
+2022-03-12 22:58:09,320 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:10,409 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:11,525 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:12,558 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:13,675 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:14,836 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:15,940 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:16,982 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:18,150 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:19,280 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:20,304 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:21,506 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:22,563 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:23,651 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:24,705 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:25,819 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:26,932 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:28,049 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:28,366 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"ok","meta":{"count":0,"hidden":[2011669492]},"data":{}}
+
+2022-03-12 22:58:29,331 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:30,576 [5] INFO  WowsTools.model.WowsShipData - 游戏用户船只信息：{"status":"error","error":{"code":504,"message":"SOURCE_NOT_AVAILABLE","field":null,"value":null}}
+
+2022-03-12 22:58:30,577 [5] INFO  WowsTools.WowsMain - 开始渲染数据...
+
+2022-03-12 22:59:24,310 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 22:59:24,336 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 22:59:24,377 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 22:59:24,392 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 22:59:28,530 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 22:59:28,541 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 22:59:28,542 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 22:59:28,552 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-12 23:34:03,010 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 23:34:03,039 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 23:34:03,152 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 23:34:03,169 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 23:34:08,273 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 23:34:08,284 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 23:34:08,285 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-12 23:35:06,926 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-12 23:35:06,954 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-12 23:35:06,995 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-12 23:35:07,011 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-12 23:35:11,123 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.1
+
+2022-03-12 23:35:11,135 [1] INFO  WowsTools.WowsMain - 游戏路径:D:\Games\World_of_Warships\
+
+2022-03-12 23:35:11,136 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json

@@ -61,17 +61,22 @@ namespace WowsTools.utils
             FileStream fs = new FileStream(log, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
             string info = null;
+            List<string> list = new List<string>();
             while (!sr.EndOfStream)
             {
-                string tem = sr.ReadLine();
+                list.Add(sr.ReadLine());
+            }
+            sr.Close();
+            fs.Close();
+            for (int i = list.Count-1; i > 0; i--)
+            {
+                string tem = list[i];
                 if (tem.Contains("Selected realm"))
                 {
                     info = tem.Substring(tem.LastIndexOf("realm") + 6);
                     break;
                 }
             }
-            sr.Close();
-            fs.Close();
             return info.Trim();
         }
 

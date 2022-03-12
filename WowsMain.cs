@@ -129,7 +129,6 @@ namespace WowsTools
                 WowsServer server;
                 WowsServer.SERVER.TryGetValue(gameServer, out server);
                 Dictionary<string, WowsUserInfo> map = WowsAccount.GameInfo(server, WowsAccount.AccountId(server, wowsUserDatas));
-
                 //区分团队
                 List<WowsUserData> a = new List<WowsUserData>();
                 List<WowsUserData> b = new List<WowsUserData>();
@@ -139,6 +138,7 @@ namespace WowsTools
                 int CB = 0;
                 foreach (var item in wowsUserDatas)
                 {
+                    item.server = server;
                     bool shiFouA = true;
                     WowsUserInfo info;
                     map.TryGetValue(item.userName, out info);
@@ -203,7 +203,7 @@ namespace WowsTools
                 int i = 0;
                 this.labelWinsA.Text = "平均胜率：" + (winsA / countA).ToString("f2") + "%";
                 this.labelWinsB.Text = "平均胜率：" + (winsB / countB).ToString("f2") + "%";
-
+                this.ServerLable.Text = teamA[0].server.ServerName;
                 foreach (var data in teamA)
                 {
                     DataGridViewRow row = new DataGridViewRow();
