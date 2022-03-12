@@ -27,13 +27,13 @@ namespace WowsTools.utils
             Process[] processes = Process.GetProcesses();
             foreach (Process process in processes)
             {
-                if (process.ProcessName.IndexOf("WorldOfWarships") == 0)
+                if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
                 {
                     ProcessModule mainModule = process.MainModule;
                     string wows = mainModule.FileName;
 
                     //获取游戏根目录
-                    HOME = wows.Substring(0, wows.IndexOf("World_of_Warships") + 18);
+                    HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
                     return HOME;
 
                 }
