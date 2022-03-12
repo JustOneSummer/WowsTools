@@ -191,6 +191,8 @@ namespace WowsTools
         {
             Invoke((new Action(() =>
             {
+                this.dataGridViewOne.Rows.Clear();
+                this.dataGridViewTwo.Rows.Clear();
                 this.ServerLable.Text = server.ServerName;
                 GameInfoData gameInfoData = PvpService.GameInfoData(server,GAME_INFO_LIST);
                 
