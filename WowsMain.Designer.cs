@@ -120,6 +120,7 @@ namespace WowsTools
             this.dataGridViewOne.RowTemplate.Height = 23;
             this.dataGridViewOne.Size = new System.Drawing.Size(700, 331);
             this.dataGridViewOne.TabIndex = 2;
+            this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
             // VsLabel
             // 
@@ -185,6 +186,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowTemplate.Height = 23;
             this.dataGridViewTwo.Size = new System.Drawing.Size(700, 331);
             this.dataGridViewTwo.TabIndex = 6;
+            this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
             // labelMyTeam
             // 

@@ -83,6 +83,7 @@
     <Compile Include="model\WowsShipData.cs" />
     <Compile Include="model\WowsUserData.cs" />
     <Compile Include="model\WowsUserInfo.cs" />
+    <Compile Include="utils\ColorUtils.cs" />
     <Compile Include="utils\HttpUtils.cs" />
     <Compile Include="utils\InitialUtils.cs" />
     <Compile Include="utils\ShipPrUtils.cs" />

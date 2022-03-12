@@ -49,6 +49,7 @@ namespace WowsTools
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewOne.ClearSelection();
 
             this.dataGridViewTwo.RowHeadersVisible = false;
             this.dataGridViewTwo.Columns.Add("shipPr", "评分");
@@ -63,6 +64,17 @@ namespace WowsTools
             this.dataGridViewTwo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTwo.ClearSelection();
+        }
+
+        private void dataGridViewTwo_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewTwo.ClearSelection();
+        }
+
+        private void dataGridViewOne_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewOne.ClearSelection();
         }
 
         /// <summary>
@@ -181,7 +193,23 @@ namespace WowsTools
 
                 foreach (var data in teamA)
                 {
-                    string[] vs = {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row.CreateCells(this.dataGridViewOne);
+                    row.Cells[0].Value = data.userName;
+                    row.Cells[1].Value = data.wins;
+                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+                    row.Cells[2].Value = data.shipLevel;
+                    row.Cells[3].Value = data.shipName;
+                    row.Cells[4].Value = data.shipBattles;
+                    row.Cells[5].Value = data.shipDamage;
+
+                    row.Cells[6].Value = data.shipWins;
+                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.wins);
+
+                    row.Cells[7].Value = data.shipPr;
+                    row.Cells[7].Style.ForeColor = ColorUtils.PrColor(data.shipPr);
+                    this.dataGridViewOne.Rows.Add(row);
+                    /*string[] vs = {
                     data.userName,
                     data.wins,
                     data.shipLevel,
@@ -191,7 +219,8 @@ namespace WowsTools
                     data.shipWins,
                     data.shipPr+""
                     };
-                    this.dataGridViewOne.Rows.Add(vs);
+                    this.dataGridViewOne.Rows.Add(vs);*/
+
                 }
                 foreach (var data in teamB)
                 {
