@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Management;
 using System.Text;
 using WowsTools.model;
 
@@ -14,7 +15,7 @@ namespace WowsTools.utils
     class InitialUtils
     {
         private static string HOME = null;
-        
+
         /// <summary>
         /// 初始化时的加载-获取游戏路径
         /// </summary>
@@ -95,7 +96,7 @@ namespace WowsTools.utils
                 //解析
                 JToken token = JsonConvert.DeserializeObject<JToken>(info.ToString());
                 int playersPerTeam = token["playersPerTeam"].Value<int>();
-                foreach(var jt in token["vehicles"])
+                foreach (var jt in token["vehicles"])
                 {
                     WowsUserData data = new WowsUserData();
                     data.playersPerTeam = playersPerTeam;
@@ -107,6 +108,29 @@ namespace WowsTools.utils
                 }
             }
             return dataList;
+        }
+
+        public static string GetCpuID()
+        {
+            try
+            {
+                string cpuInfo = "";
+                ManagementClass mc = new ManagementClass("Win32_Processor");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    cpuInfo = mo.Properties["ProcessorId"].Value.ToString();
+                }
+                moc = null;
+                mc = null;
+                return cpuInfo;
+            }
+            catch
+            {
+                return "unknow";
+            }
+
+            finally { }
         }
     }
 }
