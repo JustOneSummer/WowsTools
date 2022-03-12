@@ -9,6 +9,7 @@ namespace WowsTools.model
 {
     class WowsUserInfo
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public WowsQueryAccountInfo AccountInfo;
         public int Battles;
         public long DamageDealt;
@@ -45,7 +46,9 @@ namespace WowsTools.model
                 info.Add(userInfo);
                 builder.Append(item.AccountId).Append(",");
             }
-            map.Add("account_id", builder.ToString().Substring(0,builder.Length-1));
+            string accINfo = builder.ToString();
+            log.Info("查询用户账号信息："+ accINfo);
+            map.Add("account_id", accINfo.Substring(0,builder.Length-1));
             string v = HttpUtils.PostFrom(server, "/wows/account/info/", map);
             WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
             if (wowsJsonData.status)

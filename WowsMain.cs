@@ -15,7 +15,7 @@ namespace WowsTools
         {
             InitializeComponent();
         }
-
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private const string VERSION = "0.0.1";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
@@ -34,6 +34,7 @@ namespace WowsTools
 
         private void WowsMain_Load(object sender, EventArgs e)
         {
+            log4net.Config.XmlConfigurator.Configure();
             //WowsServer server;
             //WowsServer.SERVER.TryGetValue("asia", out server);
             //long id= WowsAccount.AccountId(server, "JustOneSummer");
@@ -67,6 +68,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTwo.ClearSelection();
+            log.Info("初始化 版本="+ VERSION);
         }
 
         private void dataGridViewTwo_SelectionChanged(object sender, EventArgs e)
@@ -95,9 +97,11 @@ namespace WowsTools
             {
                 //加载游戏进程信息
                 string gamePath = InitialUtils.wowsExeHomePath();
+                log.Info("游戏路径:"+ gamePath);
                 if (!string.IsNullOrEmpty(gamePath))
                 {
                     string jsonFilePath = InitialUtils.ReplaysPath();
+                    log.Info("游戏replays路径:" + jsonFilePath);
                     if (File.Exists(jsonFilePath))
                     {
                         if (GAME_RUN)
@@ -118,7 +122,9 @@ namespace WowsTools
         {
             //获取所在服务器
             string gameServer = InitialUtils.ServerInfo();
+            log.Info("所在服务器："+gameServer);
             List<WowsUserData> wowsUserDatas = InitialUtils.getReplaysData();
+            log.Info("对局用户数量："+wowsUserDatas.Count);
             if (wowsUserDatas.Count >= 1)
             {
                 WowsServer server;
@@ -187,6 +193,7 @@ namespace WowsTools
 
         private void DataViewLoad(List<WowsUserData> teamA, double winsA,int countA, List<WowsUserData> teamB, double winsB, int countB)
         {
+            log.Info("开始渲染数据...");
             Invoke((new Action(() =>
             {
                 //排序
@@ -272,9 +279,9 @@ namespace WowsTools
         public void CheckUpdate()
         {
             int localV = int.Parse(VERSION.Replace(".",""));
-
-            int ver = int.Parse(HttpUtils.GetVersion().Replace(".", ""));
-
+            string newV = HttpUtils.GetVersion();
+            log.Info("检查版本 新版本=" + newV);
+            int ver = int.Parse(newV.Replace(".", ""));
             if (ver > localV)
             {
                 MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
