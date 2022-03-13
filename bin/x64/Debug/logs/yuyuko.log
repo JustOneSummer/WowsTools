@@ -5038,3 +5038,69 @@
 2022-03-13 14:39:39,664 [9] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023947023":[{"pvp":{"main_battery":{"max_frags_battle":5,"frags":112,"hits":16163,"shots":42087},"battles":179,"damage_dealt":12967365,"wins":95,"xp":292278,"frags":120,"survived_battles":95},"last_battle_time":1647103317,"account_id":2023947023,"ship_id":4179539696}]}}
 
 2022-03-13 14:39:39,758 [10] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2007037012":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":134,"shots":429},"battles":2,"damage_dealt":213047,"wins":2,"xp":4971,"frags":0,"survived_battles":1},"last_battle_time":1646580605,"account_id":2007037012,"ship_id":4277090288}]}}
+
+2022-03-13 14:48:44,918 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 14:48:44,946 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 14:48:44,991 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 14:48:45,004 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-13 14:48:49,022 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 14:48:49,030 [1] INFO  WowsTools.WowsMain - 游戏replays路径:D:\Games\World_of_Warships\replays/tempArenaInfo.json
+
+2022-03-13 14:48:49,036 [5] INFO  WowsTools.WowsMain - 所在服务器：asia
+
+2022-03-13 14:48:49,110 [5] INFO  WowsTools.service.PvpService - 对局信息用户名称：2461198274,stiggg,malimalihongzha,Invicible_BC,Cloud_666,Player_0501343834,YHR_123,chenlinhanK,KaguraMeaa,JustOneSummer,EndoYurikaKawaii,YakumoKoishi,Iwato_Kasumi,We_name_is_Goodall,779847908,baobeishuo,495315098,Edward_Wai,keirt_v,darksword_22_,817817,232323TTT_,Szerynge,FortPumpkin,
+
+2022-03-13 14:48:49,111 [5] INFO  WowsTools.WowsMain - 对局用户数量：24
+
+2022-03-13 14:48:50,044 [11] INFO  WowsTools.api.WowsAccount - 2023841999 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023841999":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":1881,"max_frags_ship_id":4183734000,"hits":179665,"shots":571119},"battles":4932,"damage_dealt":182783769,"wins":2407,"xp":5283001,"frags":2841,"survived_battles":1224}},"nickname":"malimalihongzha","last_battle_time":1647008169}}}
+
+2022-03-13 14:48:50,182 [19] INFO  WowsTools.api.WowsAccount - 2022771624 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2022771624":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":2847,"max_frags_ship_id":4179539920,"hits":316804,"shots":993291},"battles":4545,"damage_dealt":332502187,"wins":2499,"xp":8648963,"frags":3571,"survived_battles":2019}},"nickname":"YHR_123","last_battle_time":1647104201}}}
+
+2022-03-13 14:48:50,450 [9] INFO  WowsTools.api.WowsAccount - 2023915835 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023915835":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":7,"frags":1072,"max_frags_ship_id":4183766480,"hits":94706,"shots":279965},"battles":3466,"damage_dealt":125670438,"wins":1653,"xp":4033292,"frags":1634,"survived_battles":655}},"nickname":"Cloud_666","last_battle_time":1647093361}}}
+
+2022-03-13 14:48:50,551 [8] INFO  WowsTools.api.WowsAccount - 2025475420 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2025475420":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":3783,"max_frags_ship_id":3761190608,"hits":397048,"shots":1062981},"battles":7698,"damage_dealt":423399699,"wins":4097,"xp":13402405,"frags":5871,"survived_battles":2328}},"nickname":"2461198274","last_battle_time":1647085532}}}
+
+2022-03-13 14:48:50,731 [14] INFO  WowsTools.api.WowsAccount - 2022214870 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2022214870":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":1765,"max_frags_ship_id":3751753552,"hits":170430,"shots":718212},"battles":5494,"damage_dealt":161310124,"wins":2663,"xp":5932605,"frags":2731,"survived_battles":1944}},"nickname":"Player_0501343834","last_battle_time":1647008316}}}
+
+2022-03-13 14:48:50,823 [11] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023841999":[{"pvp":{"main_battery":{"max_frags_battle":2,"frags":18,"hits":1461,"shots":3912},"battles":61,"damage_dealt":2085913,"wins":23,"xp":73000,"frags":34,"survived_battles":14},"last_battle_time":1645708967,"account_id":2023841999,"ship_id":4179506480}]}}
+
+2022-03-13 14:48:50,884 [19] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2022771624":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":101,"shots":262},"battles":1,"damage_dealt":29663,"wins":0,"xp":1553,"frags":0,"survived_battles":1},"last_battle_time":1647102833,"account_id":2022771624,"ship_id":4179507152}]}}
+
+2022-03-13 14:48:50,944 [10] INFO  WowsTools.api.WowsAccount - 2020399714 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2020399714":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":6,"frags":3329,"max_frags_ship_id":4290689008,"hits":408688,"shots":1109570},"battles":4105,"damage_dealt":368304246,"wins":2507,"xp":8659613,"frags":4413,"survived_battles":2318}},"nickname":"stiggg","last_battle_time":1646751485}}}
+
+2022-03-13 14:48:51,059 [15] INFO  WowsTools.api.WowsAccount - 2032204582 游戏用户信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2032204582":{"statistics":{"pvp":{"main_battery":{"max_frags_battle":5,"frags":524,"max_frags_ship_id":4188977104,"hits":33958,"shots":137353},"battles":1328,"damage_dealt":50820490,"wins":604,"xp":1735075,"frags":629,"survived_battles":370}},"nickname":"Invicible_BC","last_battle_time":1647151451}}}
+
+2022-03-13 14:48:51,148 [9] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023915835":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":4,"hits":634,"shots":1471},"battles":16,"damage_dealt":699654,"wins":7,"xp":23494,"frags":5,"survived_battles":3},"last_battle_time":1646237040,"account_id":2023915835,"ship_id":3760109296}]}}
+
+2022-03-13 14:48:51,245 [8] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2025475420":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":180,"shots":424},"battles":1,"damage_dealt":83615,"wins":1,"xp":2723,"frags":0,"survived_battles":0},"last_battle_time":1645101666,"account_id":2025475420,"ship_id":4179506640}]}}
+
+2022-03-13 14:48:51,565 [14] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2022214870":[{"pvp":{"main_battery":{"max_frags_battle":1,"frags":2,"hits":103,"shots":534},"battles":5,"damage_dealt":179641,"wins":2,"xp":7293,"frags":3,"survived_battles":2},"last_battle_time":1642433967,"account_id":2022214870,"ship_id":4179572528}]}}
+
+2022-03-13 14:48:51,657 [10] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2020399714":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":0,"shots":0},"battles":0,"damage_dealt":0,"wins":0,"xp":0,"frags":0,"survived_battles":0},"last_battle_time":0,"account_id":2020399714,"ship_id":3760109392}]}}
+
+2022-03-13 14:48:51,761 [15] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2032204582":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":0,"shots":0},"battles":0,"damage_dealt":0,"wins":0,"xp":0,"frags":0,"survived_battles":0},"last_battle_time":1646288482,"account_id":2032204582,"ship_id":3760142160}]}}
+
+2022-03-13 14:52:16,906 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 14:52:16,932 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 14:52:16,974 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 14:52:16,983 [1] INFO  WowsTools.WowsMain - 游戏路径：
+
+2022-03-13 14:52:21,049 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 14:53:42,402 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 14:53:42,426 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 14:53:42,464 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 14:53:42,472 [1] INFO  WowsTools.WowsMain - 游戏路径：
+
+2022-03-13 14:53:46,530 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2

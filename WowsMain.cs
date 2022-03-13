@@ -127,6 +127,7 @@ namespace WowsTools
                 if (GAME_RUN)
                 {
                     GAME_RUN = false;
+                    this.UpdateToolStripMenuItem.Enabled = false;
                     log.Info("游戏replays路径:" + jsonFilePath);
                     ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
                 }
@@ -294,6 +295,7 @@ namespace WowsTools
                 this.dataGridViewOne.Columns[2].FillWeight = 9;
                 this.dataGridViewOne.Columns[1].FillWeight = 10;
                 this.dataGridViewOne.Columns[0].FillWeight = 9;
+                this.UpdateToolStripMenuItem.Enabled = true;
             })));
         }
 
@@ -308,6 +310,7 @@ namespace WowsTools
             ShipPrUtils.Get(0, true);
             UPDATE = true;
             GAME_RUN = true;
+            MessageBox.Show("刷新成功");
         }
     }
 }
