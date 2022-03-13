@@ -28,7 +28,7 @@ namespace WowsTools.service
             {
                 return dataList;
             }
-            
+
             //解析
             JToken token = JsonConvert.DeserializeObject<JToken>(json);
             int playersPerTeam = token["playersPerTeam"].Value<int>();
@@ -45,18 +45,30 @@ namespace WowsTools.service
                 dataList.Add(data);
                 builder.Append(data.AccountName).Append(",");
             }
-            log.Info("对局信息用户名称："+ builder.ToString());
+            log.Info("对局信息用户名称：" + builder.ToString());
             return dataList;
         }
 
-        public static GameAccountInfoData AccountInfo(WowsServer server,GameAccountInfoData games)
+        /// <summary>
+        /// 游戏信息
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="games"></param>
+        /// <returns></returns>
+        public static GameAccountInfoData AccountInfo(WowsServer server, GameAccountInfoData games)
         {
-            games.AccountId =  WowsAccount.QueryName(server,games.AccountName);
+            games.AccountId = WowsAccount.QueryName(server, games.AccountName);
             games = WowsAccount.QueryAccountInfo(server, games);
             games.GameAccountShipInfo = WowsAccount.QueryShipInfoData(server, games.AccountId, games.GameAccountShipInfo);
             return games;
         }
 
+        /// <summary>
+        /// 对局信息
+        /// </summary>
+        /// <param name="server"></param>
+        /// <param name="games"></param>
+        /// <returns></returns>
         public static GameInfoData GameInfoData(WowsServer server, List<GameAccountInfoData> games)
         {
             GameInfoData data = new GameInfoData();
@@ -66,8 +78,14 @@ namespace WowsTools.service
             int twoCount = 0;
             double oneWins = 0;
             double twoWins = 0;
-            foreach(var item in games)
+            foreach (var item in games)
             {
+                ShipUtils shipUtils = ShipUtils.Get(item.GameAccountShipInfo.ShipId, false);
+                item.GameAccountShipInfo.ShipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
+                item.GameAccountShipInfo.ShipLevel = shipUtils.tier;
+                item.GameAccountShipInfo.ShipType = shipUtils.ship_type;
+                item.GameAccountShipInfo.ShipTypeNumber = ShipUtils.ShipType(item.GameAccountShipInfo.ShipType);
+
                 if (item.Team)
                 {
                     teamOne.Add(item);

@@ -137,11 +137,6 @@ namespace WowsTools.api
                     shipInfoData.Frags = FragsTem;
                     shipInfoData.SurvivedBattles = SurvivedBattlesTem;
                 }
-                ShipUtils shipUtils = ShipUtils.Get(shipInfoData.ShipId, false);
-                shipInfoData.ShipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
-                shipInfoData.ShipLevel = shipUtils.tier;
-                shipInfoData.ShipType = shipUtils.ship_type;
-                shipInfoData.ShipTypeNumber = ShipUtils.ShipType(shipInfoData.ShipType);
                 //PR计算
                 shipInfoData.Pr = ShipPrUtils.Pr(shipInfoData, ShipPrUtils.Get(shipInfoData.ShipId, false));
             }

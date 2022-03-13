@@ -22,6 +22,7 @@ namespace WowsTools
         private const string VERSION = "0.0.3";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
+        private static bool CHECK_REPLAY = true;
 
         private static WowsServer WowsServer = null;
         private static List<GameAccountInfoData> GAME_INFO_LIST = new List<GameAccountInfoData>();
@@ -244,7 +245,7 @@ namespace WowsTools
                     row.Cells[2].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
                     row.Cells[3].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                    row.Cells[4].Value = data.Hide ? na : shipData.ShipName;
+                    row.Cells[4].Value = shipData.ShipName;
                     row.Cells[5].Value = data.Hide ? na : shipData.Battles.ToString();
                     row.Cells[6].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
@@ -269,7 +270,7 @@ namespace WowsTools
                     row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
                     row.Cells[5].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                    row.Cells[4].Value = data.Hide ? na : shipData.ShipName;
+                    row.Cells[4].Value = shipData.ShipName;
                     row.Cells[3].Value = data.Hide ? na : shipData.Battles.ToString();
                     row.Cells[2].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
@@ -298,15 +299,15 @@ namespace WowsTools
                 this.dataGridViewOne.Columns[7].FillWeight = 10;
                 this.dataGridViewOne.Columns[8].FillWeight = 9;
 
-                this.dataGridViewOne.Columns[8].FillWeight = 26;
-                this.dataGridViewOne.Columns[7].FillWeight = 9;
-                this.dataGridViewOne.Columns[6].FillWeight = 10;
-                this.dataGridViewOne.Columns[5].FillWeight = 6;
-                this.dataGridViewOne.Columns[4].FillWeight = 12;
-                this.dataGridViewOne.Columns[3].FillWeight = 9;
-                this.dataGridViewOne.Columns[2].FillWeight = 9;
-                this.dataGridViewOne.Columns[1].FillWeight = 10;
-                this.dataGridViewOne.Columns[0].FillWeight = 9;
+                this.dataGridViewTwo.Columns[8].FillWeight = 26;
+                this.dataGridViewTwo.Columns[7].FillWeight = 9;
+                this.dataGridViewTwo.Columns[6].FillWeight = 10;
+                this.dataGridViewTwo.Columns[5].FillWeight = 6;
+                this.dataGridViewTwo.Columns[4].FillWeight = 12;
+                this.dataGridViewTwo.Columns[3].FillWeight = 9;
+                this.dataGridViewTwo.Columns[2].FillWeight = 9;
+                this.dataGridViewTwo.Columns[1].FillWeight = 10;
+                this.dataGridViewTwo.Columns[0].FillWeight = 9;
                 this.UpdateToolStripMenuItem.Enabled = true;
                 this.labelStatusInfo.Text = "对局数据渲染结束";
             })));

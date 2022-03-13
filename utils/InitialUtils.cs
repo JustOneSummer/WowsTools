@@ -24,6 +24,10 @@ namespace WowsTools.utils
 
         public static string GetReplayPath()
         {
+            if (string.IsNullOrEmpty(REPLAY_PATH))
+            {
+                ReplaysPath();
+            }
             return REPLAY_PATH;
         }
 
@@ -131,7 +135,6 @@ namespace WowsTools.utils
                 Director(dd.FullName, list);
             }
         }
-
         private static void WowsExeHomePath()
         {
             Process[] processes = Process.GetProcesses();
@@ -170,7 +173,7 @@ namespace WowsTools.utils
                 }
                 if (info != null && File.Exists(info.FullName))
                 {
-                    REPLAY_PATH =  info.FullName;
+                    REPLAY_PATH = info.FullName;
                     return;
                 }
             }
