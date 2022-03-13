@@ -10,6 +10,8 @@ namespace WowsTools.utils
 {
     class ShipPrUtils
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static Dictionary<long, ShipPrUtils> PR_MAP = new Dictionary<long, ShipPrUtils>();
 
         public long shipId;
@@ -30,10 +32,16 @@ namespace WowsTools.utils
                 string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 if (!lastDate.Equals(dayDate))
                 {
-                    string jsonData = HttpUtils.Get(HttpUtils.URL+"/public/ship/pr/list");
-                    using (StreamWriter streamWriter = new StreamWriter(path, false))
+                    try
                     {
-                        streamWriter.WriteLine(jsonData);
+                        string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/pr/list");
+                        using (StreamWriter streamWriter = new StreamWriter(path, false))
+                        {
+                            streamWriter.WriteLine(jsonData);
+                        }
+                    }catch(Exception e)
+                    {
+                        log.Error("请求PR数据出错！" + e.Message);
                     }
                 }
                 PR_MAP.Clear();

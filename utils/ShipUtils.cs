@@ -9,6 +9,8 @@ namespace WowsTools.utils
 {
     class ShipUtils
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private static Dictionary<long, ShipUtils> SHIP_MAP = new Dictionary<long, ShipUtils>();
 
         public long shipId;
@@ -29,10 +31,16 @@ namespace WowsTools.utils
                 string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
                 if (!lastDate.Equals(dayDate))
                 {
-                    string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/list");
-                    using (StreamWriter streamWriter = new StreamWriter(path,false))
+                    try
                     {
-                        streamWriter.WriteLine(jsonData);
+                        string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/list");
+                        using (StreamWriter streamWriter = new StreamWriter(path, false))
+                        {
+                            streamWriter.WriteLine(jsonData);
+                        }
+                    }catch(Exception e)
+                    {
+                        log.Error("请求船只数据出错！"+e.Message);
                     }
                 }
                 SHIP_MAP.Clear();
