@@ -140,7 +140,7 @@ namespace WowsTools
                 }
                 else
                 {
-                    LoadGameHome();
+                    InitialUtils.GetHome();
                     GAME_RUN = true;
                 }
             }
@@ -322,7 +322,7 @@ namespace WowsTools
             }
         }
 
-        private void LoadDataGridViewWeight(int lenA,int lenB)
+        private void LoadDataGridViewWeight(int lenA, int lenB)
         {
             this.dataGridViewOne.Columns[0].FillWeight = 26;
             this.dataGridViewOne.Columns[1].FillWeight = 9;
@@ -359,6 +359,15 @@ namespace WowsTools
             for (int i = 0; i < lenB; i++)
             {
                 this.dataGridViewTwo.Rows[i].Height = 35;
+            }
+        }
+
+
+        private void LoadViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WowsServer != null)
+            {
+                DataViewLoad(WowsServer);
             }
         }
     }

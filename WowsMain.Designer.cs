@@ -39,7 +39,7 @@ namespace WowsTools
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BattleInterfaceWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LoadViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
@@ -73,16 +73,17 @@ namespace WowsTools
             // SetUpToolStripMenuItem
             // 
             this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BattleInterfaceWidthToolStripMenuItem});
+            this.LoadViewToolStripMenuItem});
             this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
             this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
             this.SetUpToolStripMenuItem.Text = "设置";
             // 
-            // BattleInterfaceWidthToolStripMenuItem
+            // LoadViewToolStripMenuItem
             // 
-            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
-            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
-            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
+            this.LoadViewToolStripMenuItem.Name = "LoadViewToolStripMenuItem";
+            this.LoadViewToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.LoadViewToolStripMenuItem.Text = "重新渲染";
+            this.LoadViewToolStripMenuItem.Click += new System.EventHandler(this.LoadViewToolStripMenuItem_Click);
             // 
             // UpdateToolStripMenuItem
             // 
@@ -296,7 +297,7 @@ namespace WowsTools
         private System.Windows.Forms.Label labelStatusInfo;
         private System.Windows.Forms.Label labelGamePath;
         private System.Windows.Forms.ToolStripMenuItem SetUpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem BattleInterfaceWidthToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LoadViewToolStripMenuItem;
     }
 }
 
