@@ -41,7 +41,6 @@ namespace WowsTools
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
-            this.VsLabel = new System.Windows.Forms.Label();
             this.labelWinsA = new System.Windows.Forms.Label();
             this.labelWinsB = new System.Windows.Forms.Label();
             this.dataGridViewTwo = new System.Windows.Forms.DataGridView();
@@ -110,21 +109,9 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(700, 331);
+            this.dataGridViewOne.Size = new System.Drawing.Size(715, 331);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
-            // 
-            // VsLabel
-            // 
-            this.VsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.VsLabel.AutoSize = true;
-            this.VsLabel.Font = new System.Drawing.Font("微软雅黑", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.VsLabel.ForeColor = System.Drawing.Color.Red;
-            this.VsLabel.Location = new System.Drawing.Point(722, 165);
-            this.VsLabel.Name = "VsLabel";
-            this.VsLabel.Size = new System.Drawing.Size(37, 26);
-            this.VsLabel.TabIndex = 3;
-            this.VsLabel.Text = "VS";
             // 
             // labelWinsA
             // 
@@ -161,7 +148,7 @@ namespace WowsTools
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTwo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTwo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTwo.Location = new System.Drawing.Point(772, 72);
+            this.dataGridViewTwo.Location = new System.Drawing.Point(757, 72);
             this.dataGridViewTwo.Name = "dataGridViewTwo";
             this.dataGridViewTwo.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -176,7 +163,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTwo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(700, 331);
+            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 331);
             this.dataGridViewTwo.TabIndex = 6;
             this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
@@ -219,7 +206,6 @@ namespace WowsTools
             this.Controls.Add(this.dataGridViewTwo);
             this.Controls.Add(this.labelWinsB);
             this.Controls.Add(this.labelWinsA);
-            this.Controls.Add(this.VsLabel);
             this.Controls.Add(this.dataGridViewOne);
             this.Controls.Add(this.ServerLable);
             this.Controls.Add(this.menuStrip1);
@@ -246,7 +232,6 @@ namespace WowsTools
         private System.Windows.Forms.ToolStripMenuItem GuanYuToolStripMenuItem;
         private System.Windows.Forms.Label ServerLable;
         private System.Windows.Forms.DataGridView dataGridViewOne;
-        private System.Windows.Forms.Label VsLabel;
         private System.Windows.Forms.Label labelWinsA;
         private System.Windows.Forms.Label labelWinsB;
         private System.Windows.Forms.DataGridView dataGridViewTwo;
