@@ -50,6 +50,8 @@ namespace WowsTools
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.labelStatusInfo = new System.Windows.Forms.Label();
             this.labelGamePath = new System.Windows.Forms.Label();
+            this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BattleInterfaceWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
@@ -60,7 +62,8 @@ namespace WowsTools
             this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UpdateToolStripMenuItem,
-            this.GuanYuToolStripMenuItem});
+            this.GuanYuToolStripMenuItem,
+            this.SetUpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1484, 27);
@@ -120,7 +123,7 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(715, 343);
+            this.dataGridViewOne.Size = new System.Drawing.Size(715, 378);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
@@ -174,7 +177,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTwo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 343);
+            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 378);
             this.dataGridViewTwo.TabIndex = 6;
             this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
@@ -231,11 +234,25 @@ namespace WowsTools
             this.labelGamePath.TabIndex = 11;
             this.labelGamePath.Text = "未识别游戏路径";
             // 
+            // SetUpToolStripMenuItem
+            // 
+            this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BattleInterfaceWidthToolStripMenuItem});
+            this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
+            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.SetUpToolStripMenuItem.Text = "设置";
+            // 
+            // BattleInterfaceWidthToolStripMenuItem
+            // 
+            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
+            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
+            // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 427);
+            this.ClientSize = new System.Drawing.Size(1484, 462);
             this.Controls.Add(this.labelGamePath);
             this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);
@@ -278,6 +295,8 @@ namespace WowsTools
         private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
         private System.Windows.Forms.Label labelStatusInfo;
         private System.Windows.Forms.Label labelGamePath;
+        private System.Windows.Forms.ToolStripMenuItem SetUpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BattleInterfaceWidthToolStripMenuItem;
     }
 }
 

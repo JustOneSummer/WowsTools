@@ -58,6 +58,7 @@ namespace WowsTools
             this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOne.ClearSelection();
+            this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
 
             this.dataGridViewTwo.RowHeadersVisible = false;
             this.dataGridViewTwo.Columns.Add("shipPr", "评分");
@@ -74,6 +75,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTwo.ClearSelection();
+            this.dataGridViewTwo.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             log.Info("初始化 版本=" + VERSION);
             LoadGameHome();
             ShipUtils.Get(0, true);
@@ -255,7 +257,6 @@ namespace WowsTools
                     row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
                     row.Cells[8].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
                     this.dataGridViewOne.Rows.Add(row);
-
                 }
 
                 foreach (var data in gameInfoData.TeamTwoList)
@@ -281,33 +282,7 @@ namespace WowsTools
                     row.Cells[0].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
                     this.dataGridViewTwo.Rows.Add(row);
                 }
-
-                for (int j = 0; j < 9; j++)
-                {
-                    this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
-                    this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                }
-                this.dataGridViewOne.Columns[0].FillWeight = 26;
-                this.dataGridViewOne.Columns[1].FillWeight = 9;
-                this.dataGridViewOne.Columns[2].FillWeight = 10;
-                this.dataGridViewOne.Columns[3].FillWeight = 6;
-                this.dataGridViewOne.Columns[4].FillWeight = 12;
-                this.dataGridViewOne.Columns[5].FillWeight = 9;
-                this.dataGridViewOne.Columns[6].FillWeight = 9;
-                this.dataGridViewOne.Columns[7].FillWeight = 10;
-                this.dataGridViewOne.Columns[8].FillWeight = 9;
-
-                this.dataGridViewTwo.Columns[8].FillWeight = 26;
-                this.dataGridViewTwo.Columns[7].FillWeight = 9;
-                this.dataGridViewTwo.Columns[6].FillWeight = 10;
-                this.dataGridViewTwo.Columns[5].FillWeight = 6;
-                this.dataGridViewTwo.Columns[4].FillWeight = 12;
-                this.dataGridViewTwo.Columns[3].FillWeight = 9;
-                this.dataGridViewTwo.Columns[2].FillWeight = 9;
-                this.dataGridViewTwo.Columns[1].FillWeight = 10;
-                this.dataGridViewTwo.Columns[0].FillWeight = 9;
+                LoadDataGridViewWeight(gameInfoData.TeamOneList.Count, gameInfoData.TeamTwoList.Count);
                 this.UpdateToolStripMenuItem.Enabled = true;
                 this.labelStatusInfo.Text = "对局数据渲染结束";
             })));
@@ -345,6 +320,46 @@ namespace WowsTools
                 this.labelGamePath.ForeColor = Color.Red;
             }
             log.Info("游戏路径：" + InitialUtils.GetHome());
+        }
+
+        private void LoadDataGridViewWeight(int lenA,int lenB)
+        {
+            this.dataGridViewOne.Columns[0].FillWeight = 26;
+            this.dataGridViewOne.Columns[1].FillWeight = 9;
+            this.dataGridViewOne.Columns[2].FillWeight = 10;
+            this.dataGridViewOne.Columns[3].FillWeight = 6;
+            this.dataGridViewOne.Columns[4].FillWeight = 12;
+            this.dataGridViewOne.Columns[5].FillWeight = 9;
+            this.dataGridViewOne.Columns[6].FillWeight = 9;
+            this.dataGridViewOne.Columns[7].FillWeight = 10;
+            this.dataGridViewOne.Columns[8].FillWeight = 9;
+
+            this.dataGridViewTwo.Columns[8].FillWeight = 26;
+            this.dataGridViewTwo.Columns[7].FillWeight = 9;
+            this.dataGridViewTwo.Columns[6].FillWeight = 10;
+            this.dataGridViewTwo.Columns[5].FillWeight = 6;
+            this.dataGridViewTwo.Columns[4].FillWeight = 12;
+            this.dataGridViewTwo.Columns[3].FillWeight = 9;
+            this.dataGridViewTwo.Columns[2].FillWeight = 9;
+            this.dataGridViewTwo.Columns[1].FillWeight = 10;
+            this.dataGridViewTwo.Columns[0].FillWeight = 9;
+
+            for (int i = 0; i < 9; i++)
+            {
+                this.dataGridViewOne.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                this.dataGridViewOne.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                this.dataGridViewTwo.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                this.dataGridViewTwo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            for (int i = 0; i < lenA; i++)
+            {
+                this.dataGridViewOne.Rows[i].Height = 35;
+            }
+            for (int i = 0; i < lenB; i++)
+            {
+                this.dataGridViewTwo.Rows[i].Height = 35;
+            }
         }
     }
 }
