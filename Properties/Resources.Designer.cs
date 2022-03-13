@@ -69,15 +69,5 @@ namespace WowsTools.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap QQ图片20220312153455 {
-            get {
-                object obj = ResourceManager.GetObject("QQ图片20220312153455", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

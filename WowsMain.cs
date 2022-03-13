@@ -39,7 +39,7 @@ namespace WowsTools
         private void WowsMain_Load(object sender, EventArgs e)
         {
             log4net.Config.XmlConfigurator.Configure();
-            log.Info("当前平台的 .net framework 信息："+ System.Environment.Version.ToString());
+            log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne.RowHeadersVisible = false;
             //this.dataGridViewOne.Columns.Add("clan", "军团");
@@ -70,7 +70,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTwo.ClearSelection();
-            log.Info("初始化 版本="+ VERSION);
+            log.Info("初始化 版本=" + VERSION);
             log.Info("游戏路径：" + InitialUtils.wowsExeHomePath());
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);
@@ -98,7 +98,8 @@ namespace WowsTools
                 {
                     MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 log.Error("请求版本信息出错！" + e.Message);
                 MessageBox.Show("请求版本信息出错！如果开了代理请关闭全局代理...");
@@ -186,7 +187,14 @@ namespace WowsTools
         {
             if (WowsServer != null)
             {
-                GAME_INFO_LIST.Add(PvpService.AccountInfo(WowsServer, (GameAccountInfoData)state));
+                try
+                {
+                    GAME_INFO_LIST.Add(PvpService.AccountInfo(WowsServer, (GameAccountInfoData)state));
+                }
+                catch (Exception e)
+                {
+                    log.Error("获取对局信息错误！" + e.Message);
+                }
             }
         }
 
@@ -201,8 +209,8 @@ namespace WowsTools
                 this.dataGridViewOne.Rows.Clear();
                 this.dataGridViewTwo.Rows.Clear();
                 this.ServerLable.Text = server.ServerName;
-                GameInfoData gameInfoData = PvpService.GameInfoData(server,GAME_INFO_LIST);
-                
+                GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
+
                 this.labelWinsA.Text = "平均胜率：" + (gameInfoData.TeamOneWins / gameInfoData.TeamOneCount).ToString("f2") + "%";
                 this.labelWinsB.Text = "平均胜率：" + (gameInfoData.TeamTwoWins / gameInfoData.TeamTwoCount).ToString("f2") + "%";
                 //排序
@@ -216,7 +224,7 @@ namespace WowsTools
                     row.CreateCells(this.dataGridViewOne);
                     row.Cells[0].Value = data.AccountName;
 
-                    row.Cells[1].Value = data.Hide ? na : data.GameWins().ToString("f2")+"%";
+                    row.Cells[1].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
                     row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
                     row.Cells[2].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
