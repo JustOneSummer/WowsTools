@@ -38,10 +38,10 @@ namespace WowsTools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BattleInterfaceWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
             this.labelWinsA = new System.Windows.Forms.Label();
@@ -70,6 +70,20 @@ namespace WowsTools
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // SetUpToolStripMenuItem
+            // 
+            this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BattleInterfaceWidthToolStripMenuItem});
+            this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
+            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.SetUpToolStripMenuItem.Text = "设置";
+            // 
+            // BattleInterfaceWidthToolStripMenuItem
+            // 
+            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
+            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
+            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
+            // 
             // UpdateToolStripMenuItem
             // 
             this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
@@ -83,20 +97,6 @@ namespace WowsTools
             this.GuanYuToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
             this.GuanYuToolStripMenuItem.Text = "关于";
             this.GuanYuToolStripMenuItem.Click += new System.EventHandler(this.GuanYuToolStripMenuItem_Click);
-            // 
-            // SetUpToolStripMenuItem
-            // 
-            this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BattleInterfaceWidthToolStripMenuItem});
-            this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
-            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.SetUpToolStripMenuItem.Text = "设置";
-            // 
-            // BattleInterfaceWidthToolStripMenuItem
-            // 
-            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
-            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
             // 
             // ServerLable
             // 
@@ -137,7 +137,7 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(715, 378);
+            this.dataGridViewOne.Size = new System.Drawing.Size(715, 477);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
@@ -191,7 +191,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTwo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 378);
+            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 477);
             this.dataGridViewTwo.TabIndex = 6;
             this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
@@ -252,7 +252,7 @@ namespace WowsTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 462);
+            this.ClientSize = new System.Drawing.Size(1484, 561);
             this.Controls.Add(this.labelGamePath);
             this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);
