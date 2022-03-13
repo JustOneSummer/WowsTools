@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WowsTools.model;
@@ -24,21 +25,28 @@ namespace WowsTools.api
         {
             Dictionary<string, string> map = new Dictionary<string, string>();
             map.Add("search", AccountName);
-            string v = HttpUtils.Get(Server, "/wows/account/list/", map);
-            if (!string.IsNullOrEmpty(v))
+            try
             {
-                WowsJsonData jsonData = HttpUtils.WowsJson(v);
-                if (jsonData.status)
+                string v = HttpUtils.Get(Server, "/wows/account/list/", map);
+                if (!string.IsNullOrEmpty(v))
                 {
-                    JToken users = jsonData.jToken["data"].Value<JToken>();
-                    foreach (JToken jt in users)
+                    WowsJsonData jsonData = HttpUtils.WowsJson(v);
+                    if (jsonData.status)
                     {
-                        if (jt["nickname"].Value<string>().ToUpper().Equals(AccountName.ToUpper()))
+                        JToken users = jsonData.jToken["data"].Value<JToken>();
+                        foreach (JToken jt in users)
                         {
-                            return jt["account_id"].Value<long>();
+                            if (jt["nickname"].Value<string>().ToUpper().Equals(AccountName.ToUpper()))
+                            {
+                                return jt["account_id"].Value<long>();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception e)
+            {
+                log.Error("查询用户名请求异常！" + e.Message);
             }
             return 0;
         }
