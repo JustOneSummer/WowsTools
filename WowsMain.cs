@@ -88,13 +88,20 @@ namespace WowsTools
 
         public void CheckUpdate()
         {
-            int localV = int.Parse(VERSION.Replace(".", ""));
-            string newV = HttpUtils.GetVersion();
-            log.Info("检查版本 新版本=" + newV);
-            int ver = int.Parse(newV.Replace(".", ""));
-            if (ver > localV)
+            try
             {
-                MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
+                int localV = int.Parse(VERSION.Replace(".", ""));
+                string newV = HttpUtils.GetVersion();
+                log.Info("检查版本 新版本=" + newV);
+                int ver = int.Parse(newV.Replace(".", ""));
+                if (ver > localV)
+                {
+                    MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
+                }
+            }catch(Exception e)
+            {
+                log.Error("请求版本信息出错！" + e.Message);
+                MessageBox.Show("请求版本信息出错！如果开了代理请关闭全局代理...");
             }
         }
 
