@@ -293,5 +293,18 @@ namespace WowsTools
                 this.dataGridViewTwo.Columns[0].FillWeight = 9;
             })));
         }
+
+        /// <summary>
+        /// 点击时重新加载文件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShipUtils.Get(0, true);
+            ShipPrUtils.Get(0, true);
+            UPDATE = true;
+            GAME_RUN = true;
+        }
     }
 }

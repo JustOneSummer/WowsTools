@@ -47,6 +47,7 @@ namespace WowsTools
             this.labelMyTeam = new System.Windows.Forms.Label();
             this.labelDIJun = new System.Windows.Forms.Label();
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
@@ -56,6 +57,7 @@ namespace WowsTools
             // 
             this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UpdateToolStripMenuItem,
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -196,6 +198,13 @@ namespace WowsTools
             this.timerGameCheck.Interval = 3000;
             this.timerGameCheck.Tick += new System.EventHandler(this.timerGameCheck_Tick);
             // 
+            // UpdateToolStripMenuItem
+            // 
+            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
+            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.UpdateToolStripMenuItem.Text = "刷新";
+            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
+            // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -238,6 +247,7 @@ namespace WowsTools
         private System.Windows.Forms.Label labelMyTeam;
         private System.Windows.Forms.Label labelDIJun;
         private System.Windows.Forms.Timer timerGameCheck;
+        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
     }
 }
 
