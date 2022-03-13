@@ -33,15 +33,19 @@ namespace WowsTools
             this.labelHome = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.linkLabelQQ = new System.Windows.Forms.LinkLabel();
-            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelHome
             // 
             this.labelHome.AutoSize = true;
             this.labelHome.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelHome.Location = new System.Drawing.Point(117, 18);
+            this.labelHome.Location = new System.Drawing.Point(158, 9);
             this.labelHome.Name = "labelHome";
             this.labelHome.Size = new System.Drawing.Size(272, 31);
             this.labelHome.TabIndex = 0;
@@ -51,7 +55,7 @@ namespace WowsTools
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(173, 70);
+            this.label1.Location = new System.Drawing.Point(229, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(138, 22);
             this.label1.TabIndex = 1;
@@ -61,31 +65,64 @@ namespace WowsTools
             // 
             this.linkLabelQQ.AutoSize = true;
             this.linkLabelQQ.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.linkLabelQQ.Location = new System.Drawing.Point(182, 110);
+            this.linkLabelQQ.Location = new System.Drawing.Point(315, 99);
             this.linkLabelQQ.Name = "linkLabelQQ";
-            this.linkLabelQQ.Size = new System.Drawing.Size(117, 22);
+            this.linkLabelQQ.Size = new System.Drawing.Size(100, 22);
             this.linkLabelQQ.TabIndex = 3;
             this.linkLabelQQ.TabStop = true;
-            this.linkLabelQQ.Text = "yuyuko交流群";
+            this.linkLabelQQ.Text = "872725671";
             this.linkLabelQQ.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelQQ_LinkClicked);
             // 
-            // pictureBoxImage
+            // label2
             // 
-            this.pictureBoxImage.Image = global::WowsTools.Properties.Resources._1647070636189;
-            this.pictureBoxImage.Location = new System.Drawing.Point(150, 145);
-            this.pictureBoxImage.Name = "pictureBoxImage";
-            this.pictureBoxImage.Size = new System.Drawing.Size(188, 171);
-            this.pictureBoxImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImage.TabIndex = 4;
-            this.pictureBoxImage.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Location = new System.Drawing.Point(161, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(148, 22);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "点击快速加QQ群：";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WowsTools.Properties.Resources.mm_reward_qrcode_1647178103004;
+            this.pictureBox2.Location = new System.Drawing.Point(298, 198);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(280, 322);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WowsTools.Properties.Resources._1647178144756;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 198);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(280, 322);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(241, 143);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 31);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "欢迎赞助";
             // 
             // Author
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 328);
-            this.Controls.Add(this.pictureBoxImage);
+            this.ClientSize = new System.Drawing.Size(589, 532);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.linkLabelQQ);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelHome);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -94,7 +131,9 @@ namespace WowsTools
             this.Name = "Author";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Author";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
+            this.Load += new System.EventHandler(this.Author_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +144,9 @@ namespace WowsTools
         private System.Windows.Forms.Label labelHome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel linkLabelQQ;
-        private System.Windows.Forms.PictureBox pictureBoxImage;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label3;
     }
 }

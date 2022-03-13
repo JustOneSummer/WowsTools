@@ -63,9 +63,19 @@ namespace WowsTools.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap _1647070636189 {
+        internal static System.Drawing.Bitmap _1647178144756 {
             get {
-                object obj = ResourceManager.GetObject("1647070636189", resourceCulture);
+                object obj = ResourceManager.GetObject("1647178144756", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap mm_reward_qrcode_1647178103004 {
+            get {
+                object obj = ResourceManager.GetObject("mm_reward_qrcode_1647178103004", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

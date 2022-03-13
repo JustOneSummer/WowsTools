@@ -183,11 +183,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\1647070636189.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include=".gitignore" />
-    <Content Include="Resources\QQ图片20220312153455.jpg" />
+    <None Include="Resources\1647178144756.jpg" />
+    <None Include="Resources\mm_reward_qrcode_1647178103004.png" />
     <Content Include="yuyuko_avatar.ico" />
   </ItemGroup>
   <ItemGroup>
