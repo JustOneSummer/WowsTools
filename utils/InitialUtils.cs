@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace WowsTools.utils
@@ -146,8 +147,9 @@ namespace WowsTools.utils
             {
                 if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
                 {
-                    ProcessModule mainModule = process.MainModule;
-                    string wows = mainModule.FileName;
+                    //ProcessModule mainModule = process.MainModule;
+                    //string wows = mainModule.FileName;
+                    string wows = GetProcessFullPath(process.Id);
                     //获取游戏根目录
                     HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
                     return;
@@ -184,5 +186,24 @@ namespace WowsTools.utils
 
             REPLAY_PATH = null;
         }
+
+        public static string GetProcessFullPath(int id)
+        {
+            const int PROCESS_ALL_ACCESS = 0x1F0FFF;
+            const int PROCESS_VM_READ = 0x0010;
+            const int PROCESS_VM_WRITE = 0x0020;
+            uint Ucapacity = 1024;
+            int capacity = 1024;
+            StringBuilder builder = new StringBuilder(capacity);
+            IntPtr handle = OpenProcess(PROCESS_ALL_ACCESS, false, id);
+            QueryFullProcessImageName(handle, 0, builder, ref Ucapacity);
+            return builder.ToString();
+        }
+
+        [DllImport("kernel32.dll")]
+        public static extern IntPtr OpenProcess(int dwDesiredAccess, bool bInheritHandle, int dwProcessId);
+
+        [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+        public static extern bool QueryFullProcessImageName(IntPtr hProcess, uint dwFlags, [Out, MarshalAs(UnmanagedType.LPTStr)] StringBuilder lpExeName, ref uint lpdwSize);
     }
 }

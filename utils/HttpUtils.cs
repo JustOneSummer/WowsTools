@@ -25,7 +25,7 @@ namespace WowsTools.utils
             }
             catch (Exception e)
             {
-                log.Error("版本相关信息获取异常 : ",e);
+                log.Error("版本相关信息获取异常 : ", e);
             }
             return "0.0.1";
         }

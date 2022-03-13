@@ -39,9 +39,10 @@ namespace WowsTools.utils
                         {
                             streamWriter.WriteLine(jsonData);
                         }
-                    }catch(Exception e)
+                    }
+                    catch (Exception e)
                     {
-                        log.Error("请求PR数据出错！",e);
+                        log.Error("请求PR数据出错！", e);
                     }
                 }
                 PR_MAP.Clear();

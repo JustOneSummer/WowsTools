@@ -106,7 +106,7 @@ namespace WowsTools
             }
             catch (Exception e)
             {
-                log.Error("请求版本信息出错！",e);
+                log.Error("请求版本信息出错！", e);
                 MessageBox.Show("请求版本信息出错！如果开了代理请关闭全局代理...");
             }
         }
@@ -147,7 +147,7 @@ namespace WowsTools
             catch (Exception ex)
             {
                 this.UpdateToolStripMenuItem.Enabled = true;
-                log.Error("定时任务出现异常！" , ex);
+                log.Error("定时任务出现异常！", ex);
                 MessageBox.Show("定时任务出现异常！" + ex.Message);
             }
         }
@@ -210,7 +210,7 @@ namespace WowsTools
                 }
                 catch (Exception e)
                 {
-                    log.Error("获取对局信息错误！" , e);
+                    log.Error("获取对局信息错误！", e);
                 }
             }
         }

@@ -38,9 +38,10 @@ namespace WowsTools.utils
                         {
                             streamWriter.WriteLine(jsonData);
                         }
-                    }catch(Exception e)
+                    }
+                    catch (Exception e)
                     {
-                        log.Error("请求船只数据出错！",e);
+                        log.Error("请求船只数据出错！", e);
                     }
                 }
                 SHIP_MAP.Clear();

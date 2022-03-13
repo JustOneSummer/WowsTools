@@ -16,7 +16,7 @@ namespace WowsTools.api
             {"cn",new WowsServer("cn","https://wowsgame.cn/zh-cn/community/accounts/","国服") }
         };
 
-        public const  string KEY = "907d9c6bfc0d896a2c156e57194a97cf";
+        public const string KEY = "907d9c6bfc0d896a2c156e57194a97cf";
 
         public WowsServer(string v1, string v2, string v3)
         {

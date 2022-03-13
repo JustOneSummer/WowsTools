@@ -46,7 +46,7 @@ namespace WowsTools.api
             }
             catch (Exception e)
             {
-                log.Error("查询用户名请求异常！",e);
+                log.Error("查询用户名请求异常！", e);
             }
             return 0;
         }
