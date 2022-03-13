@@ -25,15 +25,18 @@ namespace WowsTools.api
             Dictionary<string, string> map = new Dictionary<string, string>();
             map.Add("search", AccountName);
             string v = HttpUtils.Get(Server, "/wows/account/list/", map);
-            WowsJsonData jsonData = HttpUtils.WowsJson(v);
-            if (jsonData.status)
+            if (!string.IsNullOrEmpty(v))
             {
-                JToken users = jsonData.jToken["data"].Value<JToken>();
-                foreach (JToken jt in users)
+                WowsJsonData jsonData = HttpUtils.WowsJson(v);
+                if (jsonData.status)
                 {
-                    if (jt["nickname"].Value<string>().ToUpper().Equals(AccountName.ToUpper()))
+                    JToken users = jsonData.jToken["data"].Value<JToken>();
+                    foreach (JToken jt in users)
                     {
-                        return jt["account_id"].Value<long>();
+                        if (jt["nickname"].Value<string>().ToUpper().Equals(AccountName.ToUpper()))
+                        {
+                            return jt["account_id"].Value<long>();
+                        }
                     }
                 }
             }
@@ -48,46 +51,38 @@ namespace WowsTools.api
         /// <returns></returns>
         public static GameAccountInfoData QueryAccountInfo(WowsServer server, GameAccountInfoData game)
         {
+            game.Hide = true;
             Dictionary<string, string> map = new Dictionary<string, string>();
             map.Add("fields", "last_battle_time,nickname,statistics.pvp.xp,statistics.pvp.main_battery,statistics.pvp.battles,statistics.pvp.wins,statistics.pvp.survived_battles,statistics.pvp.damage_dealt,statistics.pvp.frags");
             map.Add("account_id", game.AccountId.ToString());
             string v = HttpUtils.PostFrom(server, "/wows/account/info/", map);
             log.Info(game.AccountId + " 游戏用户信息：" + v);
-            WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
-            if (game.AccountId > 0 && wowsJsonData.status)
+            if (!string.IsNullOrEmpty(v))
             {
-                JToken data = wowsJsonData.jToken["data"];
-                int battles = 0;
-                long damage = 0;
-                double wins = 0;
-                JToken userToken = data.Value<JToken>(game.AccountId.ToString());
-                if (userToken != null && userToken.Type != JTokenType.Null)
+                WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
+                if (game.AccountId > 0 && wowsJsonData.status)
                 {
-                    JToken statistics = userToken.Value<JToken>("statistics");
-                    if (statistics.Type != JTokenType.Null)
+                    JToken data = wowsJsonData.jToken["data"];
+                    int battles = 0;
+                    long damage = 0;
+                    double wins = 0;
+                    JToken userToken = data.Value<JToken>(game.AccountId.ToString());
+                    if (userToken != null && userToken.Type != JTokenType.Null)
                     {
-                        JToken pvp = statistics.Value<JToken>("pvp");
-                        battles = pvp.Value<int>("battles");
-                        damage = pvp.Value<long>("damage_dealt");
-                        wins = pvp.Value<double>("wins");
-                        game.Hide = false;
+                        JToken statistics = userToken.Value<JToken>("statistics");
+                        if (statistics.Type != JTokenType.Null)
+                        {
+                            JToken pvp = statistics.Value<JToken>("pvp");
+                            battles = pvp.Value<int>("battles");
+                            damage = pvp.Value<long>("damage_dealt");
+                            wins = pvp.Value<double>("wins");
+                            game.Hide = false;
+                        }
                     }
-                    else
-                    {
-                        game.Hide = true;
-                    }
+                    game.Battles = battles;
+                    game.Damage = damage;
+                    game.Wins = wins;
                 }
-                else
-                {
-                    game.Hide = true;
-                }
-                game.Battles = battles;
-                game.Damage = damage;
-                game.Wins = wins;
-            }
-            else
-            {
-                game.Hide = true;
             }
             return game;
         }
@@ -103,42 +98,45 @@ namespace WowsTools.api
 
             string v = HttpUtils.PostFrom(server, "/wows/ships/stats/", map);
             log.Info("游戏用户船只信息：" + v);
-            WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
-            if (accountId > 0 && wowsJsonData.status)
+            if (!string.IsNullOrEmpty(v))
             {
-                JToken data = wowsJsonData.jToken["data"];
-                int BattlesTem = 0;
-                long DamageDealtTem = 0;
-                double WinsTem = 0;
-                int FragsTem = 0;
-                int SurvivedBattlesTem = 0;
-                if (data.ToList().Count >= 1)
+                WowsJsonData wowsJsonData = HttpUtils.WowsJson(v);
+                if (accountId > 0 && wowsJsonData.status)
                 {
-                    JToken item = data.Value<JToken>(accountId.ToString());
-                    if (item.Type != JTokenType.Null)
+                    JToken data = wowsJsonData.jToken["data"];
+                    int BattlesTem = 0;
+                    long DamageDealtTem = 0;
+                    double WinsTem = 0;
+                    int FragsTem = 0;
+                    int SurvivedBattlesTem = 0;
+                    if (data.ToList().Count >= 1)
                     {
-                        JToken list = item.ToList().ElementAt(0);
-                        JToken pvp = list.Value<JToken>("pvp");
-                        BattlesTem = pvp.Value<int>("battles");
-                        DamageDealtTem = pvp.Value<long>("damage_dealt");
-                        WinsTem = pvp.Value<double>("wins");
-                        FragsTem = pvp.Value<int>("frags");
-                        SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                        JToken item = data.Value<JToken>(accountId.ToString());
+                        if (item.Type != JTokenType.Null)
+                        {
+                            JToken list = item.ToList().ElementAt(0);
+                            JToken pvp = list.Value<JToken>("pvp");
+                            BattlesTem = pvp.Value<int>("battles");
+                            DamageDealtTem = pvp.Value<long>("damage_dealt");
+                            WinsTem = pvp.Value<double>("wins");
+                            FragsTem = pvp.Value<int>("frags");
+                            SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                        }
                     }
+                    shipInfoData.Battles = BattlesTem;
+                    shipInfoData.DamageDealt = DamageDealtTem;
+                    shipInfoData.Wins = WinsTem;
+                    shipInfoData.Frags = FragsTem;
+                    shipInfoData.SurvivedBattles = SurvivedBattlesTem;
                 }
-                shipInfoData.Battles = BattlesTem;
-                shipInfoData.DamageDealt = DamageDealtTem;
-                shipInfoData.Wins = WinsTem;
-                shipInfoData.Frags = FragsTem;
-                shipInfoData.SurvivedBattles = SurvivedBattlesTem;
+                ShipUtils shipUtils = ShipUtils.Get(shipInfoData.ShipId, false);
+                shipInfoData.ShipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
+                shipInfoData.ShipLevel = shipUtils.tier;
+                shipInfoData.ShipType = shipUtils.ship_type;
+                shipInfoData.ShipTypeNumber = ShipUtils.ShipType(shipInfoData.ShipType);
+                //PR计算
+                shipInfoData.Pr = ShipPrUtils.Pr(shipInfoData, ShipPrUtils.Get(shipInfoData.ShipId, false));
             }
-            ShipUtils shipUtils = ShipUtils.Get(shipInfoData.ShipId, false);
-            shipInfoData.ShipName = string.IsNullOrEmpty(shipUtils.ship_name_cn) ? shipUtils.name : shipUtils.ship_name_cn;
-            shipInfoData.ShipLevel = shipUtils.tier;
-            shipInfoData.ShipType = shipUtils.ship_type;
-            shipInfoData.ShipTypeNumber = ShipUtils.ShipType(shipInfoData.ShipType);
-            //PR计算
-            shipInfoData.Pr = ShipPrUtils.Pr(shipInfoData, ShipPrUtils.Get(shipInfoData.ShipId, false));
             return shipInfoData;
         }
     }
