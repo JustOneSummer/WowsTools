@@ -3294,3 +3294,65 @@
 2022-03-13 13:20:14,905 [1] INFO  WowsTools.WowsMain - 游戏路径：
 
 2022-03-13 13:20:18,952 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 13:28:26,186 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 13:28:26,213 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 13:28:26,259 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 13:28:26,268 [1] INFO  WowsTools.WowsMain - 游戏路径：
+
+2022-03-13 13:28:30,328 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 13:28:30,408 [1] ERROR WowsTools.Program - ****************************异常文本****************************
+【出现时间】：2022/3/13 13:28:30
+【异常类型】：DirectoryNotFoundException
+【异常信息】：未能找到路径“C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\replays”的一部分。
+【堆栈调用】：   在 System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   在 System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   在 System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   在 System.IO.Directory.GetDirectories(String path)
+   在 WowsTools.utils.InitialUtils.ReplaysPath() 位置 C:\Users\yuyuko\source\repos\WowsTools\utils\InitialUtils.cs:行号 50
+   在 WowsTools.WowsMain.timerGameCheck_Tick(Object sender, EventArgs e) 位置 C:\Users\yuyuko\source\repos\WowsTools\WowsMain.cs:行号 121
+   在 System.Windows.Forms.Timer.OnTick(EventArgs e)
+   在 System.Windows.Forms.Timer.TimerNativeWindow.WndProc(Message& m)
+   在 System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   在 System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   在 System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   在 System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   在 WowsTools.Program.Main() 位置 C:\Users\yuyuko\source\repos\WowsTools\Program.cs:行号 24
+【请截图发给作者解决 QQ：262749113】
+***************************************************************
+
+
+2022-03-13 13:29:28,520 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 13:29:28,545 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 13:29:28,557 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 13:29:28,565 [1] INFO  WowsTools.WowsMain - 游戏路径：
+
+2022-03-13 13:29:32,701 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 13:30:39,280 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 13:30:39,310 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 13:30:39,347 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 13:30:39,359 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-13 13:30:43,450 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2
+
+2022-03-13 13:36:06,521 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 13:36:06,548 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 13:36:06,569 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.2
+
+2022-03-13 13:36:06,582 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
+
+2022-03-13 13:36:10,704 [1] INFO  WowsTools.WowsMain - 检查版本 新版本=0.0.2

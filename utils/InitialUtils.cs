@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Management;
@@ -44,7 +45,35 @@ namespace WowsTools.utils
         /// <returns></returns>
         public static string ReplaysPath()
         {
-            return HOME + "replays/tempArenaInfo.json";
+            if (string.IsNullOrEmpty(HOME))
+            {
+                return null;
+            }
+            string replays = "replays";
+            string jsonFile = "/tempArenaInfo.json";
+            if (File.Exists(HOME + replays + jsonFile))
+            {
+                return HOME + replays + jsonFile;
+            }
+
+            //检测replay文件夹下面是否有版本号文件
+            string[] vs = Directory.GetDirectories(HOME + replays);
+            foreach (var item in vs)
+            {
+                string ij = item + jsonFile;
+                if (File.Exists(ij))
+                {
+                    FileInfo fileInfo = new FileInfo(ij);
+                    DateTime lastWriteTimeUtc = fileInfo.LastWriteTimeUtc;
+                    string lastDate = lastWriteTimeUtc.ToString("yyyy-MM-dd");
+                    string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
+                    if (!lastDate.Equals(dayDate))
+                    {
+                        return ij;
+                    }
+                }
+            }
+            return null;
         }
 
         /// <summary>
