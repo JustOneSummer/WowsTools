@@ -140,6 +140,7 @@ namespace WowsTools
                 }
                 else
                 {
+                    LoadGameHome();
                     GAME_RUN = true;
                 }
             }
@@ -310,6 +311,7 @@ namespace WowsTools
             InitialUtils.InitExe();
             if (!string.IsNullOrEmpty(InitialUtils.GetHome()))
             {
+                log.Info("游戏路径：" + InitialUtils.GetHome());
                 this.labelGamePath.Text = "已识别游戏路径";
                 this.labelGamePath.ForeColor = Color.Green;
             }
@@ -318,7 +320,6 @@ namespace WowsTools
                 this.labelGamePath.Text = "未识别游戏路径";
                 this.labelGamePath.ForeColor = Color.Red;
             }
-            log.Info("游戏路径：" + InitialUtils.GetHome());
         }
 
         private void LoadDataGridViewWeight(int lenA,int lenB)

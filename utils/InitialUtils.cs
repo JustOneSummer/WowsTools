@@ -19,6 +19,10 @@ namespace WowsTools.utils
 
         public static string GetHome()
         {
+            if (string.IsNullOrEmpty(HOME))
+            {
+                WowsExeHomePath();
+            }
             return HOME;
         }
 
@@ -73,7 +77,7 @@ namespace WowsTools.utils
         public static string ServerInfo()
         {
             //读取解析服务器信息
-            string log = HOME + "profile/clientrunner.log";
+            string log = GetHome() + "profile/clientrunner.log";
             FileStream fs = new FileStream(log, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
             string info = null;
@@ -160,7 +164,7 @@ namespace WowsTools.utils
                 string jsonFile = "tempArenaInfo.json";
                 FileInfo info = null;
                 List<FileInfo> fileInfos = new List<FileInfo>();
-                Director(HOME + replays, fileInfos);
+                Director(GetHome() + replays, fileInfos);
                 foreach (FileInfo file in fileInfos)
                 {
                     if (file.Name.Contains(jsonFile))
