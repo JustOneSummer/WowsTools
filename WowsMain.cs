@@ -44,8 +44,9 @@ namespace WowsTools
             this.dataGridViewOne.RowHeadersVisible = false;
             //this.dataGridViewOne.Columns.Add("clan", "军团");
             this.dataGridViewOne.Columns.Add("userName", "玩家");
-            this.dataGridViewOne.Columns.Add("userWins", "总胜率");
-            this.dataGridViewOne.Columns.Add("level", "等级");
+            this.dataGridViewOne.Columns.Add("Battles", "场次");
+            this.dataGridViewOne.Columns.Add("userWins", "胜率");
+            this.dataGridViewOne.Columns.Add("level", "lv");
             this.dataGridViewOne.Columns.Add("shipName", "名称");
             this.dataGridViewOne.Columns.Add("shipBattles", "场次");
             this.dataGridViewOne.Columns.Add("shipDamage", "场均");
@@ -62,8 +63,9 @@ namespace WowsTools
             this.dataGridViewTwo.Columns.Add("shipDamage", "场均");
             this.dataGridViewTwo.Columns.Add("shipBattles", "场次");
             this.dataGridViewTwo.Columns.Add("shipName", "名称");
-            this.dataGridViewTwo.Columns.Add("level", "等级");
-            this.dataGridViewTwo.Columns.Add("userWins", "总胜率");
+            this.dataGridViewTwo.Columns.Add("level", "lv");
+            this.dataGridViewTwo.Columns.Add("userWins", "胜率");
+            this.dataGridViewTwo.Columns.Add("Battles", "场次");
             //this.dataGridViewTwo.Columns.Add("clan", "军团");
             this.dataGridViewTwo.Columns.Add("userName", "玩家");
             this.dataGridViewTwo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -223,20 +225,21 @@ namespace WowsTools
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(this.dataGridViewOne);
                     row.Cells[0].Value = data.AccountName;
+                    row.Cells[1].Value = data.Battles;
 
-                    row.Cells[1].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
-                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
+                    row.Cells[2].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
+                    row.Cells[2].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
-                    row.Cells[2].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                    row.Cells[3].Value = data.Hide ? na : shipData.ShipName;
-                    row.Cells[4].Value = data.Hide ? na : shipData.Battles.ToString();
-                    row.Cells[5].Value = data.Hide ? na : shipData.GameDamage().ToString();
+                    row.Cells[3].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
+                    row.Cells[4].Value = data.Hide ? na : shipData.ShipName;
+                    row.Cells[5].Value = data.Hide ? na : shipData.Battles.ToString();
+                    row.Cells[6].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
-                    row.Cells[6].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
-                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
+                    row.Cells[7].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
+                    row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
 
-                    row.Cells[7].Value = data.Hide ? na : shipData.Pr.ToString();
-                    row.Cells[7].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
+                    row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
+                    row.Cells[8].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
                     this.dataGridViewOne.Rows.Add(row);
 
                 }
@@ -246,7 +249,8 @@ namespace WowsTools
                     GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                     DataGridViewRow row = new DataGridViewRow();
                     row.CreateCells(this.dataGridViewOne);
-                    row.Cells[7].Value = data.AccountName;
+                    row.Cells[8].Value = data.AccountName;
+                    row.Cells[7].Value = data.Battles;
 
                     row.Cells[6].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
                     row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
@@ -264,33 +268,32 @@ namespace WowsTools
                     this.dataGridViewTwo.Rows.Add(row);
                 }
 
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < 9; j++)
                 {
-                    //this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    this.dataGridViewOne.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
                     this.dataGridViewOne.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    //this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    this.dataGridViewTwo.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
                     this.dataGridViewTwo.Columns[j].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
                 this.dataGridViewOne.Columns[0].FillWeight = 26;
-                this.dataGridViewOne.Columns[1].FillWeight = 12;
-                this.dataGridViewOne.Columns[2].FillWeight = 9;
-                this.dataGridViewOne.Columns[3].FillWeight = 16;
-
-                this.dataGridViewOne.Columns[4].FillWeight = 9;
-                this.dataGridViewOne.Columns[5].FillWeight = 10;
+                this.dataGridViewOne.Columns[1].FillWeight = 9;
+                this.dataGridViewOne.Columns[2].FillWeight = 10;
+                this.dataGridViewOne.Columns[3].FillWeight = 6;
+                this.dataGridViewOne.Columns[4].FillWeight = 12;
+                this.dataGridViewOne.Columns[5].FillWeight = 9;
                 this.dataGridViewOne.Columns[6].FillWeight = 9;
+                this.dataGridViewOne.Columns[7].FillWeight = 10;
+                this.dataGridViewOne.Columns[8].FillWeight = 9;
+
+                this.dataGridViewOne.Columns[8].FillWeight = 26;
                 this.dataGridViewOne.Columns[7].FillWeight = 9;
-
-
-                this.dataGridViewTwo.Columns[7].FillWeight = 26;
-                this.dataGridViewTwo.Columns[6].FillWeight = 12;
-                this.dataGridViewTwo.Columns[5].FillWeight = 9;
-                this.dataGridViewTwo.Columns[4].FillWeight = 16;
-
-                this.dataGridViewTwo.Columns[3].FillWeight = 9;
-                this.dataGridViewTwo.Columns[2].FillWeight = 10;
-                this.dataGridViewTwo.Columns[1].FillWeight = 9;
-                this.dataGridViewTwo.Columns[0].FillWeight = 9;
+                this.dataGridViewOne.Columns[6].FillWeight = 10;
+                this.dataGridViewOne.Columns[5].FillWeight = 6;
+                this.dataGridViewOne.Columns[4].FillWeight = 12;
+                this.dataGridViewOne.Columns[3].FillWeight = 9;
+                this.dataGridViewOne.Columns[2].FillWeight = 9;
+                this.dataGridViewOne.Columns[1].FillWeight = 10;
+                this.dataGridViewOne.Columns[0].FillWeight = 9;
             })));
         }
 
