@@ -40,6 +40,8 @@ namespace WowsTools
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BattleInterfaceWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
             this.labelWinsA = new System.Windows.Forms.Label();
@@ -50,8 +52,6 @@ namespace WowsTools
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.labelStatusInfo = new System.Windows.Forms.Label();
             this.labelGamePath = new System.Windows.Forms.Label();
-            this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.BattleInterfaceWidthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
@@ -61,9 +61,9 @@ namespace WowsTools
             // 
             this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SetUpToolStripMenuItem,
             this.UpdateToolStripMenuItem,
-            this.GuanYuToolStripMenuItem,
-            this.SetUpToolStripMenuItem});
+            this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1484, 27);
@@ -83,6 +83,20 @@ namespace WowsTools
             this.GuanYuToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
             this.GuanYuToolStripMenuItem.Text = "关于";
             this.GuanYuToolStripMenuItem.Click += new System.EventHandler(this.GuanYuToolStripMenuItem_Click);
+            // 
+            // SetUpToolStripMenuItem
+            // 
+            this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.BattleInterfaceWidthToolStripMenuItem});
+            this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
+            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.SetUpToolStripMenuItem.Text = "设置";
+            // 
+            // BattleInterfaceWidthToolStripMenuItem
+            // 
+            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
+            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
             // 
             // ServerLable
             // 
@@ -233,20 +247,6 @@ namespace WowsTools
             this.labelGamePath.Size = new System.Drawing.Size(145, 26);
             this.labelGamePath.TabIndex = 11;
             this.labelGamePath.Text = "未识别游戏路径";
-            // 
-            // SetUpToolStripMenuItem
-            // 
-            this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.BattleInterfaceWidthToolStripMenuItem});
-            this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
-            this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.SetUpToolStripMenuItem.Text = "设置";
-            // 
-            // BattleInterfaceWidthToolStripMenuItem
-            // 
-            this.BattleInterfaceWidthToolStripMenuItem.Name = "BattleInterfaceWidthToolStripMenuItem";
-            this.BattleInterfaceWidthToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.BattleInterfaceWidthToolStripMenuItem.Text = "对战界面宽度";
             // 
             // WowsMain
             // 
