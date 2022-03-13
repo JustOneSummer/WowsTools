@@ -139,6 +139,7 @@
     <None Include="Resources\1647070636189.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitignore" />
     <Content Include="Resources\QQ图片20220312153455.jpg" />
     <Content Include="yuyuko_avatar.ico" />
   </ItemGroup>
