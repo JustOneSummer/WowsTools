@@ -120,7 +120,7 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(715, 331);
+            this.dataGridViewOne.Size = new System.Drawing.Size(715, 343);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
@@ -174,7 +174,7 @@ namespace WowsTools
             this.dataGridViewTwo.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTwo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 331);
+            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 343);
             this.dataGridViewTwo.TabIndex = 6;
             this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
@@ -235,7 +235,7 @@ namespace WowsTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 415);
+            this.ClientSize = new System.Drawing.Size(1484, 427);
             this.Controls.Add(this.labelGamePath);
             this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);
