@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -73,7 +74,7 @@ namespace WowsTools
             this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTwo.ClearSelection();
             log.Info("初始化 版本=" + VERSION);
-            log.Info("游戏路径：" + InitialUtils.wowsExeHomePath());
+            LoadGameHome();
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);
         }
@@ -121,14 +122,15 @@ namespace WowsTools
                 CheckUpdate();
             }
             //加载游戏进程信息
-            string jsonFilePath = InitialUtils.ReplaysPath();
-            if (!string.IsNullOrEmpty(InitialUtils.wowsExeHomePath()) && File.Exists(jsonFilePath))
+            string jsonFilePath = InitialUtils.GetReplayPath();
+            if (File.Exists(jsonFilePath))
             {
                 if (GAME_RUN)
                 {
                     GAME_RUN = false;
                     this.UpdateToolStripMenuItem.Enabled = false;
                     log.Info("游戏replays路径:" + jsonFilePath);
+                    this.labelStatusInfo.Text = "加载对局信息中...";
                     ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
                 }
             }
@@ -209,6 +211,7 @@ namespace WowsTools
         {
             Invoke((new Action(() =>
             {
+                this.labelStatusInfo.Text = "开始渲染对局数据";
                 this.dataGridViewOne.Rows.Clear();
                 this.dataGridViewTwo.Rows.Clear();
                 this.ServerLable.Text = server.ServerName;
@@ -296,6 +299,7 @@ namespace WowsTools
                 this.dataGridViewOne.Columns[1].FillWeight = 10;
                 this.dataGridViewOne.Columns[0].FillWeight = 9;
                 this.UpdateToolStripMenuItem.Enabled = true;
+                this.labelStatusInfo.Text = "对局数据渲染结束";
             })));
         }
 
@@ -306,11 +310,31 @@ namespace WowsTools
         /// <param name="e"></param>
         private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            LoadGameHome();
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);
             UPDATE = true;
             GAME_RUN = true;
             MessageBox.Show("刷新成功");
+        }
+
+        /// <summary>
+        /// 获取游戏路径
+        /// </summary>
+        private void LoadGameHome()
+        {
+            InitialUtils.InitExe();
+            if (!string.IsNullOrEmpty(InitialUtils.GetHome()))
+            {
+                this.labelGamePath.Text = "已识别游戏路径";
+                this.labelGamePath.ForeColor = Color.Green;
+            }
+            else
+            {
+                this.labelGamePath.Text = "未识别游戏路径";
+                this.labelGamePath.ForeColor = Color.Red;
+            }
+            log.Info("游戏路径：" + InitialUtils.GetHome());
         }
     }
 }

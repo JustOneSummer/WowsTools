@@ -38,6 +38,7 @@ namespace WowsTools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
@@ -47,7 +48,8 @@ namespace WowsTools
             this.labelMyTeam = new System.Windows.Forms.Label();
             this.labelDIJun = new System.Windows.Forms.Label();
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
-            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelStatusInfo = new System.Windows.Forms.Label();
+            this.labelGamePath = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
@@ -64,6 +66,13 @@ namespace WowsTools
             this.menuStrip1.Size = new System.Drawing.Size(1484, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // UpdateToolStripMenuItem
+            // 
+            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
+            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.UpdateToolStripMenuItem.Text = "刷新";
+            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
             // 
             // GuanYuToolStripMenuItem
             // 
@@ -198,18 +207,37 @@ namespace WowsTools
             this.timerGameCheck.Interval = 3000;
             this.timerGameCheck.Tick += new System.EventHandler(this.timerGameCheck_Tick);
             // 
-            // UpdateToolStripMenuItem
+            // labelStatusInfo
             // 
-            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
-            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.UpdateToolStripMenuItem.Text = "刷新";
-            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
+            this.labelStatusInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelStatusInfo.AutoSize = true;
+            this.labelStatusInfo.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelStatusInfo.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelStatusInfo.Location = new System.Drawing.Point(1300, 37);
+            this.labelStatusInfo.Name = "labelStatusInfo";
+            this.labelStatusInfo.Size = new System.Drawing.Size(50, 26);
+            this.labelStatusInfo.TabIndex = 10;
+            this.labelStatusInfo.Text = "等待";
+            // 
+            // labelGamePath
+            // 
+            this.labelGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGamePath.AutoSize = true;
+            this.labelGamePath.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelGamePath.ForeColor = System.Drawing.Color.Red;
+            this.labelGamePath.Location = new System.Drawing.Point(1116, 37);
+            this.labelGamePath.Name = "labelGamePath";
+            this.labelGamePath.Size = new System.Drawing.Size(145, 26);
+            this.labelGamePath.TabIndex = 11;
+            this.labelGamePath.Text = "未识别游戏路径";
             // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1484, 415);
+            this.Controls.Add(this.labelGamePath);
+            this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);
             this.Controls.Add(this.labelMyTeam);
             this.Controls.Add(this.dataGridViewTwo);
@@ -248,6 +276,8 @@ namespace WowsTools
         private System.Windows.Forms.Label labelDIJun;
         private System.Windows.Forms.Timer timerGameCheck;
         private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
+        private System.Windows.Forms.Label labelStatusInfo;
+        private System.Windows.Forms.Label labelGamePath;
     }
 }
 

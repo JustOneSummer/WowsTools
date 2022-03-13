@@ -15,63 +15,49 @@ namespace WowsTools.utils
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static string HOME = null;
+        private static string REPLAY_PATH = null;
 
-        /// <summary>
-        /// 初始化时的加载-获取游戏路径
-        /// </summary>
-        /// <returns></returns>
-        public static string wowsExeHomePath()
+        public static string GetHome()
         {
-            Process[] processes = Process.GetProcesses();
-            foreach (Process process in processes)
-            {
-                if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
-                {
-                    ProcessModule mainModule = process.MainModule;
-                    string wows = mainModule.FileName;
+            return HOME;
+        }
 
-                    //获取游戏根目录
-                    HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
-                    return HOME;
+        public static string GetReplayPath()
+        {
+            return REPLAY_PATH;
+        }
 
-                }
-            }
-            return null;
+        public static void InitExe()
+        {
+            WowsExeHomePath();
+            ReplaysPath();
         }
 
         /// <summary>
-        /// 获取replay路径
+        /// 读取用户replays
         /// </summary>
         /// <returns></returns>
-        public static string ReplaysPath()
+        public static string getReplaysJsonData()
         {
-            if (string.IsNullOrEmpty(HOME))
+            //检测文件是否存在，游戏开始文件存在，结束则删除
+            if (File.Exists(REPLAY_PATH))
             {
-                return null;
-            }
-            string replays = "replays";
-            string jsonFile = "/tempArenaInfo.json";
-            if (File.Exists(HOME + replays + jsonFile))
-            {
-                return HOME + replays + jsonFile;
-            }
-
-            //检测replay文件夹下面是否有版本号文件
-            string[] vs = Directory.GetDirectories(HOME + replays);
-            foreach (var item in vs)
-            {
-                string ij = item + jsonFile;
-                if (File.Exists(ij))
+                FileStream fs = new FileStream(REPLAY_PATH, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+                StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
+                StringBuilder info = new StringBuilder();
+                while (!sr.EndOfStream)
                 {
-                    FileInfo fileInfo = new FileInfo(ij);
-                    DateTime lastWriteTimeUtc = fileInfo.LastWriteTimeUtc;
-                    string lastDate = lastWriteTimeUtc.ToString("yyyy-MM-dd");
-                    string dayDate = DateTime.UtcNow.ToString("yyyy-MM-dd");
-                    if (!lastDate.Equals(dayDate))
-                    {
-                        return ij;
-                    }
+                    info.Append(sr.ReadLine());
                 }
+                sr.Close();
+                fs.Close();
+                string infoJson = info.ToString();
+                string path = System.Environment.CurrentDirectory + "/tempArenaInfo.json";
+                using (StreamWriter streamWriter = new StreamWriter(path, false))
+                {
+                    streamWriter.WriteLine(infoJson);
+                }
+                return infoJson;
             }
             return null;
         }
@@ -106,36 +92,6 @@ namespace WowsTools.utils
             return info.Trim();
         }
 
-        /// <summary>
-        /// 读取用户replays
-        /// </summary>
-        /// <returns></returns>
-        public static string getReplaysJsonData()
-        {
-            //检测文件是否存在，游戏开始文件存在，结束则删除
-            string jsonFilePath = ReplaysPath();
-            if (File.Exists(jsonFilePath))
-            {
-                FileStream fs = new FileStream(jsonFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
-                StringBuilder info = new StringBuilder();
-                while (!sr.EndOfStream)
-                {
-                    info.Append(sr.ReadLine());
-                }
-                sr.Close();
-                fs.Close();
-                string infoJson = info.ToString();
-                string path = System.Environment.CurrentDirectory + "/tempArenaInfo.json";
-                using (StreamWriter streamWriter = new StreamWriter(path, false))
-                {
-                    streamWriter.WriteLine(infoJson);
-                }
-                return infoJson;
-            }
-            return null;
-        }
-
         public static string GetCpuID()
         {
             try
@@ -157,6 +113,69 @@ namespace WowsTools.utils
             }
 
             finally { }
+        }
+
+
+        public static void Director(string dir, List<FileInfo> list)
+        {
+            DirectoryInfo d = new DirectoryInfo(dir);
+            FileInfo[] files = d.GetFiles("*.json");
+            DirectoryInfo[] directs = d.GetDirectories();
+            foreach (FileInfo f in files)
+            {
+                list.Add(f);
+            }
+            //获取子文件夹内的文件列表，递归遍历  
+            foreach (DirectoryInfo dd in directs)
+            {
+                Director(dd.FullName, list);
+            }
+        }
+
+        private static void WowsExeHomePath()
+        {
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
+                {
+                    ProcessModule mainModule = process.MainModule;
+                    string wows = mainModule.FileName;
+                    //获取游戏根目录
+                    HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
+                    return;
+                }
+            }
+            HOME = null;
+        }
+
+        private static void ReplaysPath()
+        {
+            if (!string.IsNullOrEmpty(HOME))
+            {
+                string replays = "replays";
+                string jsonFile = "tempArenaInfo.json";
+                FileInfo info = null;
+                List<FileInfo> fileInfos = new List<FileInfo>();
+                Director(HOME + replays, fileInfos);
+                foreach (FileInfo file in fileInfos)
+                {
+                    if (file.Name.Contains(jsonFile))
+                    {
+                        if (info == null || file.LastWriteTimeUtc.CompareTo(info.LastWriteTimeUtc) >= 1)
+                        {
+                            info = file;
+                        }
+                    }
+                }
+                if (info != null && File.Exists(info.FullName))
+                {
+                    REPLAY_PATH =  info.FullName;
+                    return;
+                }
+            }
+
+            REPLAY_PATH = null;
         }
     }
 }
