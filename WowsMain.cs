@@ -19,7 +19,7 @@ namespace WowsTools
             InitializeComponent();
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.4";
+        private const string VERSION = "0.0.6";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
@@ -101,7 +101,15 @@ namespace WowsTools
                 int ver = int.Parse(newV.Replace(".", ""));
                 if (ver > localV)
                 {
-                    MessageBox.Show("发现新版本，请点击关于加群获取最新版本!!!");
+                    if(ver-localV >=5&& localV > 2)
+                    {
+                        MessageBox.Show("版本过低！！！\r\n请加Q群872725671获取最新版本,程序将自动退出运行...");
+                        System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
+                    }
+                    else
+                    {
+                        MessageBox.Show("发现新版本，请点击关于加Q群872725671获取最新版本!!!");
+                    }
                 }
             }
             catch (Exception e)
