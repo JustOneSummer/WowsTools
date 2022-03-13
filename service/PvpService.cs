@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Text;
 using WowsTools.api;
 using WowsTools.model;
 using WowsTools.utils;
@@ -12,6 +13,8 @@ namespace WowsTools.service
     /// </summary>
     class PvpService
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// 解析文件信息
         /// </summary>
@@ -29,6 +32,7 @@ namespace WowsTools.service
             //解析
             JToken token = JsonConvert.DeserializeObject<JToken>(json);
             int playersPerTeam = token["playersPerTeam"].Value<int>();
+            StringBuilder builder = new StringBuilder();
             foreach (var jt in token["vehicles"])
             {
                 GameAccountInfoData data = new GameAccountInfoData();
@@ -39,7 +43,9 @@ namespace WowsTools.service
                 infoData.ShipId = jt["shipId"].Value<long>();
                 data.GameAccountShipInfo = infoData;
                 dataList.Add(data);
+                builder.Append(data.AccountName).Append(",");
             }
+            log.Info("对局信息用户名称："+ builder.ToString());
             return dataList;
         }
 
