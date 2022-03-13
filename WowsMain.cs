@@ -116,27 +116,36 @@ namespace WowsTools
         /// <param name="e"></param>
         private void timerGameCheck_Tick(object sender, EventArgs e)
         {
-            if (UPDATE)
+            try
             {
-                UPDATE = false;
-                CheckUpdate();
-            }
-            //加载游戏进程信息
-            string jsonFilePath = InitialUtils.GetReplayPath();
-            if (File.Exists(jsonFilePath))
-            {
-                if (GAME_RUN)
+                if (UPDATE)
                 {
-                    GAME_RUN = false;
-                    this.UpdateToolStripMenuItem.Enabled = false;
-                    log.Info("游戏replays路径:" + jsonFilePath);
-                    this.labelStatusInfo.Text = "加载对局信息中...";
-                    ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
+                    UPDATE = false;
+                    CheckUpdate();
+                }
+                //加载游戏进程信息
+                string jsonFilePath = InitialUtils.GetReplayPath();
+                if (File.Exists(jsonFilePath))
+                {
+                    if (GAME_RUN)
+                    {
+                        GAME_RUN = false;
+                        this.UpdateToolStripMenuItem.Enabled = false;
+                        log.Info("游戏replays路径:" + jsonFilePath);
+                        this.labelStatusInfo.Text = "加载对局信息中...";
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
+                    }
+                }
+                else
+                {
+                    GAME_RUN = true;
                 }
             }
-            else
+            catch (Exception ex)
             {
-                GAME_RUN = true;
+                this.UpdateToolStripMenuItem.Enabled = true;
+                log.Error("定时任务出现异常！" + ex.Message);
+                MessageBox.Show("定时任务出现异常！" + ex.Message);
             }
         }
 

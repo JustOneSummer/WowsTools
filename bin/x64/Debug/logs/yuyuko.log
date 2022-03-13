@@ -5556,3 +5556,11 @@
 2022-03-13 17:07:07,103 [14] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2023947023":[{"pvp":{"main_battery":{"max_frags_battle":5,"frags":112,"hits":16163,"shots":42087},"battles":179,"damage_dealt":12967365,"wins":95,"xp":292278,"frags":120,"survived_battles":95},"last_battle_time":1647103317,"account_id":2023947023,"ship_id":4179539696}]}}
 
 2022-03-13 17:07:07,188 [11] INFO  WowsTools.api.WowsAccount - 游戏用户船只信息：{"status":"ok","meta":{"count":1,"hidden":null},"data":{"2007037012":[{"pvp":{"main_battery":{"max_frags_battle":0,"frags":0,"hits":134,"shots":429},"battles":2,"damage_dealt":213047,"wins":2,"xp":4971,"frags":0,"survived_battles":1},"last_battle_time":1646580605,"account_id":2007037012,"ship_id":4277090288}]}}
+
+2022-03-13 17:08:16,526 [1] INFO  WowsTools.WowsMain - 当前平台的 .net framework 信息：4.0.30319.42000
+
+2022-03-13 17:08:16,555 [1] INFO  WowsTools.WowsMain - 正在运行的 .net framework 信息：.NET Framework 4.8.4470.0
+
+2022-03-13 17:08:16,611 [1] INFO  WowsTools.WowsMain - 初始化 版本=0.0.3
+
+2022-03-13 17:08:16,628 [1] INFO  WowsTools.WowsMain - 游戏路径：D:\Games\World_of_Warships\
