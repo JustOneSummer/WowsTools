@@ -19,10 +19,9 @@ namespace WowsTools
             InitializeComponent();
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.3";
+        private const string VERSION = "0.0.4";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
-        private static bool CHECK_REPLAY = true;
 
         private static WowsServer WowsServer = null;
         private static List<GameAccountInfoData> GAME_INFO_LIST = new List<GameAccountInfoData>();
