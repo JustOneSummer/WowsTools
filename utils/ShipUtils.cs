@@ -40,7 +40,7 @@ namespace WowsTools.utils
                         }
                     }catch(Exception e)
                     {
-                        log.Error("请求船只数据出错！"+e.Message);
+                        log.Error("请求船只数据出错！",e);
                     }
                 }
                 SHIP_MAP.Clear();

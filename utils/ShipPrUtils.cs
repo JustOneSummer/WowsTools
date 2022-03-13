@@ -41,7 +41,7 @@ namespace WowsTools.utils
                         }
                     }catch(Exception e)
                     {
-                        log.Error("请求PR数据出错！" + e.Message);
+                        log.Error("请求PR数据出错！",e);
                     }
                 }
                 PR_MAP.Clear();
