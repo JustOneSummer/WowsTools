@@ -33,9 +33,6 @@ namespace WowsTools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +43,6 @@ namespace WowsTools
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
             this.labelWinsA = new System.Windows.Forms.Label();
             this.labelWinsB = new System.Windows.Forms.Label();
-            this.dataGridViewTwo = new System.Windows.Forms.DataGridView();
             this.labelMyTeam = new System.Windows.Forms.Label();
             this.labelDIJun = new System.Windows.Forms.Label();
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
@@ -54,7 +50,6 @@ namespace WowsTools
             this.labelGamePath = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -81,7 +76,7 @@ namespace WowsTools
             // LoadViewToolStripMenuItem
             // 
             this.LoadViewToolStripMenuItem.Name = "LoadViewToolStripMenuItem";
-            this.LoadViewToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.LoadViewToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.LoadViewToolStripMenuItem.Text = "重新渲染";
             this.LoadViewToolStripMenuItem.Click += new System.EventHandler(this.LoadViewToolStripMenuItem_Click);
             // 
@@ -113,8 +108,10 @@ namespace WowsTools
             // 
             // dataGridViewOne
             // 
-            this.dataGridViewOne.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridViewOne.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewOne.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -138,7 +135,7 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(715, 477);
+            this.dataGridViewOne.Size = new System.Drawing.Size(1460, 477);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
@@ -163,38 +160,6 @@ namespace WowsTools
             this.labelWinsB.Size = new System.Drawing.Size(149, 26);
             this.labelWinsB.TabIndex = 5;
             this.labelWinsB.Text = "平均胜率：50%";
-            // 
-            // dataGridViewTwo
-            // 
-            this.dataGridViewTwo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTwo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewTwo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewTwo.Location = new System.Drawing.Point(757, 72);
-            this.dataGridViewTwo.Name = "dataGridViewTwo";
-            this.dataGridViewTwo.ReadOnly = true;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewTwo.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridViewTwo.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTwo.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridViewTwo.RowTemplate.Height = 23;
-            this.dataGridViewTwo.Size = new System.Drawing.Size(715, 477);
-            this.dataGridViewTwo.TabIndex = 6;
-            this.dataGridViewTwo.SelectionChanged += new System.EventHandler(this.dataGridViewTwo_SelectionChanged);
             // 
             // labelMyTeam
             // 
@@ -258,16 +223,13 @@ namespace WowsTools
             this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);
             this.Controls.Add(this.labelMyTeam);
-            this.Controls.Add(this.dataGridViewTwo);
             this.Controls.Add(this.labelWinsB);
             this.Controls.Add(this.labelWinsA);
             this.Controls.Add(this.dataGridViewOne);
             this.Controls.Add(this.ServerLable);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "WowsMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "战舰世界工具箱";
@@ -275,7 +237,6 @@ namespace WowsTools
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTwo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,7 +250,6 @@ namespace WowsTools
         private System.Windows.Forms.DataGridView dataGridViewOne;
         private System.Windows.Forms.Label labelWinsA;
         private System.Windows.Forms.Label labelWinsB;
-        private System.Windows.Forms.DataGridView dataGridViewTwo;
         private System.Windows.Forms.Label labelMyTeam;
         private System.Windows.Forms.Label labelDIJun;
         private System.Windows.Forms.Timer timerGameCheck;

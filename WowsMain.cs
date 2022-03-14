@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,7 +17,17 @@ namespace WowsTools
     {
         public WowsMain()
         {
+            //1、设置窗体的双缓冲
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint, true);
+            this.UpdateStyles();
+
             InitializeComponent();
+
+            //2、利用反射设置DataGridView的双缓冲
+            Type dgvType = this.dataGridViewOne.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
+                BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(this.dataGridViewOne, true, null);
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private const string VERSION = "0.0.6";
@@ -43,47 +54,35 @@ namespace WowsTools
             log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne.RowHeadersVisible = false;
-            //this.dataGridViewOne.Columns.Add("clan", "军团");
-            this.dataGridViewOne.Columns.Add("userName", "玩家");
-            this.dataGridViewOne.Columns.Add("Battles", "场次");
-            this.dataGridViewOne.Columns.Add("userWins", "胜率");
-            this.dataGridViewOne.Columns.Add("level", "lv");
-            this.dataGridViewOne.Columns.Add("shipName", "名称");
-            this.dataGridViewOne.Columns.Add("shipBattles", "场次");
-            this.dataGridViewOne.Columns.Add("shipDamage", "场均");
-            this.dataGridViewOne.Columns.Add("shipWins", "胜率");
-            this.dataGridViewOne.Columns.Add("shipPr", "评分");
+            this.dataGridViewOne.Columns.Add("userNameOne", "玩家");
+            this.dataGridViewOne.Columns.Add("BattlesOne", "场次");
+            this.dataGridViewOne.Columns.Add("userWinsOne", "胜率");
+            this.dataGridViewOne.Columns.Add("levelOne", "lv");
+            this.dataGridViewOne.Columns.Add("shipNameOne", "名称");
+            this.dataGridViewOne.Columns.Add("shipBattlesOne", "场次");
+            this.dataGridViewOne.Columns.Add("shipDamageOne", "场均");
+            this.dataGridViewOne.Columns.Add("shipWinsOne", "胜率");
+            this.dataGridViewOne.Columns.Add("shipPrOne", "评分");
+            this.dataGridViewOne.Columns.Add("AB", "A/B");
+            this.dataGridViewOne.Columns.Add("shipPrTwo", "评分");
+            this.dataGridViewOne.Columns.Add("shipWinsTwo", "胜率");
+            this.dataGridViewOne.Columns.Add("shipDamageTwo", "场均");
+            this.dataGridViewOne.Columns.Add("shipBattlesTwo", "场次");
+            this.dataGridViewOne.Columns.Add("shipNameTwo", "名称");
+            this.dataGridViewOne.Columns.Add("levelTwo", "lv");
+            this.dataGridViewOne.Columns.Add("userWinsTwo", "胜率");
+            this.dataGridViewOne.Columns.Add("BattlesTwo", "场次");
+            this.dataGridViewOne.Columns.Add("userNameTwo", "玩家");
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+            this.dataGridViewOne.AllowUserToAddRows = false;
             this.dataGridViewOne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOne.ClearSelection();
-            this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-
-            this.dataGridViewTwo.RowHeadersVisible = false;
-            this.dataGridViewTwo.Columns.Add("shipPr", "评分");
-            this.dataGridViewTwo.Columns.Add("shipWins", "胜率");
-            this.dataGridViewTwo.Columns.Add("shipDamage", "场均");
-            this.dataGridViewTwo.Columns.Add("shipBattles", "场次");
-            this.dataGridViewTwo.Columns.Add("shipName", "名称");
-            this.dataGridViewTwo.Columns.Add("level", "lv");
-            this.dataGridViewTwo.Columns.Add("userWins", "胜率");
-            this.dataGridViewTwo.Columns.Add("Battles", "场次");
-            //this.dataGridViewTwo.Columns.Add("clan", "军团");
-            this.dataGridViewTwo.Columns.Add("userName", "玩家");
-            this.dataGridViewTwo.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTwo.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewTwo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTwo.ClearSelection();
-            this.dataGridViewTwo.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
             log.Info("初始化 版本=" + VERSION);
             LoadGameHome();
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);
-        }
-
-        private void dataGridViewTwo_SelectionChanged(object sender, EventArgs e)
-        {
-            this.dataGridViewTwo.ClearSelection();
         }
 
         private void dataGridViewOne_SelectionChanged(object sender, EventArgs e)
@@ -101,7 +100,7 @@ namespace WowsTools
                 int ver = int.Parse(newV.Replace(".", ""));
                 if (ver > localV)
                 {
-                    if(ver-localV >=5&& localV > 2)
+                    if (ver - localV >= 5 && localV > 2)
                     {
                         MessageBox.Show("版本过低！！！\r\n请加Q群872725671获取最新版本,程序将自动退出运行...");
                         System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
@@ -233,7 +232,6 @@ namespace WowsTools
             {
                 this.labelStatusInfo.Text = "开始渲染对局数据";
                 this.dataGridViewOne.Rows.Clear();
-                this.dataGridViewTwo.Rows.Clear();
                 this.ServerLable.Text = server.ServerName;
                 GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
 
@@ -243,54 +241,70 @@ namespace WowsTools
                 gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
                 gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
                 string na = "N/A";
-                foreach (var data in gameInfoData.TeamOneList)
+                int len = gameInfoData.TeamOneList.Count > gameInfoData.TeamTwoList.Count ? gameInfoData.TeamOneList.Count : gameInfoData.TeamTwoList.Count;
+                for (int i = 0; i < len; i++)
                 {
-                    GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                     DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(this.dataGridViewOne);
-                    row.Cells[0].Value = data.AccountName;
-                    row.Cells[1].Value = data.Battles;
+                    GameAccountInfoData data;
+                    if (i < gameInfoData.TeamOneList.Count)
+                    {
+                        data = gameInfoData.TeamOneList[i];
+                        GameAccountShipInfoData shipData = data.GameAccountShipInfo;
+                        row.CreateCells(this.dataGridViewOne);
+                        Color prColor = ColorUtils.PrColor(shipData.Pr);
+                        row.Cells[0].Value = data.AccountName;
+                        row.Cells[1].Value = data.Battles;
 
-                    row.Cells[2].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
-                    row.Cells[2].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
+                        row.Cells[2].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
+                        //row.Cells[2].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
 
-                    row.Cells[3].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                    row.Cells[4].Value = shipData.ShipName;
-                    row.Cells[5].Value = data.Hide ? na : shipData.Battles.ToString();
-                    row.Cells[6].Value = data.Hide ? na : shipData.GameDamage().ToString();
+                        row.Cells[3].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
+                        row.Cells[4].Value = shipData.ShipName;
+                        row.Cells[5].Value = data.Hide ? na : shipData.Battles.ToString();
+                        row.Cells[6].Value = data.Hide ? na : shipData.GameDamage().ToString();
 
-                    row.Cells[7].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
-                    row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
+                        row.Cells[7].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
+                        //row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
 
-                    row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
-                    row.Cells[8].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
+                        row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
+                        //row.Cells[8].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
+                        for (int j = 0; j < 9; j++)
+                        {
+                            row.Cells[j].Style.BackColor = prColor;
+                        }
+                    }
+                    row.Cells[9].Value = "";
+                    //row.Cells[9].Style.BackColor = Color.FromArgb(105, 105, 105);
+                    if (i < gameInfoData.TeamTwoList.Count)
+                    {
+                        data = gameInfoData.TeamTwoList[i];
+                        GameAccountShipInfoData shipData = data.GameAccountShipInfo;
+                        Color prColor = ColorUtils.PrColor(shipData.Pr);
+                        row.Cells[10].Value = data.Hide ? na : shipData.Pr.ToString();
+                        //row.Cells[10].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
+                        //row.Cells[10].Style.BackColor = ColorUtils.PrColor(shipData.Pr);
+
+                        row.Cells[11].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
+                        //row.Cells[11].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
+
+                        row.Cells[12].Value = data.Hide ? na : shipData.GameDamage().ToString();
+                        row.Cells[13].Value = data.Hide ? na : shipData.Battles.ToString();
+                        row.Cells[14].Value = shipData.ShipName;
+                        row.Cells[15].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
+
+                        row.Cells[16].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
+                        //row.Cells[16].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
+
+                        row.Cells[17].Value = data.Battles;
+                        row.Cells[18].Value = data.AccountName;
+                        for (int j = 10; j < 19; j++)
+                        {
+                            row.Cells[j].Style.BackColor = ColorUtils.PrColor(shipData.Pr);
+                        }
+                    }
                     this.dataGridViewOne.Rows.Add(row);
                 }
-
-                foreach (var data in gameInfoData.TeamTwoList)
-                {
-                    GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(this.dataGridViewOne);
-                    row.Cells[8].Value = data.AccountName;
-                    row.Cells[7].Value = data.Battles;
-
-                    row.Cells[6].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
-                    row.Cells[6].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
-
-                    row.Cells[5].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                    row.Cells[4].Value = shipData.ShipName;
-                    row.Cells[3].Value = data.Hide ? na : shipData.Battles.ToString();
-                    row.Cells[2].Value = data.Hide ? na : shipData.GameDamage().ToString();
-
-                    row.Cells[1].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
-                    row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
-
-                    row.Cells[0].Value = data.Hide ? na : shipData.Pr.ToString();
-                    row.Cells[0].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
-                    this.dataGridViewTwo.Rows.Add(row);
-                }
-                LoadDataGridViewWeight(gameInfoData.TeamOneList.Count, gameInfoData.TeamTwoList.Count);
+                LoadDataGridViewWeight();
                 this.UpdateToolStripMenuItem.Enabled = true;
                 this.labelStatusInfo.Text = "对局数据渲染结束";
             })));
@@ -330,7 +344,7 @@ namespace WowsTools
             }
         }
 
-        private void LoadDataGridViewWeight(int lenA, int lenB)
+        private void LoadDataGridViewWeight()
         {
             this.dataGridViewOne.Columns[0].FillWeight = 26;
             this.dataGridViewOne.Columns[1].FillWeight = 9;
@@ -342,31 +356,30 @@ namespace WowsTools
             this.dataGridViewOne.Columns[7].FillWeight = 10;
             this.dataGridViewOne.Columns[8].FillWeight = 9;
 
-            this.dataGridViewTwo.Columns[8].FillWeight = 26;
-            this.dataGridViewTwo.Columns[7].FillWeight = 9;
-            this.dataGridViewTwo.Columns[6].FillWeight = 10;
-            this.dataGridViewTwo.Columns[5].FillWeight = 6;
-            this.dataGridViewTwo.Columns[4].FillWeight = 12;
-            this.dataGridViewTwo.Columns[3].FillWeight = 9;
-            this.dataGridViewTwo.Columns[2].FillWeight = 9;
-            this.dataGridViewTwo.Columns[1].FillWeight = 10;
-            this.dataGridViewTwo.Columns[0].FillWeight = 9;
+            this.dataGridViewOne.Columns[9].FillWeight = 5;
 
-            for (int i = 0; i < 9; i++)
+            this.dataGridViewOne.Columns[18].FillWeight = 26;
+            this.dataGridViewOne.Columns[17].FillWeight = 9;
+            this.dataGridViewOne.Columns[16].FillWeight = 10;
+            this.dataGridViewOne.Columns[15].FillWeight = 6;
+            this.dataGridViewOne.Columns[14].FillWeight = 12;
+            this.dataGridViewOne.Columns[13].FillWeight = 9;
+            this.dataGridViewOne.Columns[12].FillWeight = 9;
+            this.dataGridViewOne.Columns[11].FillWeight = 10;
+            this.dataGridViewOne.Columns[10].FillWeight = 9;
+            for (int i = 0; i < this.dataGridViewOne.Columns.Count; i++)
             {
                 this.dataGridViewOne.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
                 this.dataGridViewOne.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                this.dataGridViewTwo.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                this.dataGridViewTwo.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
-            for (int i = 0; i < lenA; i++)
+            for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
             {
                 this.dataGridViewOne.Rows[i].Height = 35;
-            }
-            for (int i = 0; i < lenB; i++)
-            {
-                this.dataGridViewTwo.Rows[i].Height = 35;
+                if(i%2 != 0)
+                {
+                    this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(211, 211, 211);
+                }
             }
         }
 
