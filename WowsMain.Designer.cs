@@ -102,7 +102,7 @@ namespace WowsTools
             // 
             this.OptonsReAnalyzeToolStripMenuItem.Name = "OptonsReAnalyzeToolStripMenuItem";
             this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.OptonsReAnalyzeToolStripMenuItem.Text = "重置解析";
+            this.OptonsReAnalyzeToolStripMenuItem.Text = "重置设置和缓存";
             this.OptonsReAnalyzeToolStripMenuItem.Click += new System.EventHandler(this.OptonsReAnalyzeToolStripMenuItem_Click);
             // 
             // GuanYuToolStripMenuItem

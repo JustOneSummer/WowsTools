@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
 using WowsTools.model;
+using WowsTools.Properties;
 using WowsTools.service;
 using WowsTools.template;
 using WowsTools.utils;
@@ -354,12 +355,18 @@ namespace WowsTools
         /// <param name="e"></param>
         private void OptonsReAnalyzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LoadGameHome();
-            ShipUtils.Get(0, true);
-            ShipPrUtils.Get(0, true);
-            UPDATE = true;
-            GAME_RUN = true;
-            MessageBox.Show("刷新成功");
+            DialogResult dialogResult = MessageBox.Show("是否要重置系统设置和解析缓存？", "重置",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
+            if(dialogResult == DialogResult.Yes)
+            {
+                Settings.Default.GameHomePath = "N/A";
+                Settings.Default.Save();
+                LoadGameHome();
+                ShipUtils.Get(0, true);
+                ShipPrUtils.Get(0, true);
+                UPDATE = true;
+                GAME_RUN = true;
+                MessageBox.Show("刷新成功");
+            }
         }
     }
 }
