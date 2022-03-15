@@ -16,11 +16,17 @@ namespace WowsTools.model
         /// A队伍总胜率
         /// </summary>
         public double TeamOneWins;
+        public int TeamOneBattles;
+        public double TeamOneShipWins;
+        public int TeamOneShipBattles;
         public int TeamOneCount;
         /// <summary>
         /// B队伍总胜率
         /// </summary>
         public double TeamTwoWins;
+        public int TeamTwoBattles;
+        public double TeamTwoShipWins;
+        public int TeamTwoShipBattles;
         public int TeamTwoCount;
         /// <summary>
         /// 用户账号数据
