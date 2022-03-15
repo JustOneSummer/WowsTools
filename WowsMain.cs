@@ -8,7 +8,6 @@ using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
 using WowsTools.model;
-using WowsTools.Properties;
 using WowsTools.service;
 using WowsTools.template;
 using WowsTools.utils;
@@ -141,7 +140,7 @@ namespace WowsTools
                     if (GAME_RUN)
                     {
                         GAME_RUN = false;
-                        this.UpdateToolStripMenuItem.Enabled = false;
+                        this.OptonsReAnalyzeToolStripMenuItem.Enabled = false;
                         log.Info("游戏replays路径:" + jsonFilePath);
                         this.labelStatusInfo.Text = "加载对局信息中...";
                         ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
@@ -155,7 +154,7 @@ namespace WowsTools
             }
             catch (Exception ex)
             {
-                this.UpdateToolStripMenuItem.Enabled = true;
+                this.OptonsReAnalyzeToolStripMenuItem.Enabled = true;
                 log.Error("定时任务出现异常！", ex);
                 MessageBox.Show("定时任务出现异常！" + ex.Message);
             }
@@ -245,31 +244,16 @@ namespace WowsTools
                 gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipLevel.CompareTo(r.GameAccountShipInfo.ShipLevel));
                 gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
                 gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
-                
+
                 int len = gameInfoData.TeamOneList.Count > gameInfoData.TeamTwoList.Count ? gameInfoData.TeamOneList.Count : gameInfoData.TeamTwoList.Count;
                 for (int i = 0; i < len; i++)
                 {
-                    this.dataGridViewOne.Rows.Add(DataGridViewTemplate.Template(i,this.dataGridViewOne,gameInfoData));
+                    this.dataGridViewOne.Rows.Add(DataGridViewTemplate.Template(i, this.dataGridViewOne, gameInfoData));
                 }
                 LoadDataGridViewWeight();
-                this.UpdateToolStripMenuItem.Enabled = true;
+                this.OptonsReAnalyzeToolStripMenuItem.Enabled = true;
                 this.labelStatusInfo.Text = "对局数据渲染结束";
             })));
-        }
-
-        /// <summary>
-        /// 点击时重新加载文件
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void UpdateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LoadGameHome();
-            ShipUtils.Get(0, true);
-            ShipPrUtils.Get(0, true);
-            UPDATE = true;
-            GAME_RUN = true;
-            MessageBox.Show("刷新成功");
         }
 
         /// <summary>
@@ -323,19 +307,10 @@ namespace WowsTools
             for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
             {
                 this.dataGridViewOne.Rows[i].Height = 35;
-                if(i%2 != 0)
+                if (i % 2 != 0)
                 {
                     this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(211, 211, 211);
                 }
-            }
-        }
-
-
-        private void LoadViewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (WowsServer != null)
-            {
-                DataViewLoad(WowsServer);
             }
         }
 
@@ -346,7 +321,45 @@ namespace WowsTools
         /// <param name="e"></param>
         private void ColoursTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int dataGridViewTemplate = Settings.Default.DataGridViewTemplate;
+            DataGridViewTemplateSelect select = new DataGridViewTemplateSelect();
+            select.SaveReloadEvent += new SaveReloadEvent(DataGridViewTemplateSelectMethod);
+            select.ShowDialog();
+        }
+
+        /// <summary>
+        /// 保存模板回调
+        /// </summary>
+        private void DataGridViewTemplateSelectMethod()
+        {
+            OptionsLoadViewToolStripMenuItemToolStripMenuItem_Click(null, null);
+        }
+
+        /// <summary>
+        /// 重新渲染
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OptionsLoadViewToolStripMenuItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (WowsServer != null)
+            {
+                DataViewLoad(WowsServer);
+            }
+        }
+
+        /// <summary>
+        /// 重新解析
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OptonsReAnalyzeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoadGameHome();
+            ShipUtils.Get(0, true);
+            ShipPrUtils.Get(0, true);
+            UPDATE = true;
+            GAME_RUN = true;
+            MessageBox.Show("刷新成功");
         }
     }
 }

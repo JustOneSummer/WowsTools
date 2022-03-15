@@ -36,8 +36,10 @@ namespace WowsTools
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WowsMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SetUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LoadViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.UpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ColoursTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.OptonsReAnalyzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ServerLable = new System.Windows.Forms.Label();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
@@ -48,7 +50,6 @@ namespace WowsTools
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.labelStatusInfo = new System.Windows.Forms.Label();
             this.labelGamePath = new System.Windows.Forms.Label();
-            this.ColoursTemplateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@ namespace WowsTools
             this.menuStrip1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SetUpToolStripMenuItem,
-            this.UpdateToolStripMenuItem,
+            this.OptionsToolStripMenuItem,
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -69,25 +70,40 @@ namespace WowsTools
             // SetUpToolStripMenuItem
             // 
             this.SetUpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.LoadViewToolStripMenuItem,
             this.ColoursTemplateToolStripMenuItem});
             this.SetUpToolStripMenuItem.Name = "SetUpToolStripMenuItem";
             this.SetUpToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
             this.SetUpToolStripMenuItem.Text = "设置";
             // 
-            // LoadViewToolStripMenuItem
+            // ColoursTemplateToolStripMenuItem
             // 
-            this.LoadViewToolStripMenuItem.Name = "LoadViewToolStripMenuItem";
-            this.LoadViewToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.LoadViewToolStripMenuItem.Text = "重新渲染";
-            this.LoadViewToolStripMenuItem.Click += new System.EventHandler(this.LoadViewToolStripMenuItem_Click);
+            this.ColoursTemplateToolStripMenuItem.Name = "ColoursTemplateToolStripMenuItem";
+            this.ColoursTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ColoursTemplateToolStripMenuItem.Text = "选择渲染模板";
+            this.ColoursTemplateToolStripMenuItem.Click += new System.EventHandler(this.ColoursTemplateToolStripMenuItem_Click);
             // 
-            // UpdateToolStripMenuItem
+            // OptionsToolStripMenuItem
             // 
-            this.UpdateToolStripMenuItem.Name = "UpdateToolStripMenuItem";
-            this.UpdateToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.UpdateToolStripMenuItem.Text = "刷新";
-            this.UpdateToolStripMenuItem.Click += new System.EventHandler(this.UpdateToolStripMenuItem_Click);
+            this.OptionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem,
+            this.OptonsReAnalyzeToolStripMenuItem});
+            this.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem";
+            this.OptionsToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.OptionsToolStripMenuItem.Text = "选项";
+            // 
+            // OptionsLoadViewToolStripMenuItemToolStripMenuItem
+            // 
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Name = "OptionsLoadViewToolStripMenuItemToolStripMenuItem";
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Text = "重新渲染";
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Click += new System.EventHandler(this.OptionsLoadViewToolStripMenuItemToolStripMenuItem_Click);
+            // 
+            // OptonsReAnalyzeToolStripMenuItem
+            // 
+            this.OptonsReAnalyzeToolStripMenuItem.Name = "OptonsReAnalyzeToolStripMenuItem";
+            this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptonsReAnalyzeToolStripMenuItem.Text = "重置解析";
+            this.OptonsReAnalyzeToolStripMenuItem.Click += new System.EventHandler(this.OptonsReAnalyzeToolStripMenuItem_Click);
             // 
             // GuanYuToolStripMenuItem
             // 
@@ -216,13 +232,6 @@ namespace WowsTools
             this.labelGamePath.TabIndex = 11;
             this.labelGamePath.Text = "未识别游戏路径";
             // 
-            // ColoursTemplateToolStripMenuItem
-            // 
-            this.ColoursTemplateToolStripMenuItem.Name = "ColoursTemplateToolStripMenuItem";
-            this.ColoursTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
-            this.ColoursTemplateToolStripMenuItem.Text = "渲染模板";
-            this.ColoursTemplateToolStripMenuItem.Click += new System.EventHandler(this.ColoursTemplateToolStripMenuItem_Click);
-            // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -262,12 +271,13 @@ namespace WowsTools
         private System.Windows.Forms.Label labelMyTeam;
         private System.Windows.Forms.Label labelDIJun;
         private System.Windows.Forms.Timer timerGameCheck;
-        private System.Windows.Forms.ToolStripMenuItem UpdateToolStripMenuItem;
         private System.Windows.Forms.Label labelStatusInfo;
         private System.Windows.Forms.Label labelGamePath;
         private System.Windows.Forms.ToolStripMenuItem SetUpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem LoadViewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ColoursTemplateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptionsLoadViewToolStripMenuItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem OptonsReAnalyzeToolStripMenuItem;
     }
 }
 

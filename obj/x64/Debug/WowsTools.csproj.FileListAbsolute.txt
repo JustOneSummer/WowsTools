@@ -18,3 +18,4 @@ C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.application
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.exe
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.pdb
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.csproj.AssemblyReference.cache
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.DataGridViewTemplateSelect.resources

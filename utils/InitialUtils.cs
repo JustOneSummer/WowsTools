@@ -151,12 +151,12 @@ namespace WowsTools.utils
                 {
                     if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
                     {
-                        string wows=null;
+                        string wows = null;
                         if (IsAdmin())
                         {
                             log.Info("管理员模式加载...");
                             ProcessModule mainModule = process.MainModule;
-                             wows = mainModule.FileName;
+                            wows = mainModule.FileName;
                         }
                         else
                         {

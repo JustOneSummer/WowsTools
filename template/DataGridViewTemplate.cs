@@ -28,7 +28,7 @@ namespace WowsTools.template
         /// <param name="view"></param>
         /// <param name="gameInfoData"></param>
         /// <returns></returns>
-        public static DataGridViewRow One(int i,DataGridView view,GameInfoData gameInfoData)
+        public static DataGridViewRow One(int i, DataGridView view, GameInfoData gameInfoData)
         {
             string na = "N/A";
             DataGridViewRow row = new DataGridViewRow();
