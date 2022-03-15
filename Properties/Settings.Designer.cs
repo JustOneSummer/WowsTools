@@ -34,5 +34,17 @@ namespace WowsTools.Properties {
                 this["dataGridViewTemplate"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("N/A")]
+        public string GameHomePath {
+            get {
+                return ((string)(this["GameHomePath"]));
+            }
+            set {
+                this["GameHomePath"] = value;
+            }
+        }
     }
 }
