@@ -276,6 +276,9 @@ namespace WowsTools
             }
         }
 
+        /// <summary>
+        /// 界面行宽
+        /// </summary>
         private void LoadDataGridViewWeight()
         {
             this.dataGridViewOne.Columns[0].FillWeight = 26;
