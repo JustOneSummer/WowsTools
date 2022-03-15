@@ -26,12 +26,12 @@ namespace WowsTools.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int dataGridViewTemplate {
+        public int DataGridViewTemplate {
             get {
-                return ((int)(this["dataGridViewTemplate"]));
+                return ((int)(this["DataGridViewTemplate"]));
             }
             set {
-                this["dataGridViewTemplate"] = value;
+                this["DataGridViewTemplate"] = value;
             }
         }
         

@@ -10,6 +10,7 @@ using WowsTools.api;
 using WowsTools.model;
 using WowsTools.Properties;
 using WowsTools.service;
+using WowsTools.template;
 using WowsTools.utils;
 
 namespace WowsTools
@@ -234,76 +235,21 @@ namespace WowsTools
                 this.labelStatusInfo.Text = "开始渲染对局数据";
                 this.dataGridViewOne.Rows.Clear();
                 this.ServerLable.Text = server.ServerName;
+
                 GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
 
                 this.labelWinsA.Text = "平均胜率：" + (gameInfoData.TeamOneWins / gameInfoData.TeamOneCount).ToString("f2") + "%";
                 this.labelWinsB.Text = "平均胜率：" + (gameInfoData.TeamTwoWins / gameInfoData.TeamTwoCount).ToString("f2") + "%";
                 //排序
+                gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipLevel.CompareTo(r.GameAccountShipInfo.ShipLevel));
+                gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipLevel.CompareTo(r.GameAccountShipInfo.ShipLevel));
                 gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
                 gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
-                string na = "N/A";
+                
                 int len = gameInfoData.TeamOneList.Count > gameInfoData.TeamTwoList.Count ? gameInfoData.TeamOneList.Count : gameInfoData.TeamTwoList.Count;
                 for (int i = 0; i < len; i++)
                 {
-                    DataGridViewRow row = new DataGridViewRow();
-                    GameAccountInfoData data;
-                    if (i < gameInfoData.TeamOneList.Count)
-                    {
-                        data = gameInfoData.TeamOneList[i];
-                        GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                        row.CreateCells(this.dataGridViewOne);
-                        Color prColor = ColorUtils.PrColor(shipData.Pr);
-                        row.Cells[0].Value = data.AccountName;
-                        row.Cells[1].Value = data.Battles;
-
-                        row.Cells[2].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
-                        //row.Cells[2].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
-
-                        row.Cells[3].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-                        row.Cells[4].Value = shipData.ShipName;
-                        row.Cells[5].Value = data.Hide ? na : shipData.Battles.ToString();
-                        row.Cells[6].Value = data.Hide ? na : shipData.GameDamage().ToString();
-
-                        row.Cells[7].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
-                        //row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
-
-                        row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
-                        //row.Cells[8].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
-                        for (int j = 0; j < 9; j++)
-                        {
-                            row.Cells[j].Style.BackColor = prColor;
-                        }
-                    }
-                    row.Cells[9].Value = "";
-                    //row.Cells[9].Style.BackColor = Color.FromArgb(105, 105, 105);
-                    if (i < gameInfoData.TeamTwoList.Count)
-                    {
-                        data = gameInfoData.TeamTwoList[i];
-                        GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                        Color prColor = ColorUtils.PrColor(shipData.Pr);
-                        row.Cells[10].Value = data.Hide ? na : shipData.Pr.ToString();
-                        //row.Cells[10].Style.ForeColor = ColorUtils.PrColor(shipData.Pr);
-                        //row.Cells[10].Style.BackColor = ColorUtils.PrColor(shipData.Pr);
-
-                        row.Cells[11].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
-                        //row.Cells[11].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
-
-                        row.Cells[12].Value = data.Hide ? na : shipData.GameDamage().ToString();
-                        row.Cells[13].Value = data.Hide ? na : shipData.Battles.ToString();
-                        row.Cells[14].Value = shipData.ShipName;
-                        row.Cells[15].Value = ShipUtils.LevelInfo(shipData.ShipLevel);
-
-                        row.Cells[16].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
-                        //row.Cells[16].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
-
-                        row.Cells[17].Value = data.Battles;
-                        row.Cells[18].Value = data.AccountName;
-                        for (int j = 10; j < 19; j++)
-                        {
-                            row.Cells[j].Style.BackColor = ColorUtils.PrColor(shipData.Pr);
-                        }
-                    }
-                    this.dataGridViewOne.Rows.Add(row);
+                    this.dataGridViewOne.Rows.Add(DataGridViewTemplate.Template(i,this.dataGridViewOne,gameInfoData));
                 }
                 LoadDataGridViewWeight();
                 this.UpdateToolStripMenuItem.Enabled = true;
@@ -400,7 +346,7 @@ namespace WowsTools
         /// <param name="e"></param>
         private void ColoursTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int dataGridViewTemplate = Settings.Default.dataGridViewTemplate;
+            int dataGridViewTemplate = Settings.Default.DataGridViewTemplate;
         }
     }
 }

@@ -142,7 +142,9 @@
     <Compile Include="model\GameInfoData.cs" />
     <Compile Include="model\WowsJsonData.cs" />
     <Compile Include="service\PvpService.cs" />
+    <Compile Include="template\DataGridViewTemplate.cs" />
     <Compile Include="utils\ColorUtils.cs" />
+    <Compile Include="utils\DataUtils.cs" />
     <Compile Include="utils\HttpUtils.cs" />
     <Compile Include="utils\InitialUtils.cs" />
     <Compile Include="utils\ShipPrUtils.cs" />
