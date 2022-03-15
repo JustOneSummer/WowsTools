@@ -140,6 +140,7 @@
     <Compile Include="model\GameAccountInfoData.cs" />
     <Compile Include="model\GameAccountShipInfoData.cs" />
     <Compile Include="model\GameInfoData.cs" />
+    <Compile Include="model\Settings\SettingsConfig.cs" />
     <Compile Include="model\WowsJsonData.cs" />
     <Compile Include="service\PvpService.cs" />
     <Compile Include="utils\ColorUtils.cs" />

@@ -8,6 +8,7 @@ using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
 using WowsTools.model;
+using WowsTools.Properties;
 using WowsTools.service;
 using WowsTools.utils;
 
@@ -390,6 +391,16 @@ namespace WowsTools
             {
                 DataViewLoad(WowsServer);
             }
+        }
+
+        /// <summary>
+        /// 选择渲染模板
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ColoursTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int dataGridViewTemplate = Settings.Default.dataGridViewTemplate;
         }
     }
 }
