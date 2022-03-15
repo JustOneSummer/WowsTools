@@ -78,7 +78,7 @@ namespace WowsTools
             // ColoursTemplateToolStripMenuItem
             // 
             this.ColoursTemplateToolStripMenuItem.Name = "ColoursTemplateToolStripMenuItem";
-            this.ColoursTemplateToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.ColoursTemplateToolStripMenuItem.Size = new System.Drawing.Size(156, 24);
             this.ColoursTemplateToolStripMenuItem.Text = "选择渲染模板";
             this.ColoursTemplateToolStripMenuItem.Click += new System.EventHandler(this.ColoursTemplateToolStripMenuItem_Click);
             // 
@@ -94,14 +94,14 @@ namespace WowsTools
             // OptionsLoadViewToolStripMenuItemToolStripMenuItem
             // 
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Name = "OptionsLoadViewToolStripMenuItemToolStripMenuItem";
-            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Text = "重新渲染";
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Click += new System.EventHandler(this.OptionsLoadViewToolStripMenuItemToolStripMenuItem_Click);
             // 
             // OptonsReAnalyzeToolStripMenuItem
             // 
             this.OptonsReAnalyzeToolStripMenuItem.Name = "OptonsReAnalyzeToolStripMenuItem";
-            this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(169, 24);
             this.OptonsReAnalyzeToolStripMenuItem.Text = "重置设置和缓存";
             this.OptonsReAnalyzeToolStripMenuItem.Click += new System.EventHandler(this.OptonsReAnalyzeToolStripMenuItem_Click);
             // 
@@ -130,9 +130,10 @@ namespace WowsTools
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewOne.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridViewOne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微软雅黑", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -144,16 +145,16 @@ namespace WowsTools
             this.dataGridViewOne.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewOne.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(1460, 477);
+            this.dataGridViewOne.Size = new System.Drawing.Size(1460, 648);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
@@ -236,7 +237,7 @@ namespace WowsTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 561);
+            this.ClientSize = new System.Drawing.Size(1484, 731);
             this.Controls.Add(this.labelGamePath);
             this.Controls.Add(this.labelStatusInfo);
             this.Controls.Add(this.labelDIJun);

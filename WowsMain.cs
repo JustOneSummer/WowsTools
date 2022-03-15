@@ -56,25 +56,22 @@ namespace WowsTools
             log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne.RowHeadersVisible = false;
+            this.dataGridViewOne.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             this.dataGridViewOne.Columns.Add("userNameOne", "玩家");
-            this.dataGridViewOne.Columns.Add("BattlesOne", "场次");
-            this.dataGridViewOne.Columns.Add("userWinsOne", "胜率");
-            this.dataGridViewOne.Columns.Add("levelOne", "lv");
-            this.dataGridViewOne.Columns.Add("shipNameOne", "名称");
-            this.dataGridViewOne.Columns.Add("shipBattlesOne", "场次");
-            this.dataGridViewOne.Columns.Add("shipDamageOne", "场均");
-            this.dataGridViewOne.Columns.Add("shipWinsOne", "胜率");
-            this.dataGridViewOne.Columns.Add("shipPrOne", "评分");
+            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsOne", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("levelOneShipNameOne", "等级/名称");
+            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsOne", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("ShipDamageOne", "场均");
+            this.dataGridViewOne.Columns.Add("ShipPrOne", "评分");
+
             this.dataGridViewOne.Columns.Add("AB", "A/B");
-            this.dataGridViewOne.Columns.Add("shipPrTwo", "评分");
-            this.dataGridViewOne.Columns.Add("shipWinsTwo", "胜率");
-            this.dataGridViewOne.Columns.Add("shipDamageTwo", "场均");
-            this.dataGridViewOne.Columns.Add("shipBattlesTwo", "场次");
-            this.dataGridViewOne.Columns.Add("shipNameTwo", "名称");
-            this.dataGridViewOne.Columns.Add("levelTwo", "lv");
-            this.dataGridViewOne.Columns.Add("userWinsTwo", "胜率");
-            this.dataGridViewOne.Columns.Add("BattlesTwo", "场次");
-            this.dataGridViewOne.Columns.Add("userNameTwo", "玩家");
+
+            this.dataGridViewOne.Columns.Add("ShipPrOne", "评分");
+            this.dataGridViewOne.Columns.Add("ShipDamageOne", "场均");
+            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsOne", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("levelOneShipNameOne", "等级/名称");
+            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsOne", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("userNameOne", "玩家");
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
@@ -281,27 +278,21 @@ namespace WowsTools
         /// </summary>
         private void LoadDataGridViewWeight()
         {
-            this.dataGridViewOne.Columns[0].FillWeight = 26;
-            this.dataGridViewOne.Columns[1].FillWeight = 9;
-            this.dataGridViewOne.Columns[2].FillWeight = 10;
-            this.dataGridViewOne.Columns[3].FillWeight = 6;
-            this.dataGridViewOne.Columns[4].FillWeight = 12;
+            this.dataGridViewOne.Columns[0].FillWeight = 30;
+            this.dataGridViewOne.Columns[1].FillWeight = 11;
+            this.dataGridViewOne.Columns[2].FillWeight = 18;
+            this.dataGridViewOne.Columns[3].FillWeight = 11;
+            this.dataGridViewOne.Columns[4].FillWeight = 10;
             this.dataGridViewOne.Columns[5].FillWeight = 9;
-            this.dataGridViewOne.Columns[6].FillWeight = 9;
-            this.dataGridViewOne.Columns[7].FillWeight = 10;
-            this.dataGridViewOne.Columns[8].FillWeight = 9;
 
-            this.dataGridViewOne.Columns[9].FillWeight = 5;
+            this.dataGridViewOne.Columns[6].FillWeight = 5;
 
-            this.dataGridViewOne.Columns[18].FillWeight = 26;
-            this.dataGridViewOne.Columns[17].FillWeight = 9;
-            this.dataGridViewOne.Columns[16].FillWeight = 10;
-            this.dataGridViewOne.Columns[15].FillWeight = 6;
-            this.dataGridViewOne.Columns[14].FillWeight = 12;
-            this.dataGridViewOne.Columns[13].FillWeight = 9;
-            this.dataGridViewOne.Columns[12].FillWeight = 9;
-            this.dataGridViewOne.Columns[11].FillWeight = 10;
-            this.dataGridViewOne.Columns[10].FillWeight = 9;
+            this.dataGridViewOne.Columns[7].FillWeight = 9;
+            this.dataGridViewOne.Columns[8].FillWeight = 10;
+            this.dataGridViewOne.Columns[9].FillWeight = 11;
+            this.dataGridViewOne.Columns[10].FillWeight = 18;
+            this.dataGridViewOne.Columns[11].FillWeight = 11;
+            this.dataGridViewOne.Columns[12].FillWeight = 30;
             for (int i = 0; i < this.dataGridViewOne.Columns.Count; i++)
             {
                 this.dataGridViewOne.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
@@ -310,7 +301,7 @@ namespace WowsTools
 
             for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
             {
-                this.dataGridViewOne.Rows[i].Height = 35;
+                this.dataGridViewOne.Rows[i].Height = 50;
                 if (i % 2 != 0)
                 {
                     this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(211, 211, 211);
