@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Management;
 using System.Runtime.InteropServices;
+using System.Security.Principal;
 using System.Text;
 using WowsTools.Properties;
 
@@ -150,13 +151,25 @@ namespace WowsTools.utils
                 {
                     if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
                     {
-                        //ProcessModule mainModule = process.MainModule;
-                        //string wows = mainModule.FileName;
-                        string wows = GetProcessFullPath(process.Id);
-                        //获取游戏根目录
-                        HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
-                        Settings.Default.GameHomePath = HOME;
-                        Settings.Default.Save();
+                        string wows=null;
+                        if (IsAdmin())
+                        {
+                            log.Info("管理员模式加载...");
+                            ProcessModule mainModule = process.MainModule;
+                             wows = mainModule.FileName;
+                        }
+                        else
+                        {
+                            log.Info("非管理员模式加载...");
+                            wows = GetProcessFullPath(process.Id);
+                        }
+                        if (!string.IsNullOrEmpty(wows))
+                        {
+                            //获取游戏根目录
+                            HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
+                            Settings.Default.GameHomePath = HOME;
+                            Settings.Default.Save();
+                        }
                         return;
                     }
                 }
@@ -200,6 +213,17 @@ namespace WowsTools.utils
             }
 
             REPLAY_PATH = null;
+        }
+
+        public static bool IsAdmin()
+        {
+            bool isAdmin;
+            using (WindowsIdentity identity = WindowsIdentity.GetCurrent())
+            {
+                WindowsPrincipal principal = new WindowsPrincipal(identity);
+                isAdmin = principal.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+            return isAdmin;
         }
 
         public static string GetProcessFullPath(int id)

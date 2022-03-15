@@ -4,7 +4,7 @@
   <description asmv2:iconFile="yuyuko_avatar.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="WowsTools" version="1.0.0.0" publicKeyToken="1281A52E5D1F9D9A" language="neutral" processorArchitecture="amd64" />
+    <assemblyIdentity name="WowsTools" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
     <commandLine file="WowsTools.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -66,24 +66,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1295360">
-      <assemblyIdentity name="WowsTools" version="1.0.0.0" publicKeyToken="1281A52E5D1F9D9A" language="neutral" processorArchitecture="amd64" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1298432">
+      <assemblyIdentity name="WowsTools" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IQAFr55nRwQq6bM9RYofoeLRWdZl234Rqi9WPODGyKY=</dsig:DigestValue>
+        <dsig:DigestValue>etuBGAh7Z8Yh9kac5CjRq5gs58dr5jMh6XlSxYEq38o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="WowsTools.exe.config" size="1261">
+  <file name="WowsTools.exe.config" size="1984">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Qbqw3cq0m+pdZGduhsAZyNlIQ4Okwl4ZaoCY+W5c1wA=</dsig:DigestValue>
+      <dsig:DigestValue>AJ7/9BGMq4nbuyEMX9MngO6coGqaiMmi+cVC/4+q/iw=</dsig:DigestValue>
     </hash>
   </file>
   <file name="yuyuko_avatar.ico" size="270398">
