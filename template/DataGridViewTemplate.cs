@@ -8,6 +8,7 @@ namespace WowsTools.template
 {
     internal class DataGridViewTemplate
     {
+        public static Color H_S = Color.FromArgb(105, 105, 105);
         public static DataGridViewRow Template(int i, DataGridView view, GameInfoData gameInfoData)
         {
             int dataGridViewTemplate = Settings.Default.DataGridViewTemplate;
@@ -37,7 +38,7 @@ namespace WowsTools.template
                 data = gameInfoData.TeamOneList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                 row.CreateCells(view);
-                Color prColor = ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
                 row.Cells[0].Value = data.AccountName;
                 row.Cells[1].Value = data.Battles;
 
@@ -53,14 +54,14 @@ namespace WowsTools.template
                 row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
 
                 row.Cells[8].Value = data.Hide ? na : shipData.Pr.ToString();
-                row.Cells[8].Style.BackColor = ColorUtils.PrColor(shipData.Pr);
+                row.Cells[8].Style.BackColor = prColor;
             }
             row.Cells[9].Value = "";
             if (i < gameInfoData.TeamTwoList.Count)
             {
                 data = gameInfoData.TeamTwoList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
                 row.Cells[10].Value = data.Hide ? na : shipData.Pr.ToString();
                 row.Cells[10].Style.BackColor = prColor;
 
@@ -98,7 +99,7 @@ namespace WowsTools.template
                 data = gameInfoData.TeamOneList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                 row.CreateCells(view);
-                Color prColor = ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
                 row.Cells[0].Value = data.AccountName;
                 row.Cells[1].Value = data.Battles;
                 row.Cells[2].Value = data.Hide ? na : data.GameWins().ToString("f2") + "%";
@@ -118,7 +119,7 @@ namespace WowsTools.template
             {
                 data = gameInfoData.TeamTwoList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
                 row.Cells[10].Value = data.Hide ? na : shipData.Pr.ToString();
                 row.Cells[11].Value = data.Hide ? na : shipData.GameWins().ToString("f2") + "%"; ;
                 row.Cells[12].Value = data.Hide ? na : shipData.GameDamage().ToString();
