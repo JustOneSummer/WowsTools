@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -238,10 +239,11 @@ namespace WowsTools
                 this.labelWinsA.Text = "平均胜率：" + (gameInfoData.TeamOneWins / gameInfoData.TeamOneCount).ToString("f2") + "%";
                 this.labelWinsB.Text = "平均胜率：" + (gameInfoData.TeamTwoWins / gameInfoData.TeamTwoCount).ToString("f2") + "%";
                 //排序
-                gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipLevel.CompareTo(r.GameAccountShipInfo.ShipLevel));
-                gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipLevel.CompareTo(r.GameAccountShipInfo.ShipLevel));
-                gameInfoData.TeamOneList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
-                gameInfoData.TeamTwoList.Sort((l, r) => l.GameAccountShipInfo.ShipTypeNumber.CompareTo(r.GameAccountShipInfo.ShipTypeNumber));
+                var linqOne = from game in gameInfoData.TeamOneList orderby game.GameAccountShipInfo.ShipTypeNumber, game.GameAccountShipInfo.ShipLevel descending select game;
+                gameInfoData.TeamOneList = linqOne.ToList();
+
+                var linqTwo = from game in gameInfoData.TeamTwoList orderby game.GameAccountShipInfo.ShipTypeNumber, game.GameAccountShipInfo.ShipLevel descending select game;
+                gameInfoData.TeamTwoList = linqTwo.ToList();
 
                 int len = gameInfoData.TeamOneList.Count > gameInfoData.TeamTwoList.Count ? gameInfoData.TeamOneList.Count : gameInfoData.TeamTwoList.Count;
                 for (int i = 0; i < len; i++)
