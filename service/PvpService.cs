@@ -78,6 +78,12 @@ namespace WowsTools.service
             int twoCount = 0;
             double oneWins = 0;
             double twoWins = 0;
+            int oneBattle = 0;
+            int twoBattle = 0;
+            double oneShipWins = 0;
+            double twoShipWins = 0;
+            int oneShipBattle = 0;
+            int twoShipBattle = 0;
             foreach (var item in games)
             {
                 ShipUtils shipUtils = ShipUtils.Get(item.GameAccountShipInfo.ShipId, false);
@@ -85,7 +91,7 @@ namespace WowsTools.service
                 item.GameAccountShipInfo.ShipLevel = shipUtils.tier;
                 item.GameAccountShipInfo.ShipType = shipUtils.ship_type;
                 item.GameAccountShipInfo.ShipTypeNumber = ShipUtils.ShipType(item.GameAccountShipInfo.ShipType);
-
+                data.WowsServer = server;
                 if (item.Team)
                 {
                     teamOne.Add(item);
@@ -93,6 +99,9 @@ namespace WowsTools.service
                     {
                         oneCount++;
                         oneWins += item.GameWins();
+                        oneBattle += item.Battles;
+                        oneShipWins += item.GameAccountShipInfo.GameWins();
+                        oneShipBattle += item.GameAccountShipInfo.Battles;
                     }
                 }
                 else
@@ -101,18 +110,26 @@ namespace WowsTools.service
                     if (!item.Hide)
                     {
                         twoCount++;
+                        twoBattle += item.Battles;
                         twoWins += item.GameWins();
+                        twoShipWins += item.GameAccountShipInfo.GameWins();
+                        twoShipBattle += item.GameAccountShipInfo.Battles;
                     }
                 }
             }
-            data.WowsServer = server;
             data.TeamOneList = teamOne;
             data.TeamOneCount = oneCount;
             data.TeamOneWins = oneWins;
+            data.TeamOneBattles = oneBattle;
+            data.TeamOneShipWins = oneShipWins;
+            data.TeamOneShipBattles = oneShipBattle;
 
             data.TeamTwoList = teamTwo;
             data.TeamTwoCount = twoCount;
             data.TeamTwoWins = twoWins;
+            data.TeamTwoBattles = twoBattle;
+            data.TeamTwoShipWins = twoShipWins;
+            data.TeamTwoShipBattles = twoShipBattle;
             return data;
         }
     }
