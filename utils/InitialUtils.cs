@@ -5,6 +5,7 @@ using System.IO;
 using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
+using WowsTools.Properties;
 
 namespace WowsTools.utils
 {
@@ -14,7 +15,7 @@ namespace WowsTools.utils
     class InitialUtils
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
+        static object lockObject = new object();
         private static string HOME = null;
         private static string REPLAY_PATH = null;
 
@@ -142,20 +143,34 @@ namespace WowsTools.utils
         }
         private static void WowsExeHomePath()
         {
-            Process[] processes = Process.GetProcesses();
-            foreach (Process process in processes)
+            lock (lockObject)
             {
-                if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
+                Process[] processes = Process.GetProcesses();
+                foreach (Process process in processes)
                 {
-                    //ProcessModule mainModule = process.MainModule;
-                    //string wows = mainModule.FileName;
-                    string wows = GetProcessFullPath(process.Id);
-                    //获取游戏根目录
-                    HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
-                    return;
+                    if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
+                    {
+                        //ProcessModule mainModule = process.MainModule;
+                        //string wows = mainModule.FileName;
+                        string wows = GetProcessFullPath(process.Id);
+                        //获取游戏根目录
+                        HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
+                        Settings.Default.GameHomePath = HOME;
+                        Settings.Default.Save();
+                        return;
+                    }
+                }
+                //为空时判断之前的历史设置
+                string settings = Settings.Default.GameHomePath;
+                if (settings.Equals("N/A"))
+                {
+                    HOME = null;
+                }
+                else
+                {
+                    HOME = settings;
                 }
             }
-            HOME = null;
         }
 
         private static void ReplaysPath()

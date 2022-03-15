@@ -92,7 +92,7 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>F9DDDA138F40550EF32E130A0479D8B0530FFFEE</ManifestCertificateThumbprint>
@@ -140,7 +140,6 @@
     <Compile Include="model\GameAccountInfoData.cs" />
     <Compile Include="model\GameAccountShipInfoData.cs" />
     <Compile Include="model\GameInfoData.cs" />
-    <Compile Include="model\Settings\SettingsConfig.cs" />
     <Compile Include="model\WowsJsonData.cs" />
     <Compile Include="service\PvpService.cs" />
     <Compile Include="utils\ColorUtils.cs" />
