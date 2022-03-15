@@ -11,6 +11,18 @@
         /// </summary>
         public bool Team;
         /// <summary>
+        /// 公会ID
+        /// </summary>
+        public string ClansId;
+        /// <summary>
+        /// 公会TAG
+        /// </summary>
+        public string ClansTag;
+        /// <summary>
+        /// 公会TAG颜色
+        /// </summary>
+        public string ClansTagColor;
+        /// <summary>
         /// 游戏账号名称
         /// </summary>
         public string AccountName;
