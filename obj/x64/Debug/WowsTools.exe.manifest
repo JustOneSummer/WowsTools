@@ -66,14 +66,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1571328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1572352">
       <assemblyIdentity name="WowsTools" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>C56DGyPhLNjEEArgT96mI29pmbHTDyW5604u/02M8Ks=</dsig:DigestValue>
+        <dsig:DigestValue>dATrj27Lr+xrWTby9P3x1zV6D7xh3Q0AExCitCf3jCQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
