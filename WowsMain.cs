@@ -363,7 +363,7 @@ namespace WowsTools
         /// <param name="e"></param>
         private void OptonsReAnalyzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("是否要重置系统设置和解析缓存？", "重置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("是否要重置解析缓存？", "重置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
                 Settings.Default.GameHomePath = "N/A";
@@ -405,6 +405,16 @@ namespace WowsTools
             PrBackColorSettings settings = new PrBackColorSettings();
             settings.SaveReloadEvent += new SaveReloadPrBackColorSettingsEvent(DataGridViewTemplateSelectMethod);
             settings.ShowDialog();
+        }
+
+        private void ReloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("是否要重置设置缓存？", "重置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Settings.Default.Reset();
+                MessageBox.Show("刷新成功");
+            }
         }
     }
 }

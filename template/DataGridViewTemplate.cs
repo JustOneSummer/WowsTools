@@ -56,6 +56,7 @@ namespace WowsTools.template
             int prSelect = Settings.Default.GamePrBackColorSelect;
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
+            ForeColor(ref row);
             GameAccountInfoData data;
             if (i < gameInfoData.TeamOneList.Count)
             {
@@ -87,7 +88,6 @@ namespace WowsTools.template
                 row.Cells[9].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
                 row.Cells[10].Value = data.AccountName;
             }
-            ForeColor(ref row);
             return row;
         }
 
