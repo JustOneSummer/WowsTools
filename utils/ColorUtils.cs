@@ -12,7 +12,7 @@ namespace WowsTools.utils
                 return Color.FromArgb(Convert.ToInt32("ff63B8FF", 16));
             }
             Color color = Color.FromArgb(Convert.ToInt32("ffff6e66", 16));
-            if (pr <= 750)
+            /*if (pr <= 750)
             {
                 return color;
             }
@@ -20,9 +20,16 @@ namespace WowsTools.utils
             {
                 color = Color.FromArgb(Convert.ToInt32("ffffae66", 16));
             }
-            else if (pr <= 1350)
+            else
+            if (pr <= 1350)
             {
                 color = Color.FromArgb(Convert.ToInt32("ffffc51a", 16));
+            }
+            */
+            //前面三个颜色修改
+            if (pr <= 1350)
+            {
+                color = Color.FromArgb(Convert.ToInt32("ffff6e66", 16));
             }
             else if (pr <= 1550)
             {

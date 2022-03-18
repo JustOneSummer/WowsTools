@@ -20,6 +20,22 @@ namespace WowsTools.model
         public double TeamOneShipWins;
         public int TeamOneShipBattles;
         public int TeamOneCount;
+        public string OneWins()
+        {
+            return  (TeamOneWins / TeamOneCount).ToString("f2") + "%";
+        }
+        public string OneShipWins()
+        {
+            return  (TeamOneShipWins / TeamOneCount).ToString("f2") + "%";
+        }
+        public int OneBattles()
+        {
+            return TeamOneBattles / TeamOneCount;
+        }
+        public int OneShipBattles()
+        {
+            return TeamOneShipBattles / TeamOneCount;
+        }
         /// <summary>
         /// B队伍总胜率
         /// </summary>
@@ -28,6 +44,22 @@ namespace WowsTools.model
         public double TeamTwoShipWins;
         public int TeamTwoShipBattles;
         public int TeamTwoCount;
+        public string TwoWins()
+        {
+            return  (TeamTwoWins / TeamTwoCount).ToString("f2") + "%";
+        }
+        public string TwoShipWins()
+        {
+            return  (TeamTwoShipWins / TeamTwoCount).ToString("f2") + "%";
+        }
+        public int TwoBattles()
+        {
+            return TeamTwoBattles / TeamOneCount;
+        }
+        public int TwoShipBattles()
+        {
+            return TeamTwoShipBattles / TeamOneCount;
+        }
         /// <summary>
         /// 用户账号数据
         /// </summary>

@@ -8,5 +8,8 @@
     <Setting Name="GameHomePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">N/A</Value>
     </Setting>
+    <Setting Name="GameVersionHome" Type="System.String" Scope="User">
+      <Value Profile="(Default)">N/A</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

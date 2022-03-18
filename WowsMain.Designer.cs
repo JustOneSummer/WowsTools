@@ -41,15 +41,13 @@ namespace WowsTools
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OptonsReAnalyzeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ServerLable = new System.Windows.Forms.Label();
+            this.ReBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
-            this.labelWinsA = new System.Windows.Forms.Label();
-            this.labelWinsB = new System.Windows.Forms.Label();
-            this.labelMyTeam = new System.Windows.Forms.Label();
-            this.labelDIJun = new System.Windows.Forms.Label();
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.labelStatusInfo = new System.Windows.Forms.Label();
             this.labelGamePath = new System.Windows.Forms.Label();
+            this.replaysFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +58,9 @@ namespace WowsTools
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.SetUpToolStripMenuItem,
             this.OptionsToolStripMenuItem,
+            this.replaysFileToolStripMenuItem,
+            this.modsFileToolStripMenuItem,
+            this.ReBlockToolStripMenuItem,
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -112,18 +113,12 @@ namespace WowsTools
             this.GuanYuToolStripMenuItem.Text = "关于";
             this.GuanYuToolStripMenuItem.Click += new System.EventHandler(this.GuanYuToolStripMenuItem_Click);
             // 
-            // ServerLable
+            // ReBlockToolStripMenuItem
             // 
-            this.ServerLable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ServerLable.AutoSize = true;
-            this.ServerLable.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ServerLable.ForeColor = System.Drawing.Color.Black;
-            this.ServerLable.Location = new System.Drawing.Point(718, 37);
-            this.ServerLable.Name = "ServerLable";
-            this.ServerLable.Size = new System.Drawing.Size(51, 26);
-            this.ServerLable.TabIndex = 1;
-            this.ServerLable.Text = "N/A";
+            this.ReBlockToolStripMenuItem.Name = "ReBlockToolStripMenuItem";
+            this.ReBlockToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
+            this.ReBlockToolStripMenuItem.Text = "恢复";
+            this.ReBlockToolStripMenuItem.Click += new System.EventHandler(this.ReBlockToolStripMenuItem_Click);
             // 
             // dataGridViewOne
             // 
@@ -143,7 +138,7 @@ namespace WowsTools
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewOne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewOne.Location = new System.Drawing.Point(12, 72);
+            this.dataGridViewOne.Location = new System.Drawing.Point(12, 30);
             this.dataGridViewOne.Name = "dataGridViewOne";
             this.dataGridViewOne.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -157,58 +152,9 @@ namespace WowsTools
             dataGridViewCellStyle3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.dataGridViewOne.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewOne.RowTemplate.Height = 23;
-            this.dataGridViewOne.Size = new System.Drawing.Size(1460, 690);
+            this.dataGridViewOne.Size = new System.Drawing.Size(1460, 756);
             this.dataGridViewOne.TabIndex = 2;
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
-            // 
-            // labelWinsA
-            // 
-            this.labelWinsA.AutoSize = true;
-            this.labelWinsA.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelWinsA.ForeColor = System.Drawing.Color.Black;
-            this.labelWinsA.Location = new System.Drawing.Point(402, 37);
-            this.labelWinsA.Name = "labelWinsA";
-            this.labelWinsA.Size = new System.Drawing.Size(149, 26);
-            this.labelWinsA.TabIndex = 4;
-            this.labelWinsA.Text = "平均胜率：50%";
-            // 
-            // labelWinsB
-            // 
-            this.labelWinsB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelWinsB.AutoSize = true;
-            this.labelWinsB.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelWinsB.Location = new System.Drawing.Point(859, 37);
-            this.labelWinsB.Name = "labelWinsB";
-            this.labelWinsB.Size = new System.Drawing.Size(149, 26);
-            this.labelWinsB.TabIndex = 5;
-            this.labelWinsB.Text = "平均胜率：50%";
-            // 
-            // labelMyTeam
-            // 
-            this.labelMyTeam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMyTeam.AutoSize = true;
-            this.labelMyTeam.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelMyTeam.ForeColor = System.Drawing.Color.Green;
-            this.labelMyTeam.Location = new System.Drawing.Point(624, 37);
-            this.labelMyTeam.Name = "labelMyTeam";
-            this.labelMyTeam.Size = new System.Drawing.Size(88, 26);
-            this.labelMyTeam.TabIndex = 7;
-            this.labelMyTeam.Text = "我的团队";
-            // 
-            // labelDIJun
-            // 
-            this.labelDIJun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelDIJun.AutoSize = true;
-            this.labelDIJun.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelDIJun.ForeColor = System.Drawing.Color.Red;
-            this.labelDIJun.Location = new System.Drawing.Point(772, 37);
-            this.labelDIJun.Name = "labelDIJun";
-            this.labelDIJun.Size = new System.Drawing.Size(50, 26);
-            this.labelDIJun.TabIndex = 8;
-            this.labelDIJun.Text = "敌军";
             // 
             // timerGameCheck
             // 
@@ -220,11 +166,11 @@ namespace WowsTools
             // 
             this.labelStatusInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelStatusInfo.AutoSize = true;
-            this.labelStatusInfo.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelStatusInfo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelStatusInfo.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelStatusInfo.Location = new System.Drawing.Point(1300, 37);
+            this.labelStatusInfo.Location = new System.Drawing.Point(1299, 5);
             this.labelStatusInfo.Name = "labelStatusInfo";
-            this.labelStatusInfo.Size = new System.Drawing.Size(50, 26);
+            this.labelStatusInfo.Size = new System.Drawing.Size(42, 22);
             this.labelStatusInfo.TabIndex = 10;
             this.labelStatusInfo.Text = "等待";
             // 
@@ -232,27 +178,36 @@ namespace WowsTools
             // 
             this.labelGamePath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelGamePath.AutoSize = true;
-            this.labelGamePath.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelGamePath.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelGamePath.ForeColor = System.Drawing.Color.Red;
-            this.labelGamePath.Location = new System.Drawing.Point(1116, 37);
+            this.labelGamePath.Location = new System.Drawing.Point(1162, 5);
             this.labelGamePath.Name = "labelGamePath";
-            this.labelGamePath.Size = new System.Drawing.Size(145, 26);
+            this.labelGamePath.Size = new System.Drawing.Size(122, 22);
             this.labelGamePath.TabIndex = 11;
             this.labelGamePath.Text = "未识别游戏路径";
+            // 
+            // replaysFileToolStripMenuItem
+            // 
+            this.replaysFileToolStripMenuItem.Name = "replaysFileToolStripMenuItem";
+            this.replaysFileToolStripMenuItem.Size = new System.Drawing.Size(90, 23);
+            this.replaysFileToolStripMenuItem.Text = "replays目录";
+            this.replaysFileToolStripMenuItem.Click += new System.EventHandler(this.replaysFileToolStripMenuItem_Click);
+            // 
+            // modsFileToolStripMenuItem
+            // 
+            this.modsFileToolStripMenuItem.Name = "modsFileToolStripMenuItem";
+            this.modsFileToolStripMenuItem.Size = new System.Drawing.Size(81, 23);
+            this.modsFileToolStripMenuItem.Text = "mods目录";
+            this.modsFileToolStripMenuItem.Click += new System.EventHandler(this.modsFileToolStripMenuItem_Click);
             // 
             // WowsMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1484, 773);
+            this.ClientSize = new System.Drawing.Size(1484, 797);
             this.Controls.Add(this.labelGamePath);
             this.Controls.Add(this.labelStatusInfo);
-            this.Controls.Add(this.labelDIJun);
-            this.Controls.Add(this.labelMyTeam);
-            this.Controls.Add(this.labelWinsB);
-            this.Controls.Add(this.labelWinsA);
             this.Controls.Add(this.dataGridViewOne);
-            this.Controls.Add(this.ServerLable);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -272,12 +227,7 @@ namespace WowsTools
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem GuanYuToolStripMenuItem;
-        private System.Windows.Forms.Label ServerLable;
         private System.Windows.Forms.DataGridView dataGridViewOne;
-        private System.Windows.Forms.Label labelWinsA;
-        private System.Windows.Forms.Label labelWinsB;
-        private System.Windows.Forms.Label labelMyTeam;
-        private System.Windows.Forms.Label labelDIJun;
         private System.Windows.Forms.Timer timerGameCheck;
         private System.Windows.Forms.Label labelStatusInfo;
         private System.Windows.Forms.Label labelGamePath;
@@ -286,6 +236,9 @@ namespace WowsTools
         private System.Windows.Forms.ToolStripMenuItem OptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OptionsLoadViewToolStripMenuItemToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OptonsReAnalyzeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ReBlockToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem replaysFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modsFileToolStripMenuItem;
     }
 }
 

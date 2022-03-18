@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using WowsTools.api;
 using WowsTools.model;
 using WowsTools.Properties;
 using WowsTools.utils;
@@ -10,6 +11,27 @@ namespace WowsTools.template
     internal class DataGridViewTemplate
     {
         public static Color H_S = Color.FromArgb(Convert.ToInt32("ff949e9e", 16));
+
+        private const string na = "N/A";
+        private static string rn = Environment.NewLine;
+
+        public static DataGridViewRow AVG(DataGridView view,WowsServer server, GameInfoData gameInfoData)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(view);
+            row.Cells[0].Value = "我方团队平均数据";
+            row.Cells[1].Value = gameInfoData.OneBattles() +rn +gameInfoData.OneWins();
+            row.Cells[2].Value = "";
+            row.Cells[3].Value = gameInfoData.OneShipBattles() + rn + gameInfoData.OneShipWins();
+            row.Cells[5].Value = server.ServerName;
+            //row.Cells[5].Style.BackColor = Color.White;
+            row.Cells[6].Value = "";
+            row.Cells[7].Value = gameInfoData.TwoShipBattles() + rn + gameInfoData.TwoShipWins();
+            row.Cells[8].Value = "";
+            row.Cells[9].Value = gameInfoData.TwoBattles() + rn + gameInfoData.TwoWins();
+            row.Cells[10].Value = "敌方团队平均数据";
+            return row;
+        }
         public static DataGridViewRow Template(int i, DataGridView view, GameInfoData gameInfoData)
         {
             int dataGridViewTemplate = Settings.Default.DataGridViewTemplate;
@@ -31,8 +53,6 @@ namespace WowsTools.template
         /// <returns></returns>
         public static DataGridViewRow One(int i, DataGridView view, GameInfoData gameInfoData)
         {
-            string na = "N/A";
-            string rn = Environment.NewLine;
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
             GameAccountInfoData data;
@@ -79,8 +99,6 @@ namespace WowsTools.template
         /// <returns></returns>
         public static DataGridViewRow Two(int i, DataGridView view, GameInfoData gameInfoData)
         {
-            string na = "N/A";
-            string rn = Environment.NewLine;
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
             GameAccountInfoData data;

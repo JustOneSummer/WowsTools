@@ -54,7 +54,6 @@ namespace WowsTools
         private void WowsMain_Load(object sender, EventArgs e)
         {
             log4net.Config.XmlConfigurator.Configure();
-            this.ServerLable.ForeColor = Color.FromArgb(Convert.ToInt32("ffFE7903",16));
             log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne.RowHeadersVisible = false;
@@ -63,17 +62,32 @@ namespace WowsTools
             this.dataGridViewOne.Columns.Add("BattlesOneuserWinsOne", "场次/胜率");
             this.dataGridViewOne.Columns.Add("levelOneShipNameOne", "场均/名称");
             this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsOne", "场次/胜率");
-            //this.dataGridViewOne.Columns.Add("ShipDamageOne", "场均");
             this.dataGridViewOne.Columns.Add("ShipPrOne", "评分");
+            this.dataGridViewOne.Columns["ShipPrOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["shipBattlesOneShipWinsOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["levelOneShipNameOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["BattlesOneuserWinsOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["userNameOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            this.dataGridViewOne.Columns["ShipPrOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["shipBattlesOneShipWinsOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["levelOneShipNameOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["BattlesOneuserWinsOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridViewOne.Columns["userNameOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             this.dataGridViewOne.Columns.Add("AB", "A/B");
+            this.dataGridViewOne.Columns["AB"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            this.dataGridViewOne.Columns.Add("ShipPrOne", "评分");
-            //this.dataGridViewOne.Columns.Add("ShipDamageOne", "场均");
-            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsOne", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("levelOneShipNameOne", "场均/名称");
-            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsOne", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("userNameOne", "玩家");
+            this.dataGridViewOne.Columns.Add("ShipPrTwo", "评分");
+            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsTwo", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("levelOneShipNameTwo", "场均/名称");
+            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsTwo", "场次/胜率");
+            this.dataGridViewOne.Columns.Add("userNameTwo", "玩家");
+            this.dataGridViewOne.Columns["ShipPrTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewOne.Columns["shipBattlesOneShipWinsTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewOne.Columns["levelOneShipNameTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewOne.Columns["BattlesOneuserWinsTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            this.dataGridViewOne.Columns["userNameTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             //this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
@@ -234,12 +248,10 @@ namespace WowsTools
             {
                 this.labelStatusInfo.Text = "开始渲染对局数据";
                 this.dataGridViewOne.Rows.Clear();
-                this.ServerLable.Text = server.ServerName;
 
                 GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
 
-                this.labelWinsA.Text = "平均胜率：" + (gameInfoData.TeamOneWins / gameInfoData.TeamOneCount).ToString("f2") + "%";
-                this.labelWinsB.Text = "平均胜率：" + (gameInfoData.TeamTwoWins / gameInfoData.TeamTwoCount).ToString("f2") + "%";
+                this.dataGridViewOne.Rows.Add(DataGridViewTemplate.AVG(this.dataGridViewOne,server,gameInfoData));
                 //排序
                 var linqOne = from game in gameInfoData.TeamOneList orderby game.GameAccountShipInfo.ShipTypeNumber, game.GameAccountShipInfo.ShipLevel descending select game;
                 gameInfoData.TeamOneList = linqOne.ToList();
@@ -304,6 +316,10 @@ namespace WowsTools
             for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
             {
                 this.dataGridViewOne.Rows[i].Height = 55;
+                if (i == 0)
+                {
+                    this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(Convert.ToInt32("ffF8F8FF", 16));
+                }
             }
         }
 
@@ -359,6 +375,24 @@ namespace WowsTools
                 GAME_RUN = true;
                 MessageBox.Show("刷新成功");
             }
+        }
+
+        private void ReBlockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Width = 1500;
+            this.Height = 836;
+        }
+
+        private void replaysFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string paht = @""+ InitialUtils.GetHome() + "replays";
+            System.Diagnostics.Process.Start("explorer.exe", paht);
+        }
+
+        private void modsFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string paht = @"" + Settings.Default.GameVersionHome + "res_mods";
+            System.Diagnostics.Process.Start("explorer.exe", paht);
         }
     }
 }
