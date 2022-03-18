@@ -61,10 +61,6 @@ namespace WowsTools.utils
         /// <returns></returns>
         public static Color WinsColor(double wins)
         {
-            if (wins <= 0.0)
-            {
-                return Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor0, 16));
-            }
             Color color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor1, 16));
             if (wins <= Settings.Default.WinsColorValue1)
             {

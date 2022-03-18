@@ -415,6 +415,10 @@ namespace WowsTools
                 Settings.Default.Reset();
                 this.labelGamePath.Text = "未识别游戏路径";
                 this.labelGamePath.ForeColor = Color.Red;
+                DataGridViewTemplateSelectMethod();
+                LoadGameHome();
+                UPDATE = true;
+                GAME_RUN = true;
                 MessageBox.Show("重置成功");
             }
         }
