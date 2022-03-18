@@ -11,5 +11,80 @@
     <Setting Name="GameVersionHome" Type="System.String" Scope="User">
       <Value Profile="(Default)">N/A</Value>
     </Setting>
+    <Setting Name="GamePrBackColorSelect" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PrColor1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffff6e66</Value>
+    </Setting>
+    <Setting Name="PrColor2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffffae66</Value>
+    </Setting>
+    <Setting Name="PrColor3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffffc51a</Value>
+    </Setting>
+    <Setting Name="PrColor4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff58e600</Value>
+    </Setting>
+    <Setting Name="PrColor5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff4ecc00</Value>
+    </Setting>
+    <Setting Name="PrColor6" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff03e3cb</Value>
+    </Setting>
+    <Setting Name="PrColor7" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffda70f5</Value>
+    </Setting>
+    <Setting Name="PrColor8" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffc111ee</Value>
+    </Setting>
+    <Setting Name="WinsColor1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffffae66</Value>
+    </Setting>
+    <Setting Name="WinsColor2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff03e3cb</Value>
+    </Setting>
+    <Setting Name="WinsColor3" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffc111ee</Value>
+    </Setting>
+    <Setting Name="PrColor0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff63B8FF</Value>
+    </Setting>
+    <Setting Name="PrColorNA" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff949e9e</Value>
+    </Setting>
+    <Setting Name="WinsColorValue1" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">48</Value>
+    </Setting>
+    <Setting Name="WinsColorValue2" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="DataGridViewTemplateForeColor0" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ff000000</Value>
+    </Setting>
+    <Setting Name="DataGridViewTemplateForeColor1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffFFFFFF</Value>
+    </Setting>
+    <Setting Name="PrValue1" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">750</Value>
+    </Setting>
+    <Setting Name="PrValue2" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1100</Value>
+    </Setting>
+    <Setting Name="PrValue3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1350</Value>
+    </Setting>
+    <Setting Name="PrValue4" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1550</Value>
+    </Setting>
+    <Setting Name="PrValue5" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1750</Value>
+    </Setting>
+    <Setting Name="PrValue6" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2100</Value>
+    </Setting>
+    <Setting Name="PrValue7" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2450</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

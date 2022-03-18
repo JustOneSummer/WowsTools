@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using WowsTools.Properties;
 
@@ -7,14 +8,14 @@ namespace WowsTools
     /// <summary>
     /// 委托
     /// </summary>
-    public delegate void SaveReloadEvent();
+    public delegate void SaveReloadDataGridViewTemplateSelectEvent();
 
     public partial class DataGridViewTemplateSelect : Form
     {
         /// <summary>
         /// 事件
         /// </summary>
-        public event SaveReloadEvent SaveReloadEvent;
+        public event SaveReloadDataGridViewTemplateSelectEvent SaveReloadEvent;
         public DataGridViewTemplateSelect()
         {
             InitializeComponent();
@@ -36,6 +37,19 @@ namespace WowsTools
             this.Close();
             //回调
             SaveReloadEvent();
+        }
+
+        private void DataGridViewTemplateSelect_Load(object sender, EventArgs e)
+        {
+            Color color = Color.Green;
+            if (Settings.Default.DataGridViewTemplate == 0)
+            {
+                this.button1.BackColor = color;
+            }
+            else
+            {
+                this.button2.BackColor = color;
+            }
         }
     }
 }

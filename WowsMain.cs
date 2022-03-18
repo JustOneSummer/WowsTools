@@ -331,7 +331,7 @@ namespace WowsTools
         private void ColoursTemplateToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewTemplateSelect select = new DataGridViewTemplateSelect();
-            select.SaveReloadEvent += new SaveReloadEvent(DataGridViewTemplateSelectMethod);
+            select.SaveReloadEvent += new SaveReloadDataGridViewTemplateSelectEvent(DataGridViewTemplateSelectMethod);
             select.ShowDialog();
         }
 
@@ -393,6 +393,18 @@ namespace WowsTools
         {
             string paht = @"" + Settings.Default.GameVersionHome + "res_mods";
             System.Diagnostics.Process.Start("explorer.exe", paht);
+        }
+
+        /// <summary>
+        /// 评分颜色设置
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrBackColorSettings settings = new PrBackColorSettings();
+            settings.SaveReloadEvent += new SaveReloadPrBackColorSettingsEvent(DataGridViewTemplateSelectMethod);
+            settings.ShowDialog();
         }
     }
 }

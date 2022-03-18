@@ -10,7 +10,7 @@ namespace WowsTools.template
 {
     internal class DataGridViewTemplate
     {
-        public static Color H_S = Color.FromArgb(Convert.ToInt32("ff949e9e", 16));
+        public static Color H_S = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColorNA, 16));
 
         private const string na = "N/A";
         private static string rn = Environment.NewLine;
@@ -53,6 +53,7 @@ namespace WowsTools.template
         /// <returns></returns>
         public static DataGridViewRow One(int i, DataGridView view, GameInfoData gameInfoData)
         {
+            int prSelect = Settings.Default.GamePrBackColorSelect;
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
             GameAccountInfoData data;
@@ -60,7 +61,7 @@ namespace WowsTools.template
             {
                 data = gameInfoData.TeamOneList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : prSelect == 0 ? ColorUtils.PrColor(shipData.Pr) : ColorUtils.WinsColor(data.GameWins());
                 row.Cells[0].Value = data.AccountName;
                 row.Cells[1].Value = data.Battles + rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
                 row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
@@ -76,7 +77,7 @@ namespace WowsTools.template
             {
                 data = gameInfoData.TeamTwoList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : prSelect == 0 ? ColorUtils.PrColor(shipData.Pr) : ColorUtils.WinsColor(data.GameWins());
                 row.Cells[6].Value = data.Hide ? na : shipData.Pr.ToString();
                 row.Cells[6].Style.BackColor = prColor;
                 row.Cells[7].Value = (data.Hide ? na : shipData.Battles.ToString()) + rn + (data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
@@ -86,6 +87,7 @@ namespace WowsTools.template
                 row.Cells[9].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
                 row.Cells[10].Value = data.AccountName;
             }
+            ForeColor(ref row);
             return row;
         }
 
@@ -99,6 +101,7 @@ namespace WowsTools.template
         /// <returns></returns>
         public static DataGridViewRow Two(int i, DataGridView view, GameInfoData gameInfoData)
         {
+            int prSelect = Settings.Default.GamePrBackColorSelect;
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
             GameAccountInfoData data;
@@ -106,18 +109,14 @@ namespace WowsTools.template
             {
                 data = gameInfoData.TeamOneList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : prSelect == 0 ? ColorUtils.PrColor(shipData.Pr) : ColorUtils.WinsColor(data.GameWins());
                 row.Cells[0].Value = data.AccountName;
                 row.Cells[1].Value = data.Battles + rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
                 row.Cells[2].Value = (data.Hide ? na : shipData.GameDamage().ToString()) + rn + ShipUtils.LevelInfo(shipData.ShipLevel) + " " + shipData.ShipName;
                 row.Cells[3].Value = (data.Hide ? na : shipData.Battles.ToString()) + rn + (data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
                 row.Cells[4].Value = data.Hide ? na : shipData.Pr.ToString();
 
-                row.Cells[0].Style.ForeColor = Color.White;
-                row.Cells[1].Style.ForeColor = Color.White;
-                row.Cells[2].Style.ForeColor = Color.White;
-                row.Cells[3].Style.ForeColor = Color.White;
-                row.Cells[4].Style.ForeColor = Color.White;
+
                 for (int j = 0; j < 5; j++)
                 {
                     row.Cells[j].Style.BackColor = prColor;
@@ -129,24 +128,35 @@ namespace WowsTools.template
             {
                 data = gameInfoData.TeamTwoList[i];
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
-                Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
+                Color prColor = data.Hide ? H_S : prSelect == 0 ? ColorUtils.PrColor(shipData.Pr) : ColorUtils.WinsColor(data.GameWins());
                 row.Cells[6].Value = data.Hide ? na : shipData.Pr.ToString();
                 row.Cells[7].Value = (data.Hide ? na : shipData.Battles.ToString()) + rn + (data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
                 row.Cells[8].Value = (data.Hide ? na : shipData.GameDamage().ToString()) + rn + ShipUtils.LevelInfo(shipData.ShipLevel) + " " + shipData.ShipName;
                 row.Cells[9].Value = data.Battles + rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
                 row.Cells[10].Value = data.AccountName;
-
-                row.Cells[6].Style.ForeColor = Color.White;
-                row.Cells[7].Style.ForeColor = Color.White;
-                row.Cells[8].Style.ForeColor = Color.White;
-                row.Cells[9].Style.ForeColor = Color.White;
-                row.Cells[10].Style.ForeColor = Color.White;
                 for (int j = 6; j < 11; j++)
                 {
                     row.Cells[j].Style.BackColor = prColor;
                 }
             }
+            ForeColor(ref row);
             return row;
+        }
+
+        private static void ForeColor(ref DataGridViewRow row)
+        {
+            string code = Settings.Default.DataGridViewTemplate == 0 ? Settings.Default.DataGridViewTemplateForeColor0 : Settings.Default.DataGridViewTemplateForeColor1;
+            Color color = Color.FromArgb(Convert.ToInt32(code, 16));
+            row.Cells[0].Style.ForeColor = color;
+            row.Cells[1].Style.ForeColor = color;
+            row.Cells[2].Style.ForeColor = color;
+            row.Cells[3].Style.ForeColor = color;
+            row.Cells[4].Style.ForeColor = color;
+            row.Cells[6].Style.ForeColor = color;
+            row.Cells[7].Style.ForeColor = color;
+            row.Cells[8].Style.ForeColor = color;
+            row.Cells[9].Style.ForeColor = color;
+            row.Cells[10].Style.ForeColor = color;
         }
     }
 }

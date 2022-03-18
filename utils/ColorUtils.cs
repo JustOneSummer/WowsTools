@@ -1,66 +1,82 @@
 ﻿using System;
 using System.Drawing;
+using WowsTools.Properties;
 
 namespace WowsTools.utils
 {
     class ColorUtils
     {
+        /// <summary>
+        /// 评分区分
+        /// </summary>
+        /// <param name="pr"></param>
+        /// <returns></returns>
         public static Color PrColor(int pr)
         {
             if (pr <= 0)
             {
-                return Color.FromArgb(Convert.ToInt32("ff63B8FF", 16));
+                return Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor0, 16));
             }
-            Color color = Color.FromArgb(Convert.ToInt32("ffff6e66", 16));
+            Color color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor1, 16));
             if (pr <= 750)
             {
                 return color;
             }
             else if (pr <= 1100)
             {
-                color = Color.FromArgb(Convert.ToInt32("ffffae66", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor2, 16));
             }
             else
             if (pr <= 1350)
             {
-                color = Color.FromArgb(Convert.ToInt32("ffffc51a", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor3, 16));
             }
             else if (pr <= 1550)
             {
-                color = Color.FromArgb(Convert.ToInt32("ff58e600", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor4, 16));
             }
             else if (pr <= 1750)
             {
-                color = Color.FromArgb(Convert.ToInt32("ff4ecc00", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor5, 16));
             }
             else if (pr <= 2100)
             {
-                color = Color.FromArgb(Convert.ToInt32("ff03e3cb", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor6, 16));
             }
             else if (pr <= 2450)
             {
-                color = Color.FromArgb(Convert.ToInt32("ffda70f5", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor7, 16));
             }
             else
             {
-                color = Color.FromArgb(Convert.ToInt32("ffc111ee", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor8, 16));
             }
             return color;
         }
+
+        /// <summary>
+        /// 颜色区分
+        /// </summary>
+        /// <param name="wins"></param>
+        /// <returns></returns>
         public static Color WinsColor(double wins)
         {
-            Color color = Color.FromArgb(Convert.ToInt32("ffffae66", 16));
-            if (wins <= 48.0)
+            if (wins <= 0.0)
+            {
+                return Color.FromArgb(Convert.ToInt32(Settings.Default.PrColor0, 16));
+            }
+            Color color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor1, 16));
+            if (wins <= Settings.Default.WinsColorValue1)
             {
                 return color;
             }
-            else if (wins <= 60)
+            else if (wins <= Settings.Default.WinsColorValue2)
             {
-                color = Color.FromArgb(Convert.ToInt32("ff03e3cb", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor2, 16));
             }
             else
             {
-                color = Color.FromArgb(Convert.ToInt32("ffc111ee", 16));
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor3, 16));
 
             }
             return color;

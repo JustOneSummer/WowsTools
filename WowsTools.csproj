@@ -147,6 +147,12 @@
     <Compile Include="model\GameAccountShipInfoData.cs" />
     <Compile Include="model\GameInfoData.cs" />
     <Compile Include="model\WowsJsonData.cs" />
+    <Compile Include="PrBackColorSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrBackColorSettings.Designer.cs">
+      <DependentUpon>PrBackColorSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="service\PvpService.cs" />
     <Compile Include="template\DataGridViewTemplate.cs" />
     <Compile Include="utils\ColorUtils.cs" />
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridViewTemplateSelect.resx">
       <DependentUpon>DataGridViewTemplateSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrBackColorSettings.resx">
+      <DependentUpon>PrBackColorSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

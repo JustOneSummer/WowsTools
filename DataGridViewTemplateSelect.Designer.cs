@@ -71,6 +71,7 @@ namespace WowsTools
             this.Name = "DataGridViewTemplateSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "对局界面渲染模板选择";
+            this.Load += new System.EventHandler(this.DataGridViewTemplateSelect_Load);
             this.ResumeLayout(false);
 
         }
