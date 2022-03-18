@@ -114,7 +114,8 @@ namespace WowsTools
             // 
             // ServerLable
             // 
-            this.ServerLable.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ServerLable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ServerLable.AutoSize = true;
             this.ServerLable.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.ServerLable.ForeColor = System.Drawing.Color.Black;
@@ -173,7 +174,8 @@ namespace WowsTools
             // 
             // labelWinsB
             // 
-            this.labelWinsB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelWinsB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelWinsB.AutoSize = true;
             this.labelWinsB.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelWinsB.Location = new System.Drawing.Point(859, 37);
@@ -184,6 +186,8 @@ namespace WowsTools
             // 
             // labelMyTeam
             // 
+            this.labelMyTeam.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelMyTeam.AutoSize = true;
             this.labelMyTeam.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelMyTeam.ForeColor = System.Drawing.Color.Green;
@@ -195,7 +199,8 @@ namespace WowsTools
             // 
             // labelDIJun
             // 
-            this.labelDIJun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelDIJun.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelDIJun.AutoSize = true;
             this.labelDIJun.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelDIJun.ForeColor = System.Drawing.Color.Red;

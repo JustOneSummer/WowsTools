@@ -7,6 +7,10 @@ namespace WowsTools.utils
     {
         public static Color PrColor(int pr)
         {
+            if (pr <= 0)
+            {
+                return Color.FromArgb(Convert.ToInt32("ff63B8FF", 16));
+            }
             Color color = Color.FromArgb(Convert.ToInt32("ffff6e66", 16));
             if (pr <= 750)
             {

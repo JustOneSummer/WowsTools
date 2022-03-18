@@ -122,13 +122,17 @@ namespace WowsTools.api
                         JToken item = data.Value<JToken>(accountId.ToString());
                         if (item.Type != JTokenType.Null)
                         {
-                            JToken list = item.ToList().ElementAt(0);
-                            JToken pvp = list.Value<JToken>("pvp");
-                            BattlesTem = pvp.Value<int>("battles");
-                            DamageDealtTem = pvp.Value<long>("damage_dealt");
-                            WinsTem = pvp.Value<double>("wins");
-                            FragsTem = pvp.Value<int>("frags");
-                            SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                            List<JToken> jTokens = item.ToList();
+                            if(jTokens.Count >= 1)
+                            {
+                                JToken list = jTokens.ElementAt(0);
+                                JToken pvp = list.Value<JToken>("pvp");
+                                BattlesTem = pvp.Value<int>("battles");
+                                DamageDealtTem = pvp.Value<long>("damage_dealt");
+                                WinsTem = pvp.Value<double>("wins");
+                                FragsTem = pvp.Value<int>("frags");
+                                SurvivedBattlesTem = pvp.Value<int>("survived_battles");
+                            }
                         }
                     }
                     shipInfoData.Battles = BattlesTem;

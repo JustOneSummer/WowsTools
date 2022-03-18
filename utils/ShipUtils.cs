@@ -68,6 +68,15 @@ namespace WowsTools.utils
             }
             ShipUtils ship;
             SHIP_MAP.TryGetValue(shipId, out ship);
+            if(ship == null)
+            {
+                ship = new ShipUtils();
+                ship.shipId = shipId;
+                ship.ship_name_cn = "未知战舰";
+                ship.ship_type = "Destroyer";
+                ship.tier = 8;
+                ship.name = "未知战舰";
+            }
             return ship;
         }
 
@@ -102,6 +111,11 @@ namespace WowsTools.utils
             }
         }
 
+        /// <summary>
+        /// 越大越低
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static int ShipType(string type)
         {
             switch (type)

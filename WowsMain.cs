@@ -304,10 +304,6 @@ namespace WowsTools
             for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
             {
                 this.dataGridViewOne.Rows[i].Height = 55;
-                if (i % 2 != 0)
-                {
-                    this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = DataGridViewTemplate.H_S;
-                }
             }
         }
 
