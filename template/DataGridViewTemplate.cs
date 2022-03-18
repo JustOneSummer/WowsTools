@@ -15,12 +15,12 @@ namespace WowsTools.template
         private const string na = "N/A";
         private static string rn = Environment.NewLine;
 
-        public static DataGridViewRow AVG(DataGridView view,WowsServer server, GameInfoData gameInfoData)
+        public static DataGridViewRow AVG(DataGridView view, WowsServer server, GameInfoData gameInfoData)
         {
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(view);
             row.Cells[0].Value = "我方团队平均数据";
-            row.Cells[1].Value = gameInfoData.OneBattles() +rn +gameInfoData.OneWins();
+            row.Cells[1].Value = gameInfoData.OneBattles() + rn + gameInfoData.OneWins();
             row.Cells[2].Value = "";
             row.Cells[3].Value = gameInfoData.OneShipBattles() + rn + gameInfoData.OneShipWins();
             row.Cells[5].Value = server.ServerName;
@@ -62,10 +62,10 @@ namespace WowsTools.template
                 GameAccountShipInfoData shipData = data.GameAccountShipInfo;
                 Color prColor = data.Hide ? H_S : ColorUtils.PrColor(shipData.Pr);
                 row.Cells[0].Value = data.AccountName;
-                row.Cells[1].Value = data.Battles+ rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
+                row.Cells[1].Value = data.Battles + rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
                 row.Cells[1].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
-                row.Cells[2].Value = (data.Hide ? na : shipData.GameDamage().ToString()) + rn + ShipUtils.LevelInfo(shipData.ShipLevel) +" "+ shipData.ShipName;
-                row.Cells[3].Value = (data.Hide ? na : shipData.Battles.ToString()) +rn+(data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
+                row.Cells[2].Value = (data.Hide ? na : shipData.GameDamage().ToString()) + rn + ShipUtils.LevelInfo(shipData.ShipLevel) + " " + shipData.ShipName;
+                row.Cells[3].Value = (data.Hide ? na : shipData.Battles.ToString()) + rn + (data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
                 row.Cells[3].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
                 row.Cells[4].Value = data.Hide ? na : shipData.Pr.ToString();
                 row.Cells[4].Style.BackColor = prColor;
@@ -81,7 +81,7 @@ namespace WowsTools.template
                 row.Cells[6].Style.BackColor = prColor;
                 row.Cells[7].Value = (data.Hide ? na : shipData.Battles.ToString()) + rn + (data.Hide ? na : shipData.GameWins().ToString("f2") + "%");
                 row.Cells[7].Style.ForeColor = ColorUtils.WinsColor(shipData.GameWins());
-                row.Cells[8].Value = (data.Hide ? na : shipData.GameDamage().ToString()) +rn+ ShipUtils.LevelInfo(shipData.ShipLevel) + " " + shipData.ShipName;
+                row.Cells[8].Value = (data.Hide ? na : shipData.GameDamage().ToString()) + rn + ShipUtils.LevelInfo(shipData.ShipLevel) + " " + shipData.ShipName;
                 row.Cells[9].Value = data.Battles + rn + (data.Hide ? na : data.GameWins().ToString("f2") + "%");
                 row.Cells[9].Style.ForeColor = ColorUtils.WinsColor(data.GameWins());
                 row.Cells[10].Value = data.AccountName;

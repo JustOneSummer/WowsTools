@@ -22,11 +22,11 @@ namespace WowsTools.model
         public int TeamOneCount;
         public string OneWins()
         {
-            return  (TeamOneWins / TeamOneCount).ToString("f2") + "%";
+            return (TeamOneWins / TeamOneCount).ToString("f2") + "%";
         }
         public string OneShipWins()
         {
-            return  (TeamOneShipWins / TeamOneCount).ToString("f2") + "%";
+            return (TeamOneShipWins / TeamOneCount).ToString("f2") + "%";
         }
         public int OneBattles()
         {
@@ -46,11 +46,11 @@ namespace WowsTools.model
         public int TeamTwoCount;
         public string TwoWins()
         {
-            return  (TeamTwoWins / TeamTwoCount).ToString("f2") + "%";
+            return (TeamTwoWins / TeamTwoCount).ToString("f2") + "%";
         }
         public string TwoShipWins()
         {
-            return  (TeamTwoShipWins / TeamTwoCount).ToString("f2") + "%";
+            return (TeamTwoShipWins / TeamTwoCount).ToString("f2") + "%";
         }
         public int TwoBattles()
         {

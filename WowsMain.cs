@@ -251,7 +251,7 @@ namespace WowsTools
 
                 GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
 
-                this.dataGridViewOne.Rows.Add(DataGridViewTemplate.AVG(this.dataGridViewOne,server,gameInfoData));
+                this.dataGridViewOne.Rows.Add(DataGridViewTemplate.AVG(this.dataGridViewOne, server, gameInfoData));
                 //排序
                 var linqOne = from game in gameInfoData.TeamOneList orderby game.GameAccountShipInfo.ShipTypeNumber, game.GameAccountShipInfo.ShipLevel descending select game;
                 gameInfoData.TeamOneList = linqOne.ToList();
@@ -363,8 +363,8 @@ namespace WowsTools
         /// <param name="e"></param>
         private void OptonsReAnalyzeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("是否要重置系统设置和解析缓存？", "重置",MessageBoxButtons.YesNoCancel,MessageBoxIcon.Warning);
-            if(dialogResult == DialogResult.Yes)
+            DialogResult dialogResult = MessageBox.Show("是否要重置系统设置和解析缓存？", "重置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
             {
                 Settings.Default.GameHomePath = "N/A";
                 Settings.Default.Save();
@@ -385,7 +385,7 @@ namespace WowsTools
 
         private void replaysFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string paht = @""+ InitialUtils.GetHome() + "replays";
+            string paht = @"" + InitialUtils.GetHome() + "replays";
             System.Diagnostics.Process.Start("explorer.exe", paht);
         }
 

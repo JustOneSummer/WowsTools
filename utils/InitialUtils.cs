@@ -167,11 +167,11 @@ namespace WowsTools.utils
                         if (!string.IsNullOrEmpty(wows))
                         {
                             //获取游戏根目录
-                            string temp =wows.Substring(wows.LastIndexOf("\\bin\\"));
+                            string temp = wows.Substring(wows.LastIndexOf("\\bin\\"));
                             HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
                             VERSION_BIN_NUMBER = temp.Substring(5, temp.LastIndexOf("\\bin") - 5);
                             Settings.Default.GameHomePath = HOME;
-                            Settings.Default.GameVersionHome = HOME+"bin\\" + VERSION_BIN_NUMBER +"\\";
+                            Settings.Default.GameVersionHome = HOME + "bin\\" + VERSION_BIN_NUMBER + "\\";
                             Settings.Default.Save();
                         }
                         return;

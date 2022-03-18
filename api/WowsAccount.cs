@@ -123,7 +123,7 @@ namespace WowsTools.api
                         if (item.Type != JTokenType.Null)
                         {
                             List<JToken> jTokens = item.ToList();
-                            if(jTokens.Count >= 1)
+                            if (jTokens.Count >= 1)
                             {
                                 JToken list = jTokens.ElementAt(0);
                                 JToken pvp = list.Value<JToken>("pvp");

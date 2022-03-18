@@ -68,7 +68,7 @@ namespace WowsTools.utils
             }
             ShipUtils ship;
             SHIP_MAP.TryGetValue(shipId, out ship);
-            if(ship == null)
+            if (ship == null)
             {
                 ship = new ShipUtils();
                 ship.shipId = shipId;
