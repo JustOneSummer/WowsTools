@@ -20,3 +20,6 @@ C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.pdb
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.csproj.AssemblyReference.cache
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.DataGridViewTemplateSelect.resources
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Debug\WowsTools.PrBackColorSettings.resources
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\HtmlAgilityPack.dll
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\HtmlAgilityPack.pdb
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Debug\HtmlAgilityPack.xml

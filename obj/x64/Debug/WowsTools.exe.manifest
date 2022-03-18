@@ -42,6 +42,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="HtmlAgilityPack.dll" size="168960">
+      <assemblyIdentity name="HtmlAgilityPack" version="1.11.42.0" publicKeyToken="BD319B19EAF3B43A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>BCeHDk58ebmG0KCMj+/7EyStcWvgFKgsvKtKgY3Ei5w=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="log4net.dll" size="270336">
       <assemblyIdentity name="log4net" version="2.0.14.0" publicKeyToken="669E0DDF0BB1AA2A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -66,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1862144">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1863680">
       <assemblyIdentity name="WowsTools" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>UyDfcyBArA62P4PKFTEFmXtRlN6HW9baEFA0FLapzL4=</dsig:DigestValue>
+        <dsig:DigestValue>1z95uIHLUmLtrywL9/HEKwKO4E0ZM5HMaqzMXLbROnU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
