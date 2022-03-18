@@ -15,8 +15,8 @@ namespace WowsTools
         [STAThread]
         static void Main()
         {
-            Cn360Service.AccountInfo();
-           /* try
+            //Cn360Service.AccountInfo();
+            try
             {
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -27,7 +27,7 @@ namespace WowsTools
                 string str = GetExceptionMsg(ex, string.Empty);
                 log.Error(str);
                 MessageBox.Show(str, "系统错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            }
         }
         static string GetExceptionMsg(Exception ex, string backStr)
         {

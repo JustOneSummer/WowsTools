@@ -57,9 +57,26 @@ namespace WowsTools.service
         /// <returns></returns>
         public static GameAccountInfoData AccountInfo(WowsServer server, GameAccountInfoData games)
         {
-            games.AccountId = WowsAccount.QueryName(server, games.AccountName);
-            games = WowsAccount.QueryAccountInfo(server, games);
-            games.GameAccountShipInfo = WowsAccount.QueryShipInfoData(server, games.AccountId, games.GameAccountShipInfo);
+            if (server.CodeId.Equals("cn")){
+                long v = Cn360Service.QueryNameUrl(games.AccountName);
+                if (v <= 0)
+                {
+                    games.Hide = true;
+                }
+                else
+                {
+                    games.Hide = false;
+                    games.AccountId = v;
+                    games = Cn360Service.AccountInfo(games);
+                    games.GameAccountShipInfo = Cn360Service.GameAccountShipInfoData(games);
+                }
+            }
+            else
+            {
+                games.AccountId = WowsAccount.QueryName(server, games.AccountName);
+                games = WowsAccount.QueryAccountInfo(server, games);
+                games.GameAccountShipInfo = WowsAccount.QueryShipInfoData(server, games.AccountId, games.GameAccountShipInfo);
+            }
             return games;
         }
 

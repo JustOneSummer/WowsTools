@@ -4,42 +4,41 @@ using System.Net;
 using System.Text;
 using System.Web;
 using WowsTools.model;
+using WowsTools.utils;
 
 namespace WowsTools.service
 {
     class Cn360Service
     {
 
+        /// <summary>
+        /// 测试用
+        /// </summary>
+        /// <returns></returns>
         public static GameAccountInfoData AccountInfo()
         {
-           /* var htmlWebHomeSelect = new  HtmlWeb();
-            HtmlDocument htmlDocumentHomeSelect = htmlWebHomeSelect.Load("https://wowsgame.cn/zh-cn/community/accounts/search/?search=%E8%A5%BF%E8%A1%8C%E5%AF%BA%E9%9B%A8%E5%AD%A3&pjax=1");
-            //string response =   HttpUtils.Get("https://wowsgame.cn/zh-cn/community/accounts/search/?search=%E8%A5%BF%E8%A1%8C%E5%AF%BA%E9%9B%A8%E5%AD%A3&pjax=1");
-            //var doc = new HtmlDocument();
-            //doc.Load(response);
-            HtmlNode documentNodeHomeSelect = htmlDocumentHomeSelect.DocumentNode;
-            HtmlNode htmlNodeHomeSelect = documentNodeHomeSelect.SelectSingleNode("//link[@rel='canonical']");
-            string ht = htmlNodeHomeSelect.Attributes["href"].Value;*/
-            string ht = "https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/overview/7048302724/";
-
-            GameAccountInfoData game =  new GameAccountInfoData();
-            game.AccountId = 7047921442;
-            game.AccountName = "丶汐山凉音";
-            game.GameAccountShipInfo = new GameAccountShipInfoData();
-            game.GameAccountShipInfo.AccountId = 7047921442;
-            game.GameAccountShipInfo.ShipId = 427604142410;
-            //GameAccountInfoData gameAccountInfoData = AccountInfo2(game, ht);
-            GameAccountShipInfoData(game, "https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/ships/7048302724/");
+            QueryNameUrl("梅露露琳丝·雷蒂·阿鲁兹");
             return null;
         }
 
-        public static string QueryName(string userName)
+        public static long QueryNameUrl(string userName)
         {
-          string url =   HttpUtility.UrlEncode("https://wowsgame.cn/zh-cn/community/accounts/search/?search=" + userName + "&pjax=1");
-            var doc = new HtmlDocument();
-            doc.LoadHtml(GetCn(url));
-            HtmlNode htmlNodeHomeSelect = doc.DocumentNode.SelectSingleNode("//link[@rel='canonical']");
-            return htmlNodeHomeSelect.Attributes["href"].Value;
+            if (userName.Substring(0,1).Equals(":"))
+            {
+                return -1;
+            }
+          string url =   "https://wowsgame.cn/zh-cn/community/accounts/search/?search=" + HttpUtility.UrlEncode(userName) + "&pjax=1";
+            var htmlWebHomeSelect = new HtmlWeb();
+             HtmlDocument htmlDocument = htmlWebHomeSelect.Load(url);
+            HtmlNode htmlNodeHomeSelect = htmlDocument.DocumentNode.SelectSingleNode("//link[@rel='canonical']");
+            string urlLink = htmlNodeHomeSelect.Attributes["href"].Value;
+            string idInfo =  urlLink.Substring(urlLink.LastIndexOf("accounts") + 9);
+            string[] id = idInfo.Split('-');
+            if(id.Length <= 1)
+            {
+                return -1;
+            }
+            return long.Parse(id[0]);
         }
 
         /// <summary>
@@ -48,9 +47,10 @@ namespace WowsTools.service
         /// <param name="gameAccountInfoData"></param>
         /// <param name="urlAddress"></param>
         /// <returns></returns>
-        public static GameAccountInfoData AccountInfo2(GameAccountInfoData gameAccountInfoData, string urlAddress)
+        public static GameAccountInfoData AccountInfo(GameAccountInfoData gameAccountInfoData)
         {
             //获取用户数据界面 https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/overview/7048302724/
+            string urlAddress = "https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/overview/" + gameAccountInfoData.AccountId;
             var htmlWebHomePvpData = new HtmlDocument();
             htmlWebHomePvpData.LoadHtml(GetCn(urlAddress));
             HtmlNodeCollection htmlNodeTableBodys = htmlWebHomePvpData.DocumentNode.SelectNodes("//table[@class='account-table _left']/tbody/tr/td[@class='_value']/span");
@@ -71,24 +71,29 @@ namespace WowsTools.service
         /// <param name="data"></param>
         /// <param name="urlAddress"></param>
         /// <returns></returns>
-        public static GameAccountShipInfoData GameAccountShipInfoData(GameAccountInfoData data,string urlAddress)
+        public static GameAccountShipInfoData GameAccountShipInfoData(GameAccountInfoData data)
         {
+            string urlAddress = "https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/ships/" + data.AccountId;
             GameAccountShipInfoData gameAccountShipInfo = data.GameAccountShipInfo;
             var htmlWebHomePvpData = new HtmlDocument();
             //https://wowsgame.cn/zh-cn/community/accounts/tab/pvp/ships/7048302724/
             htmlWebHomePvpData.LoadHtml(GetCn(urlAddress));
-            //HtmlNode htmlNode = htmlWebHomePvpData.DocumentNode.SelectSingleNode("//tr[@ref='" + gameAccountShipInfo.ShipId + "']");
-            HtmlNodeCollection tableBodys = htmlWebHomePvpData.DocumentNode.SelectNodes("//tr[@ref='" + gameAccountShipInfo.ShipId + "']//td[@class='_value']/span");
-            string zdcc = tableBodys[0].InnerText;
-            string sl = tableBodys[1].InnerText;
-            string chunhuo = tableBodys[2].InnerText;
-            string shuchu = tableBodys[3].InnerText;
-            string jisha = tableBodys[4].InnerText;
-            gameAccountShipInfo.Battles = int.Parse(zdcc);
-            gameAccountShipInfo.Wins = double.Parse(sl);
-            gameAccountShipInfo.DamageDealt = long.Parse(shuchu);
-            gameAccountShipInfo.Frags = int.Parse(jisha);
-            gameAccountShipInfo.SurvivedBattles = int.Parse(chunhuo);
+            HtmlNodeCollection tableBodys = htmlWebHomePvpData.DocumentNode.SelectNodes("//tr[starts-with(@ref,'" + gameAccountShipInfo.ShipId + "')]//td[@class='_value']/span");
+            if (tableBodys != null)
+            {
+                string zdcc = tableBodys[0].InnerText;
+                string sl = tableBodys[1].InnerText;
+                string chunhuo = tableBodys[2].InnerText;
+                string shuchu = tableBodys[3].InnerText;
+                string jisha = tableBodys[4].InnerText;
+                gameAccountShipInfo.Battles = int.Parse(zdcc);
+                gameAccountShipInfo.Wins = double.Parse(sl);
+                gameAccountShipInfo.DamageDealt = long.Parse(shuchu);
+                gameAccountShipInfo.Frags = int.Parse(jisha);
+                gameAccountShipInfo.SurvivedBattles = int.Parse(chunhuo);
+                //PR计算
+                gameAccountShipInfo.Pr = ShipPrUtils.Pr(gameAccountShipInfo, ShipPrUtils.Get(gameAccountShipInfo.ShipId, false));
+            }
             return gameAccountShipInfo;
         }
 

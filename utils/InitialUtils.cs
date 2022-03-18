@@ -167,6 +167,7 @@ namespace WowsTools.utils
                         if (!string.IsNullOrEmpty(wows))
                         {
                             //获取游戏根目录
+                            log.Info("游戏进程路径=" + wows);
                             string temp = wows.Substring(wows.LastIndexOf("\\bin\\"));
                             HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
                             VERSION_BIN_NUMBER = temp.Substring(5, temp.LastIndexOf("\\bin") - 5);

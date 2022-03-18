@@ -198,11 +198,12 @@ namespace WowsTools
             List<GameAccountInfoData> dataList = PvpService.ReadReplays();
             log.Info("对局用户数量：" + dataList.Count);
             int i = 0;
+            int serverCount = "cn".Equals(gameServer) ? 2 : 8;
             while (true)
             {
                 if (i < dataList.Count)
                 {
-                    if (ThreadCount() < 8)
+                    if (ThreadCount() < serverCount)
                     {
                         ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), dataList[i]);
                         i++;
@@ -421,6 +422,12 @@ namespace WowsTools
                 GAME_RUN = true;
                 MessageBox.Show("重置成功");
             }
+        }
+
+        private void LogToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string paht = @"" + System.Environment.CurrentDirectory + "/logs";
+            System.Diagnostics.Process.Start("explorer.exe", paht);
         }
     }
 }
