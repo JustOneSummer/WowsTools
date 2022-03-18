@@ -413,7 +413,9 @@ namespace WowsTools
             if (dialogResult == DialogResult.Yes)
             {
                 Settings.Default.Reset();
-                MessageBox.Show("刷新成功");
+                this.labelGamePath.Text = "未识别游戏路径";
+                this.labelGamePath.ForeColor = Color.Red;
+                MessageBox.Show("重置成功");
             }
         }
     }
