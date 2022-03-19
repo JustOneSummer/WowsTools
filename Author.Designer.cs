@@ -107,11 +107,11 @@ namespace WowsTools
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(241, 143);
+            this.label3.Location = new System.Drawing.Point(159, 138);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 31);
+            this.label3.Size = new System.Drawing.Size(278, 31);
             this.label3.TabIndex = 8;
-            this.label3.Text = "欢迎赞助";
+            this.label3.Text = "工具免费使用，欢迎赞助";
             // 
             // Author
             // 
