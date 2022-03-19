@@ -34,7 +34,7 @@ namespace WowsTools
             pi.SetValue(this.dataGridViewOne, true, null);
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.7";
+        private const string VERSION = "1.0.0";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
