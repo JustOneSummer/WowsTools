@@ -197,21 +197,20 @@ namespace WowsTools
             WowsServer.SERVER.TryGetValue(gameServer, out WowsServer);
             List<GameAccountInfoData> dataList = PvpService.ReadReplays();
             log.Info("对局用户数量：" + dataList.Count);
+            int gameCount = dataList.Count();
             int i = 0;
             int serverCount = "cn".Equals(gameServer) ? 2 : 8;
             while (true)
             {
-                if (i < dataList.Count)
+                if (i < dataList.Count && ThreadCount() < serverCount)
                 {
-                    if (ThreadCount() < serverCount)
-                    {
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), dataList[i]);
-                        i++;
-                    }
+                    ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), dataList[i]);
+                    i++;
+
                 }
                 else
                 {
-                    if (GAME_INFO_LIST.Count >= dataList.Count)
+                    if (GAME_INFO_LIST.Count >= gameCount)
                     {
                         break;
                     }

@@ -22,18 +22,34 @@ namespace WowsTools.model
         public int TeamOneCount;
         public string OneWins()
         {
+            if (TeamOneWins <= 0 || TeamOneCount <= 0)
+            {
+                return "0%";
+            }
             return (TeamOneWins / TeamOneCount).ToString("f2") + "%";
         }
         public string OneShipWins()
         {
+            if (TeamOneShipWins <= 0 || TeamOneCount <= 0)
+            {
+                return "0%";
+            }
             return (TeamOneShipWins / TeamOneCount).ToString("f2") + "%";
         }
         public int OneBattles()
         {
+            if(TeamOneBattles <= 0 || TeamOneCount <= 0)
+            {
+                return 0;
+            }
             return TeamOneBattles / TeamOneCount;
         }
         public int OneShipBattles()
         {
+            if (TeamOneShipBattles <= 0 || TeamOneCount <= 0)
+            {
+                return 0;
+            }
             return TeamOneShipBattles / TeamOneCount;
         }
         /// <summary>
@@ -46,19 +62,35 @@ namespace WowsTools.model
         public int TeamTwoCount;
         public string TwoWins()
         {
+            if (TeamTwoWins <= 0 || TeamTwoCount <= 0)
+            {
+                return "0%";
+            }
             return (TeamTwoWins / TeamTwoCount).ToString("f2") + "%";
         }
         public string TwoShipWins()
         {
+            if (TeamTwoShipWins <= 0 || TeamTwoCount <= 0)
+            {
+                return "0%";
+            }
             return (TeamTwoShipWins / TeamTwoCount).ToString("f2") + "%";
         }
         public int TwoBattles()
         {
-            return TeamTwoBattles / TeamOneCount;
+            if (TeamTwoBattles <= 0 || TeamTwoCount <= 0)
+            {
+                return 0;
+            }
+            return TeamTwoBattles / TeamTwoCount;
         }
         public int TwoShipBattles()
         {
-            return TeamTwoShipBattles / TeamOneCount;
+            if (TeamTwoShipBattles <= 0 || TeamTwoCount <= 0)
+            {
+                return 0;
+            }
+            return TeamTwoShipBattles / TeamTwoCount;
         }
         /// <summary>
         /// 用户账号数据

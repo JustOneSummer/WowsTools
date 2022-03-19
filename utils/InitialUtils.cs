@@ -6,6 +6,7 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
+using System.Windows.Forms;
 using WowsTools.Properties;
 
 namespace WowsTools.utils
@@ -163,8 +164,21 @@ namespace WowsTools.utils
                         {
                             log.Info("非管理员模式加载...");
                             wows = GetProcessFullPath(process.Id);
+                            if (wows.LastIndexOf("WorldOfWarships") > 0)
+                            {
+                                try
+                                {
+                                    ProcessModule mainModule = process.MainModule;
+                                    wows = mainModule.FileName;
+                                }
+                                catch(Exception e)
+                                {
+                                    MessageBox.Show("未能正确识别游戏路径！请尝试使用管理员启动....");
+                                    break;
+                                }
+                            }
                         }
-                        if (!string.IsNullOrEmpty(wows))
+                        if (!string.IsNullOrEmpty(wows) && wows.LastIndexOf("WorldOfWarships") > 0)
                         {
                             //获取游戏根目录
                             log.Info("游戏进程路径=" + wows);
