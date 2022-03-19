@@ -45,14 +45,17 @@ namespace WowsTools
             this.replaysFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modsFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ReBlockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.GuanYuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewOne = new System.Windows.Forms.DataGridView();
             this.timerGameCheck = new System.Windows.Forms.Timer(this.components);
             this.labelStatusInfo = new System.Windows.Forms.Label();
             this.labelGamePath = new System.Windows.Forms.Label();
-            this.LogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStripData = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CopyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).BeginInit();
+            this.contextMenuStripData.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -63,8 +66,8 @@ namespace WowsTools
             this.OptionsToolStripMenuItem,
             this.replaysFileToolStripMenuItem,
             this.modsFileToolStripMenuItem,
-            this.ReBlockToolStripMenuItem,
             this.LogToolStripMenuItem,
+            this.ReBlockToolStripMenuItem,
             this.GuanYuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -115,14 +118,14 @@ namespace WowsTools
             // OptionsLoadViewToolStripMenuItemToolStripMenuItem
             // 
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Name = "OptionsLoadViewToolStripMenuItemToolStripMenuItem";
-            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Text = "重新渲染";
             this.OptionsLoadViewToolStripMenuItemToolStripMenuItem.Click += new System.EventHandler(this.OptionsLoadViewToolStripMenuItemToolStripMenuItem_Click);
             // 
             // OptonsReAnalyzeToolStripMenuItem
             // 
             this.OptonsReAnalyzeToolStripMenuItem.Name = "OptonsReAnalyzeToolStripMenuItem";
-            this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.OptonsReAnalyzeToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
             this.OptonsReAnalyzeToolStripMenuItem.Text = "重置缓存";
             this.OptonsReAnalyzeToolStripMenuItem.Click += new System.EventHandler(this.OptonsReAnalyzeToolStripMenuItem_Click);
             // 
@@ -146,6 +149,13 @@ namespace WowsTools
             this.ReBlockToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
             this.ReBlockToolStripMenuItem.Text = "恢复";
             this.ReBlockToolStripMenuItem.Click += new System.EventHandler(this.ReBlockToolStripMenuItem_Click);
+            // 
+            // LogToolStripMenuItem
+            // 
+            this.LogToolStripMenuItem.Name = "LogToolStripMenuItem";
+            this.LogToolStripMenuItem.Size = new System.Drawing.Size(73, 23);
+            this.LogToolStripMenuItem.Text = "日志目录";
+            this.LogToolStripMenuItem.Click += new System.EventHandler(this.LogToolStripMenuItem_Click);
             // 
             // GuanYuToolStripMenuItem
             // 
@@ -172,6 +182,7 @@ namespace WowsTools
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewOne.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewOne.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOne.ContextMenuStrip = this.contextMenuStripData;
             this.dataGridViewOne.Location = new System.Drawing.Point(12, 30);
             this.dataGridViewOne.Name = "dataGridViewOne";
             this.dataGridViewOne.ReadOnly = true;
@@ -188,6 +199,7 @@ namespace WowsTools
             this.dataGridViewOne.RowTemplate.Height = 23;
             this.dataGridViewOne.Size = new System.Drawing.Size(1460, 756);
             this.dataGridViewOne.TabIndex = 2;
+            this.dataGridViewOne.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOne_CellMouseDown);
             this.dataGridViewOne.SelectionChanged += new System.EventHandler(this.dataGridViewOne_SelectionChanged);
             // 
             // timerGameCheck
@@ -220,12 +232,18 @@ namespace WowsTools
             this.labelGamePath.TabIndex = 11;
             this.labelGamePath.Text = "未识别游戏路径";
             // 
-            // LogToolStripMenuItem
+            // contextMenuStripData
             // 
-            this.LogToolStripMenuItem.Name = "LogToolStripMenuItem";
-            this.LogToolStripMenuItem.Size = new System.Drawing.Size(47, 23);
-            this.LogToolStripMenuItem.Text = "日志";
-            this.LogToolStripMenuItem.Click += new System.EventHandler(this.LogToolStripMenuItem_Click);
+            this.contextMenuStripData.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CopyToolStripMenuItem});
+            this.contextMenuStripData.Name = "contextMenuStripData";
+            this.contextMenuStripData.Size = new System.Drawing.Size(181, 48);
+            // 
+            // CopyToolStripMenuItem
+            // 
+            this.CopyToolStripMenuItem.Name = "CopyToolStripMenuItem";
+            this.CopyToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.CopyToolStripMenuItem.Text = "复制战绩";
             // 
             // WowsMain
             // 
@@ -245,6 +263,7 @@ namespace WowsTools
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOne)).EndInit();
+            this.contextMenuStripData.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,6 +288,8 @@ namespace WowsTools
         private System.Windows.Forms.ToolStripMenuItem PrColorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ReloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LogToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripData;
+        private System.Windows.Forms.ToolStripMenuItem CopyToolStripMenuItem;
     }
 }
 

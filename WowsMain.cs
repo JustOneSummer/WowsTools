@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WowsTools.api;
@@ -425,8 +426,76 @@ namespace WowsTools
 
         private void LogToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string paht = @"" + System.Environment.CurrentDirectory + "/logs";
+            string paht = @"" + System.Environment.CurrentDirectory + "\\logs";
             System.Diagnostics.Process.Start("explorer.exe", paht);
+        }
+
+        /// <summary>
+        /// 右键功能
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewOne_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+            {
+                if(e.RowIndex >= 1)
+                {
+                    string v = null;
+                    if(e.ColumnIndex <= 4)
+                    {
+                        //获取友方数据
+                         v = this.dataGridViewOne.Rows[e.RowIndex].Cells[0].Value.ToString();
+                        
+                    }
+                    else if(e.ColumnIndex >= 6)
+                    {
+                        //获取敌方
+                         v = this.dataGridViewOne.Rows[e.RowIndex].Cells[10].Value.ToString();
+                    }
+                    log.Info("右键内容=" + v);
+                    if (!string.IsNullOrEmpty(v))
+                    {
+                        this.contextMenuStripData.Show(MousePosition.X, MousePosition.Y);
+                        this.contextMenuStripData.Click += new System.EventHandler((sender2, e2) =>
+                        {
+                            GameAccountInfoData game = null;
+                            foreach (var item in GAME_INFO_LIST)
+                            {
+                                if (item.AccountName.Equals(v))
+                                {
+                                    game = item;
+                                }
+                            }
+                            if (game != null)
+                            {
+                                try
+                                {
+                                    StringBuilder builder = new StringBuilder();
+                                    if (game.Hide)
+                                    {
+                                        builder.Append(game.AccountName).Append("隐藏了战绩...");
+                                    }
+                                    else
+                                    {
+                                        GameAccountShipInfoData ship = game.GameAccountShipInfo;
+                                        builder.Append(game.AccountName).Append("").Append(Environment.NewLine)
+                                        .Append(game.Battles).Append("场，胜率").Append(game.GameWins().ToString("f2")).Append("%").Append(Environment.NewLine)
+                                        .Append(ship.ShipName).Append(" 场均").Append(ship.GameDamage()).Append("，").Append(ship.Battles).Append("场，胜率")
+                                        .Append(ship.GameWins().ToString("f2")).Append("%").Append(Environment.NewLine).Append(" 评分(PR)=").Append(ship.Pr);
+                                    }
+                                    Clipboard.SetText(builder.ToString());
+                                }
+                                catch(Exception ex)
+                                {
+                                    log.Error("粘贴内容出现异常"+ ex);
+                                }
+                            }
+                            
+                        });
+                    }
+                }
+            }
         }
     }
 }
