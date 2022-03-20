@@ -23,18 +23,18 @@ namespace WowsTools.service
 
         public static long QueryNameUrl(string userName)
         {
-            if (userName.Substring(0,1).Equals(":"))
+            if (userName.Substring(0, 1).Equals(":"))
             {
                 return -1;
             }
-          string url =   "https://wowsgame.cn/zh-cn/community/accounts/search/?search=" + HttpUtility.UrlEncode(userName) + "&pjax=1";
+            string url = "https://wowsgame.cn/zh-cn/community/accounts/search/?search=" + HttpUtility.UrlEncode(userName) + "&pjax=1";
             var htmlWebHomeSelect = new HtmlWeb();
-             HtmlDocument htmlDocument = htmlWebHomeSelect.Load(url);
+            HtmlDocument htmlDocument = htmlWebHomeSelect.Load(url);
             HtmlNode htmlNodeHomeSelect = htmlDocument.DocumentNode.SelectSingleNode("//link[@rel='canonical']");
             string urlLink = htmlNodeHomeSelect.Attributes["href"].Value;
-            string idInfo =  urlLink.Substring(urlLink.LastIndexOf("accounts") + 9);
+            string idInfo = urlLink.Substring(urlLink.LastIndexOf("accounts") + 9);
             string[] id = idInfo.Split('-');
-            if(id.Length <= 1)
+            if (id.Length <= 1)
             {
                 return -1;
             }

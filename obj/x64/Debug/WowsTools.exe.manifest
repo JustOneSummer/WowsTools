@@ -78,24 +78,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1871360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WowsTools.exe" size="1873920">
       <assemblyIdentity name="WowsTools" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BYmNwBNCART4jwh59EgLHP20/6mePtgAZJMBT4ksVWk=</dsig:DigestValue>
+        <dsig:DigestValue>6bo/Mri/A83HFze40t6lPCdbfeeTMMV/XD6L9S64RSQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="WowsTools.exe.config" size="4599">
+  <file name="WowsTools.exe.config" size="5084">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>A/UNjfDX+9SfiMJTl5CA19zBKOMgaH3v8NAHx8TJR6E=</dsig:DigestValue>
+      <dsig:DigestValue>zm3jthJXYvPEGdvf9qmd8Qfxw5KTe2gpGYdxhmwNBD8=</dsig:DigestValue>
     </hash>
   </file>
   <file name="yuyuko_avatar.ico" size="270398">

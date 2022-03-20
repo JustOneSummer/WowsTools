@@ -169,7 +169,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ffffae66")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ffff6e66")]
         public string WinsColor1 {
             get {
                 return ((string)(this["WinsColor1"]));
@@ -181,7 +181,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ff03e3cb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ffffc51a")]
         public string WinsColor2 {
             get {
                 return ((string)(this["WinsColor2"]));
@@ -193,7 +193,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ffc111ee")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ff4ecc00")]
         public string WinsColor3 {
             get {
                 return ((string)(this["WinsColor3"]));
@@ -229,7 +229,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("48")]
+        [global::System.Configuration.DefaultSettingValueAttribute("45")]
         public double WinsColorValue1 {
             get {
                 return ((double)(this["WinsColorValue1"]));
@@ -241,7 +241,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        [global::System.Configuration.DefaultSettingValueAttribute("48")]
         public double WinsColorValue2 {
             get {
                 return ((double)(this["WinsColorValue2"]));
@@ -368,6 +368,54 @@ namespace WowsTools.Properties {
             }
             set {
                 this["GamePvpDataLastTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("55")]
+        public double WinsColorValue3 {
+            get {
+                return ((double)(this["WinsColorValue3"]));
+            }
+            set {
+                this["WinsColorValue3"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public double WinsColorValue4 {
+            get {
+                return ((double)(this["WinsColorValue4"]));
+            }
+            set {
+                this["WinsColorValue4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ffda70f5")]
+        public string WinsColor4 {
+            get {
+                return ((string)(this["WinsColor4"]));
+            }
+            set {
+                this["WinsColor4"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ffc111ee")]
+        public string WinsColor5 {
+            get {
+                return ((string)(this["WinsColor5"]));
+            }
+            set {
+                this["WinsColor5"] = value;
             }
         }
     }

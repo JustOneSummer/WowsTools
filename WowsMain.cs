@@ -34,7 +34,7 @@ namespace WowsTools
             pi.SetValue(this.dataGridViewOne, true, null);
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.8";
+        private const string VERSION = "0.0.9";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
@@ -437,21 +437,21 @@ namespace WowsTools
         /// <param name="e"></param>
         private void dataGridViewOne_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
-                if(e.RowIndex >= 1)
+                if (e.RowIndex >= 1)
                 {
                     string v = null;
-                    if(e.ColumnIndex <= 4)
+                    if (e.ColumnIndex <= 4)
                     {
                         //获取友方数据
-                         v = this.dataGridViewOne.Rows[e.RowIndex].Cells[0].Value.ToString();
-                        
+                        v = this.dataGridViewOne.Rows[e.RowIndex].Cells[0].Value.ToString();
+
                     }
-                    else if(e.ColumnIndex >= 6)
+                    else if (e.ColumnIndex >= 6)
                     {
                         //获取敌方
-                         v = this.dataGridViewOne.Rows[e.RowIndex].Cells[10].Value.ToString();
+                        v = this.dataGridViewOne.Rows[e.RowIndex].Cells[10].Value.ToString();
                     }
                     log.Info("右键内容=" + v);
                     if (!string.IsNullOrEmpty(v))
@@ -486,12 +486,12 @@ namespace WowsTools
                                     }
                                     Clipboard.SetText(builder.ToString());
                                 }
-                                catch(Exception ex)
+                                catch (Exception ex)
                                 {
-                                    log.Error("粘贴内容出现异常"+ ex);
+                                    log.Error("粘贴内容出现异常" + ex);
                                 }
                             }
-                            
+
                         });
                     }
                 }

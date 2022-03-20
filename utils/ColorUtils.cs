@@ -70,10 +70,17 @@ namespace WowsTools.utils
             {
                 color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor2, 16));
             }
-            else
+            else if (wins <= Settings.Default.WinsColorValue3)
             {
                 color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor3, 16));
-
+            }
+            else if (wins <= Settings.Default.WinsColorValue4)
+            {
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor4, 16));
+            }
+            else
+            {
+                color = Color.FromArgb(Convert.ToInt32(Settings.Default.WinsColor5, 16));
             }
             return color;
         }

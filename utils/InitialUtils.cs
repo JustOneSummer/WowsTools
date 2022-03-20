@@ -177,7 +177,7 @@ namespace WowsTools.utils
                                     ProcessModule mainModule = process.MainModule;
                                     wows = mainModule.FileName;
                                 }
-                                catch(Exception e)
+                                catch (Exception e)
                                 {
                                     MessageBox.Show("未能正确识别游戏路径！请尝试使用管理员启动....");
                                     break;

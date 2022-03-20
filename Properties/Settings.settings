@@ -39,13 +39,13 @@
       <Value Profile="(Default)">ffc111ee</Value>
     </Setting>
     <Setting Name="WinsColor1" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ffffae66</Value>
+      <Value Profile="(Default)">ffff6e66</Value>
     </Setting>
     <Setting Name="WinsColor2" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ff03e3cb</Value>
+      <Value Profile="(Default)">ffffc51a</Value>
     </Setting>
     <Setting Name="WinsColor3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ffc111ee</Value>
+      <Value Profile="(Default)">ff4ecc00</Value>
     </Setting>
     <Setting Name="PrColor0" Type="System.String" Scope="User">
       <Value Profile="(Default)">ff63B8FF</Value>
@@ -54,10 +54,10 @@
       <Value Profile="(Default)">ff949e9e</Value>
     </Setting>
     <Setting Name="WinsColorValue1" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">48</Value>
+      <Value Profile="(Default)">45</Value>
     </Setting>
     <Setting Name="WinsColorValue2" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">48</Value>
     </Setting>
     <Setting Name="DataGridViewTemplateForeColor0" Type="System.String" Scope="User">
       <Value Profile="(Default)">ff000000</Value>
@@ -88,6 +88,18 @@
     </Setting>
     <Setting Name="GamePvpDataLastTime" Type="System.Int64" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="WinsColorValue3" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">55</Value>
+    </Setting>
+    <Setting Name="WinsColorValue4" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="WinsColor4" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffda70f5</Value>
+    </Setting>
+    <Setting Name="WinsColor5" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ffc111ee</Value>
     </Setting>
   </Settings>
 </SettingsFile>

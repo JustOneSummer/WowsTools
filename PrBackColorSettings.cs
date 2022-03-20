@@ -64,15 +64,21 @@ namespace WowsTools
             //胜率
             this.textBoxWinsValue1.Text = Settings.Default.WinsColorValue1.ToString();
             this.textBoxWinsValue2.Text = Settings.Default.WinsColorValue2.ToString();
+            this.textBoxWinsValue3.Text = Settings.Default.WinsColorValue3.ToString();
+            this.textBoxWinsValue4.Text = Settings.Default.WinsColorValue4.ToString();
             this.textBoxWinsColor1.Text = Settings.Default.WinsColor1;
             this.textBoxWinsColor2.Text = Settings.Default.WinsColor2;
             this.textBoxWinsColor3.Text = Settings.Default.WinsColor3;
+            this.textBoxWinsColor4.Text = Settings.Default.WinsColor4;
+            this.textBoxWinsColor5.Text = Settings.Default.WinsColor5;
             Colors(this.textBoxTestWins1, Settings.Default.WinsColor1);
             Colors(this.textBoxTestWins2, Settings.Default.WinsColor2);
             Colors(this.textBoxTestWins3, Settings.Default.WinsColor3);
+            Colors(this.textBoxTestWins4, Settings.Default.WinsColor4);
+            Colors(this.textBoxTestWins5, Settings.Default.WinsColor5);
 
             Color color = Color.Green;
-            if(Settings.Default.GamePrBackColorSelect == 0)
+            if (Settings.Default.GamePrBackColorSelect == 0)
             {
                 this.button1.BackColor = color;
             }
@@ -116,12 +122,13 @@ namespace WowsTools
             this.button2.BackColor = Color.Green;
         }
 
-        private static void Colors(TextBox textBox,string color)
+        private static void Colors(TextBox textBox, string color)
         {
             try
             {
                 textBox.BackColor = Color.FromArgb(Convert.ToInt32(color, 16));
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
                 log.Error("渲染颜色发生错误 " + e);
             }
@@ -145,9 +152,13 @@ namespace WowsTools
             //胜率
             Settings.Default.WinsColorValue1 = double.Parse(this.textBoxWinsValue1.Text.Trim());
             Settings.Default.WinsColorValue2 = double.Parse(this.textBoxWinsValue2.Text.Trim());
+            Settings.Default.WinsColorValue3 = double.Parse(this.textBoxWinsValue3.Text.Trim());
+            Settings.Default.WinsColorValue4 = double.Parse(this.textBoxWinsValue4.Text.Trim());
             Settings.Default.WinsColor1 = this.textBoxWinsColor1.Text.Trim();
             Settings.Default.WinsColor2 = this.textBoxWinsColor2.Text.Trim();
             Settings.Default.WinsColor3 = this.textBoxWinsColor3.Text.Trim();
+            Settings.Default.WinsColor4 = this.textBoxWinsColor4.Text.Trim();
+            Settings.Default.WinsColor5 = this.textBoxWinsColor5.Text.Trim();
 
             Settings.Default.Save();
         }

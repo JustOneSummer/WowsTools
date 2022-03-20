@@ -57,7 +57,8 @@ namespace WowsTools.service
         /// <returns></returns>
         public static GameAccountInfoData AccountInfo(WowsServer server, GameAccountInfoData games)
         {
-            if (server.CodeId.Equals("cn")){
+            if (server.CodeId.Equals("cn"))
+            {
                 long v = Cn360Service.QueryNameUrl(games.AccountName);
                 if (v <= 0)
                 {

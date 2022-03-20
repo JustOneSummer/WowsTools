@@ -38,7 +38,7 @@ namespace WowsTools.model
         }
         public int OneBattles()
         {
-            if(TeamOneBattles <= 0 || TeamOneCount <= 0)
+            if (TeamOneBattles <= 0 || TeamOneCount <= 0)
             {
                 return 0;
             }

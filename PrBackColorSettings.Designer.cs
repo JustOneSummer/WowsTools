@@ -90,6 +90,12 @@ namespace WowsTools
             this.textBoxTestMb1 = new System.Windows.Forms.TextBox();
             this.textBoxTestMb2 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
+            this.textBoxWinsColor4 = new System.Windows.Forms.TextBox();
+            this.textBoxWinsColor5 = new System.Windows.Forms.TextBox();
+            this.textBoxWinsValue3 = new System.Windows.Forms.TextBox();
+            this.textBoxWinsValue4 = new System.Windows.Forms.TextBox();
+            this.textBoxTestWins4 = new System.Windows.Forms.TextBox();
+            this.textBoxTestWins5 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -178,7 +184,7 @@ namespace WowsTools
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(793, 277);
+            this.label3.Location = new System.Drawing.Point(795, 343);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 22);
             this.label3.TabIndex = 9;
@@ -643,11 +649,67 @@ namespace WowsTools
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // textBoxWinsColor4
+            // 
+            this.textBoxWinsColor4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxWinsColor4.Location = new System.Drawing.Point(895, 305);
+            this.textBoxWinsColor4.Name = "textBoxWinsColor4";
+            this.textBoxWinsColor4.Size = new System.Drawing.Size(100, 29);
+            this.textBoxWinsColor4.TabIndex = 61;
+            // 
+            // textBoxWinsColor5
+            // 
+            this.textBoxWinsColor5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxWinsColor5.Location = new System.Drawing.Point(895, 340);
+            this.textBoxWinsColor5.Name = "textBoxWinsColor5";
+            this.textBoxWinsColor5.Size = new System.Drawing.Size(100, 29);
+            this.textBoxWinsColor5.TabIndex = 62;
+            // 
+            // textBoxWinsValue3
+            // 
+            this.textBoxWinsValue3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxWinsValue3.Location = new System.Drawing.Point(780, 270);
+            this.textBoxWinsValue3.Name = "textBoxWinsValue3";
+            this.textBoxWinsValue3.Size = new System.Drawing.Size(100, 29);
+            this.textBoxWinsValue3.TabIndex = 63;
+            // 
+            // textBoxWinsValue4
+            // 
+            this.textBoxWinsValue4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxWinsValue4.Location = new System.Drawing.Point(780, 305);
+            this.textBoxWinsValue4.Name = "textBoxWinsValue4";
+            this.textBoxWinsValue4.Size = new System.Drawing.Size(100, 29);
+            this.textBoxWinsValue4.TabIndex = 64;
+            // 
+            // textBoxTestWins4
+            // 
+            this.textBoxTestWins4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxTestWins4.Location = new System.Drawing.Point(1012, 305);
+            this.textBoxTestWins4.Name = "textBoxTestWins4";
+            this.textBoxTestWins4.ReadOnly = true;
+            this.textBoxTestWins4.Size = new System.Drawing.Size(46, 29);
+            this.textBoxTestWins4.TabIndex = 65;
+            // 
+            // textBoxTestWins5
+            // 
+            this.textBoxTestWins5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.textBoxTestWins5.Location = new System.Drawing.Point(1012, 340);
+            this.textBoxTestWins5.Name = "textBoxTestWins5";
+            this.textBoxTestWins5.ReadOnly = true;
+            this.textBoxTestWins5.Size = new System.Drawing.Size(46, 29);
+            this.textBoxTestWins5.TabIndex = 66;
+            // 
             // PrBackColorSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 494);
+            this.Controls.Add(this.textBoxTestWins5);
+            this.Controls.Add(this.textBoxTestWins4);
+            this.Controls.Add(this.textBoxWinsValue4);
+            this.Controls.Add(this.textBoxWinsValue3);
+            this.Controls.Add(this.textBoxWinsColor5);
+            this.Controls.Add(this.textBoxWinsColor4);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBoxTestMb2);
             this.Controls.Add(this.textBoxTestMb1);
@@ -783,5 +845,11 @@ namespace WowsTools
         private System.Windows.Forms.TextBox textBoxTestMb1;
         private System.Windows.Forms.TextBox textBoxTestMb2;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox textBoxWinsColor4;
+        private System.Windows.Forms.TextBox textBoxWinsColor5;
+        private System.Windows.Forms.TextBox textBoxWinsValue3;
+        private System.Windows.Forms.TextBox textBoxWinsValue4;
+        private System.Windows.Forms.TextBox textBoxTestWins4;
+        private System.Windows.Forms.TextBox textBoxTestWins5;
     }
 }
