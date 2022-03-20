@@ -97,7 +97,7 @@ namespace WowsTools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("ffffc51a")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ff4ecc00")]
         public string PrColor3 {
             get {
                 return ((string)(this["PrColor3"]));

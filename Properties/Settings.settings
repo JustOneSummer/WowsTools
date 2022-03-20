@@ -21,7 +21,7 @@
       <Value Profile="(Default)">ffffae66</Value>
     </Setting>
     <Setting Name="PrColor3" Type="System.String" Scope="User">
-      <Value Profile="(Default)">ffffc51a</Value>
+      <Value Profile="(Default)">ff4ecc00</Value>
     </Setting>
     <Setting Name="PrColor4" Type="System.String" Scope="User">
       <Value Profile="(Default)">ff58e600</Value>

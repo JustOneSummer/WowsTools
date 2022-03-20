@@ -18,3 +18,9 @@ C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.exe.manifest
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.application
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.exe
 C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.pdb
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Release\HtmlAgilityPack.dll
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Release\HtmlAgilityPack.pdb
+C:\Users\yuyuko\source\repos\WowsTools\bin\x64\Release\HtmlAgilityPack.xml
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.DataGridViewTemplateSelect.resources
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.PrBackColorSettings.resources
+C:\Users\yuyuko\source\repos\WowsTools\obj\x64\Release\WowsTools.csproj.CopyComplete
