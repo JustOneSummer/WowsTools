@@ -200,7 +200,7 @@ namespace WowsTools.utils
                 }
                 //为空时判断之前的历史设置
                 string settings = Settings.Default.GameHomePath;
-                if (settings.Equals("N/A"))
+                if (settings.Equals("N/A") || !Directory.Exists(settings))
                 {
                     HOME = null;
                 }
