@@ -148,6 +148,12 @@ namespace WowsTools.utils
         {
             lock (lockObject)
             {
+                /*string programsPath =  System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs);
+                DirectoryInfo programsDir = new DirectoryInfo(programsPath);
+                foreach(var item in programsDir.GetDirectories())
+                {
+
+                }*/
                 Process[] processes = Process.GetProcesses();
                 foreach (Process process in processes)
                 {
@@ -164,7 +170,7 @@ namespace WowsTools.utils
                         {
                             log.Info("非管理员模式加载...");
                             wows = GetProcessFullPath(process.Id);
-                            if (wows.LastIndexOf("WorldOfWarships") > 0)
+                            if (wows.LastIndexOf("WorldOfWarships") <= 0)
                             {
                                 try
                                 {

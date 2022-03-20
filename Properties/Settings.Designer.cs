@@ -358,5 +358,17 @@ namespace WowsTools.Properties {
                 this["PrValue7"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public long GamePvpDataLastTime {
+            get {
+                return ((long)(this["GamePvpDataLastTime"]));
+            }
+            set {
+                this["GamePvpDataLastTime"] = value;
+            }
+        }
     }
 }
