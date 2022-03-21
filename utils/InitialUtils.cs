@@ -18,9 +18,10 @@ namespace WowsTools.utils
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         static object lockObject = new object();
+        //游戏跟路径
         private static string HOME = null;
+        //replay的json文件
         private static string REPLAY_PATH = null;
-        private static string VERSION_BIN_NUMBER = null;
 
         public static string GetHome()
         {
@@ -29,6 +30,11 @@ namespace WowsTools.utils
                 WowsExeHomePath();
             }
             return HOME;
+        }
+
+        public static void HomeToNull()
+        {
+            HOME = null;
         }
 
         public static string GetReplayPath()
@@ -129,21 +135,8 @@ namespace WowsTools.utils
         }
 
 
-        public static void Director(string dir, List<FileInfo> list)
-        {
-            DirectoryInfo d = new DirectoryInfo(dir);
-            FileInfo[] files = d.GetFiles("*.json");
-            DirectoryInfo[] directs = d.GetDirectories();
-            foreach (FileInfo f in files)
-            {
-                list.Add(f);
-            }
-            //获取子文件夹内的文件列表，递归遍历  
-            foreach (DirectoryInfo dd in directs)
-            {
-                Director(dd.FullName, list);
-            }
-        }
+        
+
         private static void WowsExeHomePath()
         {
             lock (lockObject)
@@ -154,36 +147,28 @@ namespace WowsTools.utils
                 {
                     HOME = settings;
                 }
-                Process[] processes = Process.GetProcesses();
-                foreach (Process process in processes)
+                log.Info(IsAdmin() ? "管理员模式加载...": "非管理员模式加载...");
+                if (!GamePathProcess(OwnerProcessPath()))
                 {
-                    if (process.ProcessName.ToLower().Equals("WorldOfWarships64".ToLower()))
-                    {
-                        string wows = null;
-                        if (IsAdmin())
-                        {
-                            log.Info("管理员模式加载...");
-                            ProcessModule mainModule = process.MainModule;
-                            wows = mainModule.FileName;
-                        }
-                        else
-                        {
-                            log.Info("非管理员模式加载...");
-                            wows = GetProcessFullPath(process.Id);
-                        }
-                        if (!string.IsNullOrEmpty(wows))
-                        {
-                            //获取游戏根目录
-                            log.Info("游戏进程路径=" + wows);
-                            HOME = pathHome(wows);
-                            Settings.Default.GameHomePath = HOME;
-                            Settings.Default.GameVersionHome = pathHomeBin(HOME) + "\\";
-                            Settings.Default.Save();
-                            return;
-                        }
-                    }
+                    GamePathProcess(ProcessPath());
                 }
             }
+        }
+
+        private static bool GamePathProcess(string v)
+        {
+            if (!string.IsNullOrEmpty(v))
+            {
+                //获取游戏根目录
+                log.Info("游戏进程路径=" + v);
+                HOME = pathHome(v);
+                Settings.Default.GameHomePath = HOME;
+                Settings.Default.GameVersionHome = pathHomeBin(HOME) + "\\";
+                Settings.Default.Save();
+                return true;
+            }
+            return false;
+            
         }
 
         private static void ReplaysPath()
@@ -211,8 +196,28 @@ namespace WowsTools.utils
                     return;
                 }
             }
-
             REPLAY_PATH = null;
+        }
+
+        public static void Director(string dir, List<FileInfo> list)
+        {
+            DirectoryInfo d = new DirectoryInfo(dir);
+            FileInfo[] files = d.GetFiles("*.json");
+            DirectoryInfo[] directs = d.GetDirectories();
+            foreach (FileInfo f in files)
+            {
+                list.Add(f);
+            }
+            //获取子文件夹内的文件列表，递归遍历  
+            foreach (DirectoryInfo dd in directs)
+            {
+                Director(dd.FullName, list);
+            }
+        }
+
+        public static bool IsWowsGameProcess(string name)
+        {
+            return Regex.IsMatch(name, "^WorldOfWarships\\d\\d\\.exe$");
         }
 
         public static bool IsAdmin()
@@ -226,6 +231,100 @@ namespace WowsTools.utils
             return isAdmin;
         }
 
+        /// <summary>
+        /// 根路径
+        /// </summary>
+        /// <param name="wows"></param>
+        /// <returns></returns>
+        private static string pathHome(string wows)
+        {
+            return wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
+        }
+
+        /// <summary>
+        /// 游戏bin路径
+        /// </summary>
+        /// <param name="home"></param>
+        /// <returns></returns>
+        private static string pathHomeBin(string home)
+        {
+            string path = home + "bin";
+            DirectoryInfo d = new DirectoryInfo(path);
+            DirectoryInfo[] directs = d.GetDirectories();
+            List<int> list = new List<int>();
+            foreach (DirectoryInfo direct in directs)
+            {
+                if (Regex.IsMatch(direct.Name, "^\\d*"))
+                {
+                    list.Add(Int32.Parse(direct.Name));
+                }
+            }
+            list.Sort();
+            list.Reverse();
+            return path + "\\" + list[0];
+        }
+
+
+        /// <summary>
+        /// 可能需要提权操作
+        /// </summary>
+        /// <param name="processName"></param>
+        /// <returns></returns>
+        public static string ProcessPath( )
+        {
+            Process[] processes = Process.GetProcesses();
+            foreach (Process process in processes)
+            {
+                try
+                {
+                    if (IsWowsGameProcess(process.ProcessName))
+                    {
+                        ProcessModule mainModule = process.MainModule;
+                        return mainModule.FileName;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("获取程序路径异常！" + ex);
+                    return GetProcessFullPath(process.Id);
+                }
+            }
+            return "";
+        }
+
+        public static string OwnerProcessPath()
+        {
+            using (var mc = new ManagementClass("Win32_Process"))
+            using (var moc = mc.GetInstances())
+            {
+                foreach (ManagementObject mo in moc)
+                    using (mo)
+                    {
+                        try
+                        {
+                            //var outParams = mo.InvokeMethod("GetOwner", null, null);
+                            //ProcessId
+                            string process = mo["Name"].ToString();
+                            if (IsWowsGameProcess(process))
+                            {
+                                return mo["ExecutablePath"].ToString();
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            log.Error("获取进程信息发生异常;" + e);
+                            break;
+                        }
+                    }
+            }
+            return "";
+        }
+
+        /// <summary>
+        /// 进程ID获取路径
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static string GetProcessFullPath(int id)
         {
             const int PROCESS_ALL_ACCESS = 0x1F0FFF;
@@ -244,28 +343,5 @@ namespace WowsTools.utils
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern bool QueryFullProcessImageName(IntPtr hProcess, uint dwFlags, [Out, MarshalAs(UnmanagedType.LPTStr)] StringBuilder lpExeName, ref uint lpdwSize);
-
-        private static string pathHome(string wows)
-        {
-           return wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
-        }
-
-        private static string pathHomeBin(string home)
-        {
-            string path = home + "\\bin";
-            DirectoryInfo d = new DirectoryInfo(path);
-            DirectoryInfo[] directs = d.GetDirectories();
-            List<int> list = new List<int>();
-            foreach (DirectoryInfo direct in directs)
-            {
-                if(Regex.IsMatch(direct.Name, "$\\d*"))
-                {
-                    list.Add(Int32.Parse(direct.Name));
-                }
-            }
-            list.Sort();
-            list.Reverse();
-            return path+"\\"+list[0];
-        }
     }
 }

@@ -513,5 +513,12 @@ namespace WowsTools
             PathHome home = new PathHome();
             home.ShowDialog();
         }
+
+        private void RePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Settings.Default.GameHomePath = "N/A";
+            Settings.Default.Save();
+            LoadGameHome();
+        }
     }
 }
