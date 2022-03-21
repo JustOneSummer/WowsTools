@@ -159,7 +159,8 @@ namespace WowsTools
                         this.OptonsReAnalyzeToolStripMenuItem.Enabled = false;
                         log.Info("游戏replays路径:" + jsonFilePath);
                         this.labelStatusInfo.Text = "加载对局信息中...";
-                        ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
+                        var act = new Action(threadProcess);
+                        act.BeginInvoke(ar => act.EndInvoke(ar), null);
                     }
                 }
                 else
@@ -174,6 +175,11 @@ namespace WowsTools
                 log.Error("定时任务出现异常！", ex);
                 MessageBox.Show("定时任务出现异常！" + ex.Message);
             }
+        }
+
+        public void threadProcess()
+        {
+            ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
         }
 
         public int ThreadCount()
