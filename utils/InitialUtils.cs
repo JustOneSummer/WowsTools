@@ -6,7 +6,7 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Text;
-using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using WowsTools.Properties;
 
 namespace WowsTools.utils
@@ -148,16 +148,16 @@ namespace WowsTools.utils
         {
             lock (lockObject)
             {
-                /*string programsPath =  System.Environment.GetFolderPath(System.Environment.SpecialFolder.Programs);
-                DirectoryInfo programsDir = new DirectoryInfo(programsPath);
-                foreach(var item in programsDir.GetDirectories())
+                //为空时判断之前的历史设置
+                string settings = Settings.Default.GameHomePath;
+                if (Directory.Exists(settings + "replays"))
                 {
-
-                }*/
+                    HOME = settings;
+                }
                 Process[] processes = Process.GetProcesses();
                 foreach (Process process in processes)
                 {
-                    if (process.ProcessName.LastIndexOf("WorldOfWarships") == 0)
+                    if (process.ProcessName.ToLower().Equals("WorldOfWarships64".ToLower()))
                     {
                         string wows = null;
                         if (IsAdmin())
@@ -170,43 +170,18 @@ namespace WowsTools.utils
                         {
                             log.Info("非管理员模式加载...");
                             wows = GetProcessFullPath(process.Id);
-                            if (wows.LastIndexOf("WorldOfWarships") <= 0)
-                            {
-                                try
-                                {
-                                    ProcessModule mainModule = process.MainModule;
-                                    wows = mainModule.FileName;
-                                }
-                                catch (Exception e)
-                                {
-                                    MessageBox.Show("未能正确识别游戏路径！请尝试使用管理员启动....");
-                                    break;
-                                }
-                            }
                         }
-                        if (!string.IsNullOrEmpty(wows) && wows.LastIndexOf("WorldOfWarships") > 0)
+                        if (!string.IsNullOrEmpty(wows))
                         {
                             //获取游戏根目录
                             log.Info("游戏进程路径=" + wows);
-                            string temp = wows.Substring(wows.LastIndexOf("\\bin\\"));
-                            HOME = wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
-                            VERSION_BIN_NUMBER = temp.Substring(5, temp.LastIndexOf("\\bin") - 5);
+                            HOME = pathHome(wows);
                             Settings.Default.GameHomePath = HOME;
-                            Settings.Default.GameVersionHome = HOME + "bin\\" + VERSION_BIN_NUMBER + "\\";
+                            Settings.Default.GameVersionHome = pathHomeBin(HOME) + "\\";
                             Settings.Default.Save();
+                            return;
                         }
-                        return;
                     }
-                }
-                //为空时判断之前的历史设置
-                string settings = Settings.Default.GameHomePath;
-                if (settings.Equals("N/A") || !Directory.Exists(settings))
-                {
-                    HOME = null;
-                }
-                else
-                {
-                    HOME = settings;
                 }
             }
         }
@@ -269,5 +244,28 @@ namespace WowsTools.utils
 
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern bool QueryFullProcessImageName(IntPtr hProcess, uint dwFlags, [Out, MarshalAs(UnmanagedType.LPTStr)] StringBuilder lpExeName, ref uint lpdwSize);
+
+        private static string pathHome(string wows)
+        {
+           return wows.Substring(0, wows.LastIndexOf("\\bin\\") + 1);
+        }
+
+        private static string pathHomeBin(string home)
+        {
+            string path = home + "\\bin";
+            DirectoryInfo d = new DirectoryInfo(path);
+            DirectoryInfo[] directs = d.GetDirectories();
+            List<int> list = new List<int>();
+            foreach (DirectoryInfo direct in directs)
+            {
+                if(Regex.IsMatch(direct.Name, "$\\d*"))
+                {
+                    list.Add(Int32.Parse(direct.Name));
+                }
+            }
+            list.Sort();
+            list.Reverse();
+            return path+"\\"+list[0];
+        }
     }
 }

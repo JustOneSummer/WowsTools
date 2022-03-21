@@ -497,11 +497,21 @@ namespace WowsTools
                                     log.Error("粘贴内容出现异常" + ex);
                                 }
                             }
-
                         });
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 提供一个手动选择游戏路径的选项
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NewGamePathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PathHome home = new PathHome();
+            home.ShowDialog();
         }
     }
 }

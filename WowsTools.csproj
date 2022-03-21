@@ -83,7 +83,7 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -150,6 +150,12 @@
     <Compile Include="model\GameAccountShipInfoData.cs" />
     <Compile Include="model\GameInfoData.cs" />
     <Compile Include="model\WowsJsonData.cs" />
+    <Compile Include="PathHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PathHome.Designer.cs">
+      <DependentUpon>PathHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="PrBackColorSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataGridViewTemplateSelect.resx">
       <DependentUpon>DataGridViewTemplateSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PathHome.resx">
+      <DependentUpon>PathHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrBackColorSettings.resx">
       <DependentUpon>PrBackColorSettings.cs</DependentUpon>
