@@ -57,45 +57,7 @@ namespace WowsTools
             log4net.Config.XmlConfigurator.Configure();
             log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
-            this.dataGridViewOne.RowHeadersVisible = false;
-            this.dataGridViewOne.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-            this.dataGridViewOne.Columns.Add("userNameOne", "玩家");
-            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsOne", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("levelOneShipNameOne", "场均/名称");
-            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsOne", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("ShipPrOne", "评分");
-            this.dataGridViewOne.Columns["ShipPrOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["shipBattlesOneShipWinsOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["levelOneShipNameOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["BattlesOneuserWinsOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["userNameOne"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            this.dataGridViewOne.Columns["ShipPrOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["shipBattlesOneShipWinsOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["levelOneShipNameOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["BattlesOneuserWinsOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.Columns["userNameOne"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-            this.dataGridViewOne.Columns.Add("AB", "A/B");
-            this.dataGridViewOne.Columns["AB"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            this.dataGridViewOne.Columns.Add("ShipPrTwo", "评分");
-            this.dataGridViewOne.Columns.Add("shipBattlesOneShipWinsTwo", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("levelOneShipNameTwo", "场均/名称");
-            this.dataGridViewOne.Columns.Add("BattlesOneuserWinsTwo", "场次/胜率");
-            this.dataGridViewOne.Columns.Add("userNameTwo", "玩家");
-            this.dataGridViewOne.Columns["ShipPrTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewOne.Columns["shipBattlesOneShipWinsTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewOne.Columns["levelOneShipNameTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewOne.Columns["BattlesOneuserWinsTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            this.dataGridViewOne.Columns["userNameTwo"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            //this.dataGridViewOne.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            //this.dataGridViewOne.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dataGridViewOne.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
-            this.dataGridViewOne.AllowUserToAddRows = false;
-            this.dataGridViewOne.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOne.ClearSelection();
-            this.dataGridViewOne.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dataGridViewOne = DataGridViewTemplateInitialLoad.Load(this.dataGridViewOne);
             log.Info("初始化 版本=" + VERSION);
             LoadGameHome();
             ShipUtils.Get(0, true);
