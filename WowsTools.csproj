@@ -165,6 +165,7 @@
     <Compile Include="service\Cn360Service.cs" />
     <Compile Include="service\PvpService.cs" />
     <Compile Include="template\DataGridViewTemplate.cs" />
+    <Compile Include="template\DataGridViewTemplateInitialLoad.cs" />
     <Compile Include="utils\ColorUtils.cs" />
     <Compile Include="utils\DataUtils.cs" />
     <Compile Include="utils\HttpUtils.cs" />
