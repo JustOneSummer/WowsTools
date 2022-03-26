@@ -29,8 +29,7 @@ namespace WowsTools
 
             //2、利用反射设置DataGridView的双缓冲
             Type dgvType = this.dataGridViewOne.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",
-                BindingFlags.Instance | BindingFlags.NonPublic);
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.dataGridViewOne, true, null);
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -41,60 +40,15 @@ namespace WowsTools
         private static WowsServer WowsServer = null;
         private static List<GameAccountInfoData> GAME_INFO_LIST = new List<GameAccountInfoData>();
 
-        /// <summary>
-        /// 关于界面
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void GuanYuToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Author author = new Author();
-            author.ShowDialog();
-        }
-
         private void WowsMain_Load(object sender, EventArgs e)
         {
             log4net.Config.XmlConfigurator.Configure();
-            log.Info("当前平台的 .net framework 信息：" + System.Environment.Version.ToString());
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne = DataGridViewTemplateInitialLoad.Load(this.dataGridViewOne);
             log.Info("初始化 版本=" + VERSION);
             LoadGameHome();
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);
-        }
-
-        private void dataGridViewOne_SelectionChanged(object sender, EventArgs e)
-        {
-            this.dataGridViewOne.ClearSelection();
-        }
-
-        public void CheckUpdate()
-        {
-            try
-            {
-                int localV = int.Parse(VERSION.Replace(".", ""));
-                string newV = HttpUtils.GetVersion();
-                log.Info("检查版本 新版本=" + newV);
-                int ver = int.Parse(newV.Replace(".", ""));
-                if (ver > localV)
-                {
-                    if (ver - localV >= 5 && localV > 2)
-                    {
-                        MessageBox.Show("版本过低！！！\r\n请加Q群872725671获取最新版本,程序将自动退出运行...");
-                        System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
-                    }
-                    else
-                    {
-                        MessageBox.Show("发现新版本，请点击关于加Q群872725671获取最新版本!!!");
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                log.Error("请求版本信息出错！", e);
-                MessageBox.Show("请求版本信息出错！如果开了代理请关闭全局代理...");
-            }
         }
 
         /// <summary>
@@ -121,8 +75,9 @@ namespace WowsTools
                         this.OptonsReAnalyzeToolStripMenuItem.Enabled = false;
                         log.Info("游戏replays路径:" + jsonFilePath);
                         this.labelStatusInfo.Text = "加载对局信息中...";
-                        var act = new Action(threadProcess);
-                        act.BeginInvoke(ar => act.EndInvoke(ar), null);
+                        GAME_INFO_LIST.Clear();
+                        this.dataGridViewOne.Rows.Clear();
+                        ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
                     }
                 }
                 else
@@ -139,11 +94,10 @@ namespace WowsTools
             }
         }
 
-        public void threadProcess()
-        {
-            ThreadPool.QueueUserWorkItem(new WaitCallback(GameInfo), null);
-        }
-
+        /// <summary>
+        /// 线程数量
+        /// </summary>
+        /// <returns></returns>
         public int ThreadCount()
         {
             int MaxWorkerThreads, miot, AvailableWorkerThreads, aiot;
@@ -160,7 +114,6 @@ namespace WowsTools
         /// <param name="state"></param>
         public void GameInfo(object state)
         {
-            GAME_INFO_LIST.Clear();
             string gameServer = InitialUtils.ServerInfo();
             log.Info("所在服务器：" + gameServer);
             WowsServer.SERVER.TryGetValue(gameServer, out WowsServer);
@@ -168,14 +121,13 @@ namespace WowsTools
             log.Info("对局用户数量：" + dataList.Count);
             int gameCount = dataList.Count();
             int i = 0;
-            int serverCount = "cn".Equals(gameServer) ? 2 : 8;
+            int serverCount = "cn".Equals(gameServer) ? 2 : InitialUtils.CpuProcessCount();
             while (true)
             {
                 if (i < dataList.Count && ThreadCount() < serverCount)
                 {
                     ThreadPool.QueueUserWorkItem(new WaitCallback(LoadGameInfo), dataList[i]);
                     i++;
-
                 }
                 else
                 {
@@ -184,6 +136,7 @@ namespace WowsTools
                         break;
                     }
                 }
+                Thread.Sleep(100);
             }
             DataViewLoad(WowsServer);
         }
@@ -216,7 +169,6 @@ namespace WowsTools
             Invoke((new Action(() =>
             {
                 this.labelStatusInfo.Text = "开始渲染对局数据";
-                this.dataGridViewOne.Rows.Clear();
 
                 GameInfoData gameInfoData = PvpService.GameInfoData(server, GAME_INFO_LIST);
 
@@ -233,7 +185,7 @@ namespace WowsTools
                 {
                     this.dataGridViewOne.Rows.Add(DataGridViewTemplate.Template(i, this.dataGridViewOne, gameInfoData));
                 }
-                LoadDataGridViewWeight();
+                DataGridViewTemplateInitialLoad.Hw(this.dataGridViewOne);
                 this.OptonsReAnalyzeToolStripMenuItem.Enabled = true;
                 this.labelStatusInfo.Text = "对局数据渲染结束";
             })));
@@ -255,40 +207,6 @@ namespace WowsTools
             {
                 this.labelGamePath.Text = "未识别游戏路径";
                 this.labelGamePath.ForeColor = Color.Red;
-            }
-        }
-
-        /// <summary>
-        /// 界面行宽
-        /// </summary>
-        private void LoadDataGridViewWeight()
-        {
-            this.dataGridViewOne.Columns[0].FillWeight = 30;
-            this.dataGridViewOne.Columns[1].FillWeight = 11;
-            this.dataGridViewOne.Columns[2].FillWeight = 18;
-            this.dataGridViewOne.Columns[3].FillWeight = 11;
-            this.dataGridViewOne.Columns[4].FillWeight = 9;
-
-            this.dataGridViewOne.Columns[5].FillWeight = 5;
-
-            this.dataGridViewOne.Columns[6].FillWeight = 9;
-            this.dataGridViewOne.Columns[7].FillWeight = 11;
-            this.dataGridViewOne.Columns[8].FillWeight = 18;
-            this.dataGridViewOne.Columns[9].FillWeight = 11;
-            this.dataGridViewOne.Columns[10].FillWeight = 30;
-            for (int i = 0; i < this.dataGridViewOne.Columns.Count; i++)
-            {
-                this.dataGridViewOne.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
-                this.dataGridViewOne.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            }
-
-            for (int i = 0; i < this.dataGridViewOne.Rows.Count; i++)
-            {
-                this.dataGridViewOne.Rows[i].Height = 55;
-                if (i == 0)
-                {
-                    this.dataGridViewOne.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(Convert.ToInt32("ffF8F8FF", 16));
-                }
             }
         }
 
@@ -346,18 +264,33 @@ namespace WowsTools
             }
         }
 
+        /// <summary>
+        /// 重置窗口大小
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReBlockToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Width = 1500;
             this.Height = 836;
         }
 
+        /// <summary>
+        /// 录像目录
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void replaysFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string paht = @"" + InitialUtils.GetHome() + "replays";
             System.Diagnostics.Process.Start("explorer.exe", paht);
         }
 
+        /// <summary>
+        /// mods文件夹
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void modsFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string paht = @"" + Settings.Default.GameVersionHome + "res_mods";
@@ -376,6 +309,11 @@ namespace WowsTools
             settings.ShowDialog();
         }
 
+        /// <summary>
+        /// 重置缓存
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("是否要重置设置缓存？", "重置", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
@@ -392,6 +330,11 @@ namespace WowsTools
             }
         }
 
+        /// <summary>
+        /// 日志
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string paht = @"" + System.Environment.CurrentDirectory + "\\logs";
@@ -476,11 +419,69 @@ namespace WowsTools
             home.ShowDialog();
         }
 
+        /// <summary>
+        /// 重置路径
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RePathToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Settings.Default.GameHomePath = "N/A";
             Settings.Default.Save();
             LoadGameHome();
+        }
+
+
+        /// <summary>
+        /// 检测更新
+        /// </summary>
+        public void CheckUpdate()
+        {
+            try
+            {
+                int localV = int.Parse(VERSION.Replace(".", ""));
+                string newV = HttpUtils.GetVersion();
+                log.Info("检查版本 新版本=" + newV);
+                int ver = int.Parse(newV.Replace(".", ""));
+                if (ver > localV)
+                {
+                    if (ver - localV >= 5 && localV > 2)
+                    {
+                        MessageBox.Show("版本过低！！！\r\n请加Q群872725671获取最新版本,程序将自动退出运行...");
+                        System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
+                    }
+                    else
+                    {
+                        MessageBox.Show("发现新版本，请点击关于加Q群872725671获取最新版本!!!");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error("请求版本信息出错！", e);
+                MessageBox.Show("请求版本信息出错！如果开了代理请关闭全局代理...");
+            }
+        }
+
+        /// <summary>
+        /// 关于界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GuanYuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Author author = new Author();
+            author.ShowDialog();
+        }
+
+        /// <summary>
+        /// 选中事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewOne_SelectionChanged(object sender, EventArgs e)
+        {
+            this.dataGridViewOne.ClearSelection();
         }
     }
 }

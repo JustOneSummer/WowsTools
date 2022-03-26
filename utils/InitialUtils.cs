@@ -23,6 +23,11 @@ namespace WowsTools.utils
         //replay的json文件
         private static string REPLAY_PATH = null;
 
+        public static int CpuProcessCount()
+        {
+            return (Environment.ProcessorCount / 2) + 1;
+        }
+
         public static string GetHome()
         {
             if (string.IsNullOrEmpty(HOME))

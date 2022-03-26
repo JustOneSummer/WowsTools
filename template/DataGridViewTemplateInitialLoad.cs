@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace WowsTools.template
 {
@@ -45,6 +47,41 @@ namespace WowsTools.template
             view.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             view.ClearSelection();
             view.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            return view;
+        }
+
+        /// <summary>
+        /// 界面行宽
+        /// </summary>
+        public static DataGridView Hw(DataGridView view)
+        {
+            view.Columns[0].FillWeight = 30;
+            view.Columns[1].FillWeight = 11;
+            view.Columns[2].FillWeight = 18;
+            view.Columns[3].FillWeight = 11;
+            view.Columns[4].FillWeight = 9;
+
+            view.Columns[5].FillWeight = 5;
+
+            view.Columns[6].FillWeight = 9;
+            view.Columns[7].FillWeight = 11;
+            view.Columns[8].FillWeight = 18;
+            view.Columns[9].FillWeight = 11;
+            view.Columns[10].FillWeight = 30;
+            for (int i = 0; i < view.Columns.Count; i++)
+            {
+                view.Columns[i].SortMode = DataGridViewColumnSortMode.NotSortable;
+                view.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            for (int i = 0; i < view.Rows.Count; i++)
+            {
+                view.Rows[i].Height = 55;
+                if (i == 0)
+                {
+                    view.Rows[i].DefaultCellStyle.BackColor = Color.FromArgb(Convert.ToInt32("ffF8F8FF", 16));
+                }
+            }
             return view;
         }
     }
