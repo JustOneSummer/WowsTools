@@ -173,5 +173,103 @@ namespace WowsTools
             SaveDataInfo();
             PrBackColorSettings_Load(null, null);
         }
+
+        private void SelectColor(TextBox textBox)
+        {
+            ColorDialog dlg = new ColorDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                //获取所选择的颜色
+                Color color = dlg.Color;
+                //改变panel的背景色
+                int v = color.ToArgb();
+                textBox.Text = Convert.ToString(v, 16);
+            }
+        }
+
+        private void textBoxTestPr1_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor1);
+        }
+
+        private void textBoxTestPr2_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor2);
+        }
+
+        private void textBoxTestPr3_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor3);
+        }
+
+        private void textBoxTestPr4_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor4);
+        }
+
+        private void textBoxTestPr5_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor5);
+        }
+
+        private void textBoxTestPr6_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor6);
+        }
+
+        private void textBoxTestPr7_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor7);
+        }
+
+        private void textBoxTestPr8_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrColor8);
+        }
+
+        private void textBoxTestNa_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxPrNa);
+        }
+
+        private void textBoxTestMb1_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxMb1);
+        }
+
+        private void textBoxTestMb2_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxMb2);
+        }
+
+        private void textBoxTestWins1_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxWinsColor1);
+        }
+
+        private void textBoxTestWins2_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxWinsColor2);
+        }
+
+        private void textBoxTestWins3_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxWinsColor3);
+        }
+
+        private void textBoxTestWins4_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxWinsColor4);
+        }
+
+        private void textBoxTestWins5_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxWinsColor5);
+        }
+
+        private void textBoxTestPr0_Click(object sender, EventArgs e)
+        {
+            SelectColor(this.textBoxColorZero);
+        }
     }
 }

@@ -488,9 +488,9 @@ namespace WowsTools
             this.label16.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label16.Location = new System.Drawing.Point(431, 84);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(216, 22);
+            this.label16.Size = new System.Drawing.Size(218, 22);
             this.label16.TabIndex = 43;
-            this.label16.Text = "RGB代码前面加两个ff也可以";
+            this.label16.Text = "点击颜色可以使用颜色选取器";
             // 
             // label17
             // 
@@ -510,6 +510,7 @@ namespace WowsTools
             this.textBoxTestWins3.ReadOnly = true;
             this.textBoxTestWins3.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestWins3.TabIndex = 47;
+            this.textBoxTestWins3.Click += new System.EventHandler(this.textBoxTestWins3_Click);
             // 
             // textBoxTestWins2
             // 
@@ -519,6 +520,7 @@ namespace WowsTools
             this.textBoxTestWins2.ReadOnly = true;
             this.textBoxTestWins2.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestWins2.TabIndex = 46;
+            this.textBoxTestWins2.Click += new System.EventHandler(this.textBoxTestWins2_Click);
             // 
             // textBoxTestWins1
             // 
@@ -528,6 +530,7 @@ namespace WowsTools
             this.textBoxTestWins1.ReadOnly = true;
             this.textBoxTestWins1.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestWins1.TabIndex = 45;
+            this.textBoxTestWins1.Click += new System.EventHandler(this.textBoxTestWins1_Click);
             // 
             // textBoxTestPr3
             // 
@@ -537,6 +540,7 @@ namespace WowsTools
             this.textBoxTestPr3.ReadOnly = true;
             this.textBoxTestPr3.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr3.TabIndex = 50;
+            this.textBoxTestPr3.Click += new System.EventHandler(this.textBoxTestPr3_Click);
             // 
             // textBoxTestPr2
             // 
@@ -546,6 +550,7 @@ namespace WowsTools
             this.textBoxTestPr2.ReadOnly = true;
             this.textBoxTestPr2.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr2.TabIndex = 49;
+            this.textBoxTestPr2.Click += new System.EventHandler(this.textBoxTestPr2_Click);
             // 
             // textBoxTestPr1
             // 
@@ -555,6 +560,7 @@ namespace WowsTools
             this.textBoxTestPr1.ReadOnly = true;
             this.textBoxTestPr1.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr1.TabIndex = 48;
+            this.textBoxTestPr1.Click += new System.EventHandler(this.textBoxTestPr1_Click);
             // 
             // textBoxTestPr6
             // 
@@ -564,6 +570,7 @@ namespace WowsTools
             this.textBoxTestPr6.ReadOnly = true;
             this.textBoxTestPr6.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr6.TabIndex = 53;
+            this.textBoxTestPr6.Click += new System.EventHandler(this.textBoxTestPr6_Click);
             // 
             // textBoxTestPr5
             // 
@@ -573,6 +580,7 @@ namespace WowsTools
             this.textBoxTestPr5.ReadOnly = true;
             this.textBoxTestPr5.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr5.TabIndex = 52;
+            this.textBoxTestPr5.Click += new System.EventHandler(this.textBoxTestPr5_Click);
             // 
             // textBoxTestPr4
             // 
@@ -582,6 +590,7 @@ namespace WowsTools
             this.textBoxTestPr4.ReadOnly = true;
             this.textBoxTestPr4.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr4.TabIndex = 51;
+            this.textBoxTestPr4.Click += new System.EventHandler(this.textBoxTestPr4_Click);
             // 
             // textBoxTestPr8
             // 
@@ -591,6 +600,7 @@ namespace WowsTools
             this.textBoxTestPr8.ReadOnly = true;
             this.textBoxTestPr8.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr8.TabIndex = 55;
+            this.textBoxTestPr8.Click += new System.EventHandler(this.textBoxTestPr8_Click);
             // 
             // textBoxTestPr7
             // 
@@ -600,6 +610,7 @@ namespace WowsTools
             this.textBoxTestPr7.ReadOnly = true;
             this.textBoxTestPr7.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr7.TabIndex = 54;
+            this.textBoxTestPr7.Click += new System.EventHandler(this.textBoxTestPr7_Click);
             // 
             // textBoxTestPr0
             // 
@@ -609,6 +620,7 @@ namespace WowsTools
             this.textBoxTestPr0.ReadOnly = true;
             this.textBoxTestPr0.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestPr0.TabIndex = 56;
+            this.textBoxTestPr0.Click += new System.EventHandler(this.textBoxTestPr0_Click);
             // 
             // textBoxTestNa
             // 
@@ -618,6 +630,7 @@ namespace WowsTools
             this.textBoxTestNa.ReadOnly = true;
             this.textBoxTestNa.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestNa.TabIndex = 57;
+            this.textBoxTestNa.Click += new System.EventHandler(this.textBoxTestNa_Click);
             // 
             // textBoxTestMb1
             // 
@@ -627,6 +640,7 @@ namespace WowsTools
             this.textBoxTestMb1.ReadOnly = true;
             this.textBoxTestMb1.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestMb1.TabIndex = 58;
+            this.textBoxTestMb1.Click += new System.EventHandler(this.textBoxTestMb1_Click);
             // 
             // textBoxTestMb2
             // 
@@ -636,6 +650,7 @@ namespace WowsTools
             this.textBoxTestMb2.ReadOnly = true;
             this.textBoxTestMb2.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestMb2.TabIndex = 59;
+            this.textBoxTestMb2.Click += new System.EventHandler(this.textBoxTestMb2_Click);
             // 
             // button4
             // 
@@ -689,6 +704,7 @@ namespace WowsTools
             this.textBoxTestWins4.ReadOnly = true;
             this.textBoxTestWins4.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestWins4.TabIndex = 65;
+            this.textBoxTestWins4.Click += new System.EventHandler(this.textBoxTestWins4_Click);
             // 
             // textBoxTestWins5
             // 
@@ -698,6 +714,7 @@ namespace WowsTools
             this.textBoxTestWins5.ReadOnly = true;
             this.textBoxTestWins5.Size = new System.Drawing.Size(46, 29);
             this.textBoxTestWins5.TabIndex = 66;
+            this.textBoxTestWins5.Click += new System.EventHandler(this.textBoxTestWins5_Click);
             // 
             // PrBackColorSettings
             // 
