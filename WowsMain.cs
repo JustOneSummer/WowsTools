@@ -136,7 +136,7 @@ namespace WowsTools
                         break;
                     }
                 }
-                Thread.Sleep(100);
+                Thread.SpinWait(10);
             }
             DataViewLoad(WowsServer);
         }
@@ -447,12 +447,12 @@ namespace WowsTools
                 {
                     if (ver - localV >= 5 && localV > 2)
                     {
-                        MessageBox.Show("版本过低！！！\r\n请加Q群872725671获取最新版本,程序将自动退出运行...");
-                        System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
+                        MessageBox.Show("版本过低！！！\r\n请去网站更新最新版本\r\nhttp://v.wows.shinoaki.com");
+                        //System.Diagnostics.Process.GetProcessById(System.Diagnostics.Process.GetCurrentProcess().Id).Kill();
                     }
                     else
                     {
-                        MessageBox.Show("发现新版本，请点击关于加Q群872725671获取最新版本!!!");
+                        MessageBox.Show("发现新版本，请去网站更新最新版本\r\nhttp://v.wows.shinoaki.com");
                     }
                 }
             }
