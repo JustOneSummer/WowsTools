@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -7,6 +9,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
+using System.Web;
 using System.Windows.Forms;
 using WowsTools.api;
 using WowsTools.model;
@@ -29,11 +32,11 @@ namespace WowsTools
 
             //2、利用反射设置DataGridView的双缓冲
             Type dgvType = this.dataGridViewOne.GetType();
-            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered",BindingFlags.Instance | BindingFlags.NonPublic);
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
             pi.SetValue(this.dataGridViewOne, true, null);
         }
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string VERSION = "0.0.9";
+        private const string VERSION = "0.1.0";
         private static bool UPDATE = true;
         private static bool GAME_RUN = true;
 
@@ -46,6 +49,14 @@ namespace WowsTools
             log.Info("正在运行的 .net framework 信息：" + RuntimeInformation.FrameworkDescription);
             this.dataGridViewOne = DataGridViewTemplateInitialLoad.Load(this.dataGridViewOne);
             log.Info("初始化 版本=" + VERSION);
+            log.Info("windows version = " + Program.OS_VERSION);
+            if (Program.OS_VERSION_WIN7)
+            {
+                string url = "https://wowsgame.cn/zh-cn/community/accounts/search/?search=" + HttpUtility.UrlEncode("西行寺雨季") + "&pjax=1";
+                var htmlWebHomeSelect = new HtmlWeb();
+                htmlWebHomeSelect.Load(url);
+                log.Info("加载信息成功...");
+            }
             LoadGameHome();
             ShipUtils.Get(0, true);
             ShipPrUtils.Get(0, true);

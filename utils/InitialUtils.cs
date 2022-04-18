@@ -140,7 +140,7 @@ namespace WowsTools.utils
         }
 
 
-        
+
 
         private static void WowsExeHomePath()
         {
@@ -152,7 +152,7 @@ namespace WowsTools.utils
                 {
                     HOME = settings;
                 }
-                log.Info(IsAdmin() ? "管理员模式加载...": "非管理员模式加载...");
+                log.Info(IsAdmin() ? "管理员模式加载..." : "非管理员模式加载...");
                 if (!GamePathProcess(OwnerProcessPath()))
                 {
                     GamePathProcess(ProcessPath());
@@ -173,7 +173,7 @@ namespace WowsTools.utils
                 return true;
             }
             return false;
-            
+
         }
 
         private static void ReplaysPath()
@@ -275,7 +275,7 @@ namespace WowsTools.utils
         /// </summary>
         /// <param name="processName"></param>
         /// <returns></returns>
-        public static string ProcessPath( )
+        public static string ProcessPath()
         {
             Process[] processes = Process.GetProcesses();
             foreach (Process process in processes)

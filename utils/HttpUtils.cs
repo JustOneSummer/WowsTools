@@ -15,7 +15,7 @@ namespace WowsTools.utils
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static string URL = "http://public.wows.shinoaki.com:7152";
+        public static string URL = "http://proxy.wows.shinoaki.com:7152";
         public static string GetVersion()
         {
             try

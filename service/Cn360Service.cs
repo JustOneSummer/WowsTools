@@ -15,11 +15,11 @@ namespace WowsTools.service
         /// 测试用
         /// </summary>
         /// <returns></returns>
-        public static GameAccountInfoData AccountInfo()
+        /*public static GameAccountInfoData AccountInfo()
         {
-            QueryNameUrl("梅露露琳丝·雷蒂·阿鲁兹");
+            //QueryNameUrl("梅露露琳丝·雷蒂·阿鲁兹");
             return null;
-        }
+        }*/
 
         public static long QueryNameUrl(string userName)
         {
