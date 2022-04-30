@@ -63,10 +63,16 @@ namespace WowsTools
             //get a collection of WMI objects
             ManagementObjectCollection queryCollection = searcher.Get();
             //enumerate the collection.
-            foreach (ManagementObject m in queryCollection)
+            try
             {
-                // access properties of the WMI object
-                OS_VERSION = m["Caption"].ToString();
+                foreach (ManagementObject m in queryCollection)
+                {
+                    // access properties of the WMI object
+                    OS_VERSION = m["Caption"].ToString();
+                }
+            }catch(Exception e)
+            {
+                log.Error("检测系统-遍历ManagementObject出现异常..." + e);
             }
             if (OS_VERSION != string.Empty)
             {

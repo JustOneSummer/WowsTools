@@ -259,7 +259,7 @@ namespace WowsTools.utils
             List<int> list = new List<int>();
             foreach (DirectoryInfo direct in directs)
             {
-                if (Regex.IsMatch(direct.Name, "^\\d*"))
+                if (Regex.IsMatch(direct.Name, @"^[0-9]+$"))
                 {
                     list.Add(Int32.Parse(direct.Name));
                 }
@@ -299,28 +299,35 @@ namespace WowsTools.utils
 
         public static string OwnerProcessPath()
         {
-            using (var mc = new ManagementClass("Win32_Process"))
-            using (var moc = mc.GetInstances())
+            try
             {
-                foreach (ManagementObject mo in moc)
-                    using (mo)
-                    {
-                        try
+                using (var mc = new ManagementClass("Win32_Process"))
+                using (var moc = mc.GetInstances())
+                {
+                    foreach (ManagementObject mo in moc)
+                        using (mo)
                         {
-                            //var outParams = mo.InvokeMethod("GetOwner", null, null);
-                            //ProcessId
-                            string process = mo["Name"].ToString();
-                            if (IsWowsGameProcess(process))
+                            try
                             {
-                                return mo["ExecutablePath"].ToString();
+                                //var outParams = mo.InvokeMethod("GetOwner", null, null);
+                                //ProcessId
+                                string process = mo["Name"].ToString();
+                                if (IsWowsGameProcess(process))
+                                {
+                                    return mo["ExecutablePath"].ToString();
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                log.Error("获取进程路径发生异常;" + e);
+                                break;
                             }
                         }
-                        catch (Exception e)
-                        {
-                            log.Error("获取进程信息发生异常;" + e);
-                            break;
-                        }
-                    }
+                }
+            }
+            catch (Exception e)
+            {
+                log.Error("获取进程信息发生异常;" + e);
             }
             return "";
         }
