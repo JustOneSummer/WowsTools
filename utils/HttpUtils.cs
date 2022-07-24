@@ -20,8 +20,8 @@ namespace WowsTools.utils
         {
             try
             {
-                Get(URL + "/public/upload?info=" + InitialUtils.GetCpuID());
-                return Get(URL + "/public/version");
+                Get("https://api.wows.shinoaki.com/tools/yuyuko/upload/cpuid?info=" + InitialUtils.GetCpuID());
+                return Get("https://api.wows.shinoaki.com/tools/yuyuko/version");
             }
             catch (Exception e)
             {

@@ -33,7 +33,7 @@ namespace WowsTools.utils
                 {
                     try
                     {
-                        string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/list");
+                        string jsonData = HttpUtils.Get("https://api.wows.shinoaki.com/public/wows/encyclopedia/ship/search");
                         using (StreamWriter streamWriter = new StreamWriter(path, false))
                         {
                             streamWriter.WriteLine(jsonData);

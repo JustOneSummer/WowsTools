@@ -34,7 +34,7 @@ namespace WowsTools.utils
                 {
                     try
                     {
-                        string jsonData = HttpUtils.Get(HttpUtils.URL + "/public/ship/pr/list");
+                        string jsonData = HttpUtils.Get("https://api.wows.shinoaki.com/public/wows/encyclopedia/ship/avg");
                         using (StreamWriter streamWriter = new StreamWriter(path, false))
                         {
                             streamWriter.WriteLine(jsonData);
@@ -56,14 +56,18 @@ namespace WowsTools.utils
                 sr.Close();
                 fs.Close();
                 JToken token = JToken.Parse(info.ToString()).Value<JToken>("data");
-                foreach (var item in token.ToList())
+                foreach (var item in token)
                 {
                     ShipPrUtils shipUtils = new ShipPrUtils();
-                    shipUtils.shipId = item.Value<long>("idCode");
-                    shipUtils.winRate = item.Value<double>("winRate");
-                    shipUtils.averageDamageDealt = item.Value<double>("averageDamageDealt");
-                    shipUtils.averageFrags = item.Value<double>("averageFrags");
-                    PR_MAP.Add(shipUtils.shipId, shipUtils);
+                    shipUtils.shipId = item.Value<long>("shipId");
+                    JToken data = item.Value<JToken>("data");
+                    shipUtils.winRate = data.Value<double>("winRate");
+                    shipUtils.averageDamageDealt = data.Value<double>("averageDamageDealt");
+                    shipUtils.averageFrags = data.Value<double>("averageFrags");
+                    if (!PR_MAP.ContainsKey(shipUtils.shipId))
+                    {
+                        PR_MAP.Add(shipUtils.shipId, shipUtils);
+                    }
                 }
             }
             ShipPrUtils ship;
